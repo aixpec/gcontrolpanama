@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/menu/actividad_avance.xml",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/menu/actividad_avance.xml"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/menu/accept_cancel.xml",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/menu/accept_cancel.xml"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/menu/mnu_bitacora.xml",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/menu/mnu_bitacora.xml"
+    }
+]

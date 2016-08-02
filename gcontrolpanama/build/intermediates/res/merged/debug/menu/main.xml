@@ -1,0 +1,52 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:elephant="http://schemas.android.com/apk/res-auto" >
+
+     
+     <item
+        android:id="@+id/mnu_action_search"
+        android:title="@string/mnu_action_Buscar"
+        android:icon="@drawable/ic_action_search"
+        elephant:showAsAction="never"/>
+
+      <item
+       android:id="@+id/mnu_action_proyectos"
+       android:title="@string/mnu_action_proyectos"
+       elephant:showAsAction="never"/>
+
+    <item
+        android:id="@+id/mnu_action_construcciones"
+        android:title="@string/mnu_action_construcciones"
+        elephant:showAsAction="never"/>
+      
+    <item
+       android:id="@+id/mnu_action_actualizar"
+       android:title="@string/mnu_action_actualizar"
+        android:icon="@drawable/ic_action_refresh"
+       elephant:showAsAction="ifRoom|collapseActionView"/>
+    
+    <item
+        android:id="@+id/mnu_action_activs"
+        android:title="@string/mnu_action_activs"
+        elephant:showAsAction="never"/>
+ 
+    <item
+        android:id="@+id/mnu_action_bitacora"
+        android:title="@string/mnu_action_bitacora"
+        elephant:showAsAction="never"/>
+    <item
+        android:id="@+id/mnu_action_bitacora_fotos"
+        android:title="@string/mnu_action_bitacora_fotos"
+        elephant:showAsAction="never"/>
+
+    <item
+        android:id="@+id/mnu_action_acercaDe"
+        android:title="@string/mnu_action_acercaDe"
+        elephant:showAsAction="never"/>
+    
+     <item
+        android:id="@+id/mnu_action_salir"
+        android:title="@string/mnu_action_salir"
+        elephant:showAsAction="never"/>
+       
+       
+</menu>

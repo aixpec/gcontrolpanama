@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="421b36cf4f0d3bbd75e8f28647fccf36674ef049">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-9.2.1_51c6dbbff3d4817ed569bc8d2b4d82a88fb86917/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a65d98c9409f271d3209f4cc1f7d8e0391665fa5">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-iid-9.2.1_0a7a46d313631dccd838378bf19f5fd13a9e3176/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="89ab748a6c0ab6ac1d3671f2356d6181e8108bc5">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-drive-9.2.1_4de3af936cc1316494c625056cf6a7b29e6e987a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0765979e802b1669c90dc36076559461d5eb6ad1">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-nearby-9.2.1_8f4abde342275ae31fa22c8e6243f8ee9fdf03eb/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-database/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f06a0705d7b8b9d18b00d056fe0e07bec75514e6">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-9.2.1_7c2c7590751a5580f22d9d2234c0dd4c7787c4ec/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="90eeba67a669f8fb24db0f821ef81703fe7a02bc">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-clearcut-9.2.1_34412e1c3d55dbd9dff168b0cc902b23c4c46e6f/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9f2282b9fc24f24c69665032dede1bc7201cf006">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-framework-9.2.1_3d46f290f51970e585dfb5280365a83fc8c03480/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="edf9a22ebf25281619265079aec8f5d433da1a5c">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gcm-9.2.1_eac95e161b3da8567574956f715cfa797b7cf161/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6a0f2d219f82db499ac03d5a985c4eb3e83fc422">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-9.2.1_abd669d9a37d9669ba2aa6d334b6b96face0fda1/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="310ef01419435979cc82847cf085799a8d00e7e9">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-lite-9.2.1_f646349aab886a955ee8cb2dc7f32cfeac4fd1d2/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Downloads/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.0.0_81b02154c8f465ec89785b326f35118c379a0458/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f3b0ff905873c91ab64addba30cc1e77bed34c4d">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-9.2.1_cc19b09a94d73aa62589013eb1a7ab344404b2b4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d064f813cd835f17853e39221b247cf6a997a2db">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-fitness-9.2.1_576ed8dda8c9f83ddcfe920f67164f1866d90ce7/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-config/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7bb417e9ac8645285342935679e75d371b58b62b">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-config-9.2.1_b71a4663a06ce1f594e4f6e74907bb1299d50dbe/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="48917c60ea81213ea39cbd7123996a5401106dc3">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-base-9.2.1_d2dd77b2bfd2c59d0b4a6b5f4a5d23bc22852421/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e45c9496c3846125347bcb62372a85448f6957cb">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_45c79f1e6abdd932a9733eed1e5a7eb912dc21af/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-mediarouter-v7-23.0.0_74b3b30b9f773951bedd0e720b514117e0488b4c/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b24c1a80d8ccaecee7b8b80209b4e273dc22b14d">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-9.2.1_6d5f86d9768ff36b7c5d7aa4d162e5b761d73798/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-common/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ee409046028e5657a2a69edaa2eba00d6511a74c">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-common-9.2.1_8a5ac99f304501d94c3bdec7e87297cbdf6194f2/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="05a2710d284c03087013a667a324c9e2aba5bc91">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-panorama-9.2.1_0d820bc210af1aa4054ba67469943319d842900d/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5337354083e89ed67151859ab0b6b80935c60eaf">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-9.2.1_d5f134745434704218871fe7c45284cba32edba2/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="152cba5ca28fd4a5191a8577a0fa96d61122041e">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-identity-9.2.1_7b07927711e86a6f2cd8d4fdcb3efb6867e653e6/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="819c2c3a4fb135e085445d11131d069cf9c32b2a">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-9.2.1_795f59858d50bf66adc50cf90a27c01f823f1bce/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="def5530cb13311617fc8f962e2a90225bb6904e2">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-plus-9.2.1_9a18c609dff59aca8ea4d4d6ba9a97e48a68ac2a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3627eacd7f7cafb5e8ae683992e7b2f9b7dcab1a">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-9.2.1_64ccc3e05d6b6e2a1348557ba09302faf1c28ebd/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6b896c1067633db41e9c10a3a5d0919c5c4cfc8c">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-9.2.1_b456314d71d6eeb1835c145dbc8c167d21987446/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="12228ccd7d5cab648cd8f776f9fbb592f7ba7968">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_a97a25b3982d5fbcd9e6f4d812340b73adf2a527/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4c2b01baa64ba25f8dbdf7f7f828bc5664dab55e">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-games-9.2.1_ac2cfd2e0203ac423eb2c1c35aa8c88398bdf94f/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-crash/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6c09228ff931eb30b68dd27fe34ed90d978b6892">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-crash-9.2.1_473a2aa13491002c3802ddc3c19fa4543a868908/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="36e2b438f9b0d68fb2482c8f389e249e32840cff">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-storage-common-9.2.1_d4192ea7473c0f6efdfc6b7ea7d3fef7e615be87/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ee19e33a798d11a5cf309a40155b8223fadcdeea">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appindexing-9.2.1_df26e75e6e641fd83513aa20922be2b290fcd6ab/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics-impl/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1141496362c8876f0da4b645fbaf22c0a3618372">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-impl-9.2.1_462fcc94b6f26a0ec9d911bdc8624b77ff0eb735/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-multidex-1.0.1_1ac6133b5bae31d678cd39aa4e739882764879b3/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-module/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="35a01d7cb4ff6b5976777bf5827fd8f206fb8757">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-module-9.2.1_b8224269079fd8c6b3a2a16f0e7866e42b15159a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-gass/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="081ced8ab77e606b6743c27cfe93dc450447b046">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gass-9.2.1_80a85460e4cab11b2e8353123ca081b1c52f1ac2/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.0_66c0c85c4cb97bad6dc9262421b310a9211b203a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ac78f93fc89c497a65f9d9a352cd405996d2f65a">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-messaging-9.2.1_57c75c047c27efe1b5b3d2f4875e1d556b4cf970/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="bbd51be332bace144b3d16501ec0af379c3c8750">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-9.2.1_610bc176e648201fc628739e4dec48780148dd95/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="dd1907a2e855eeb2be8aa3486f3d4d4f1c8b22af">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wearable-9.2.1_ffb5f3d0dc821dace6f54b3da531cd4011ebfd0b/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.0_94460769ee711f5d614f95082736bbb32fdcbd8f/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2506c5893e125e2f9cfc522378e893620c21b109">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-9.2.1_2d1f94c7ea51b8f3d5acf0487e29231c8a8e0058/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-api/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="77e2e4803396fa79009ace04d9be84184aafcc31">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-api-9.2.1_004b99f33035e2e11e5c4ac57353b18a7191d7e5/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="428c9bac95b2f72921224e289553a04bea61cda5">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-9.2.1_bbcce51b8b4887e0f18a5868322310e57d3fa7fc/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="05d2e01f33fb2097b51fce3f938dc37a75fe2d6b">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-connection-9.2.1_d976b7f8b4416cbc989fb5dd88b099d385240b8b/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d41b5d21cc9dd7d210f0ae82ac509ba7f091d611">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-9.2.1_96ad96abd9cab05be2802cdf13cf7c797ed230b4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8aada8a0e9e9b3ecdda5e80f17c6a51a468e302a">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wallet-9.2.1_83e84cba1dfd7cc09774f451089fb9e4b2722df5/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-contextmanager/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ccc963cafe59ce185c49f47baff7eedcb8589bdf">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-contextmanager-9.2.1_a8255cd0d84c724304b2a36d356cdaf35d5fe5d5/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6d2f508d1a9fa0fbe1653595e484800c08afb42c">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-9.2.1_ebf86841ace69c054052fc063068a14cee04d4e4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.0.0_27b8eb0bde4481ee10a18cdbd10cdd4a4047e486/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-places/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0979debb5b4d955ddc0e80bb192f4f00c2f91750">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-places-9.2.1_6af4de4306c5b8b85c52c629713162c999c966fa/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3a42c5696fa39930d39770f7e5552a9c965fbe09">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-vision-9.2.1_b4e0d42b379dbd9fb948c9580b96e32247392df1/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e1bec33f1ec5367e25676638b430b9d585f3dbec">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-9.2.1_8918ebb4f37440ce3f58288650f9badbe7c7b95c/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="07c569a77f437c5c71eac8b1b636a50bebb69a93">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-9.2.1_277802227dbf52230306ec6dfdd51b590ab0539a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4b515e6e269bfe848f5b43ac09bce54d6617d4fd">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-safetynet-9.2.1_274a031a6e2eb8d1a7a3f4c4d7169199e58dfa5a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e719de687ac45141de3dd613907860a495580af0">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-storage-9.2.1_c1e0e3052fbf7681039840dd7c28d2dc319e5c6a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.0.0_2233eb16a9a3f9d454597bba3a6cce71cbda3c59/classes.dex" />
+    </item>
+    <item
+        jar="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/9.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="357a8702c49044417d4856861c8f435e7c74ef09">
+        <dex dex="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-9.2.1_2dec47d56246f38559b11714270a090a5cae6dc3/classes.dex" />
+    </item>
+
+</items>

@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:elephant="http://schemas.android.com/apk/res-auto" >
+   
+   	<item
+        android:id="@+id/mnuaction_avanceActiv_agregarFoto"
+        android:title="@string/mnuaction_avanceActiv_agregarFoto"
+        elephant:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_new_picture"/>
+     <item
+        android:id="@+id/mnuaction_aceptar"
+        android:title="@string/mnuaction_aceptar"
+        elephant:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_accept"/>
+     <item
+        android:id="@+id/mnuaction_cancelar"
+        android:title="@string/mnuaction_cancelar"
+        elephant:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_cancel"/>
+     <item
+        android:id="@+id/mnuaction_seleccionar_todas"
+        android:title="@string/mnuaction_seleccionar_todas"
+        elephant:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_select_all"/>
+     <item
+        android:id="@+id/mnuaction_eliminar"
+        android:title="@string/mnuaction_eliminar"
+        elephant:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_discard"/>
+
+</menu>

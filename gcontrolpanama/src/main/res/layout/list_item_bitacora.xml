@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    android:baselineAligned="false" >
+	         <TextView
+		        android:id="@+id/list_item_bitacora_LblProyecto"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@+id/label"
+		        android:textSize="16sp"
+		        android:textStyle="bold"
+		        android:textColor="@color/primary_text"
+		     >
+		    </TextView>
+			<TextView
+				android:id="@+id/list_item_bitacora_LblConstruccion"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@+id/label"
+				android:textSize="14sp"
+				android:textColor="@color/primary_text" >
+			</TextView>
+	<TextView
+		        android:id="@+id/list_item_bitacora_LblRenglon"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@+id/label"
+		        android:textSize="14sp"
+		        android:textColor="@color/primary_text" >
+		    </TextView>		     
+   			<TextView
+		        android:id="@+id/list_item_bitacora_LblFechaCaptura"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@+id/label"
+		        android:textSize="14sp"
+		        android:textColor="@color/primary_text">
+		    </TextView>  
+		    <TextView
+		        android:id="@+id/list_item_bitacora_LblEstado"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@+id/label"
+		        android:textSize="14sp"
+		        android:textColor="@color/primary_text">
+		    </TextView>			
+   			<LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:orientation="vertical" >  
+	        <TextView
+		        android:id="@+id/list_item_bitacora_LblIDAntiguedad"
+		        android:layout_width="match_parent"
+		        android:layout_height="15dp"
+		        android:text="@+id/label"
+		        android:gravity="end"
+		        android:layout_gravity="bottom"
+		        android:textSize="12sp"
+		        android:textColor="@color/secondary_text" >
+		    </TextView>	 
+		    <LinearLayout
+	        android:layout_marginBottom="5dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="20dp"
+	        android:orientation="horizontal" >
+	        	 <TextView
+		        android:id="@+id/list_item_bitacora_LblFechaEnvio"
+		        android:layout_width="0dp"
+		        android:layout_height="match_parent"
+		        android:text="@+id/label"
+		        android:gravity="end"
+		        android:layout_gravity="bottom"
+		        android:textSize="12sp"
+		        android:textColor="@color/secondary_text"
+		        android:layout_weight="7">
+		   		</TextView>	
+		       
+			   <ImageView
+				        android:id="@+id/list_item_bitacora_ivestado"
+				        android:layout_height="match_parent"
+				        android:layout_gravity="center" 
+				        android:layout_width="0dp"
+				        android:layout_weight="3"
+				        android:scaleType="centerInside"
+				        android:contentDescription="@string/list_item_generico_noImage"
+				        android:src="@drawable/warning">			
+			    </ImageView>  
+	        </LinearLayout>
+		   
+		    </LinearLayout>
+    
+</LinearLayout>

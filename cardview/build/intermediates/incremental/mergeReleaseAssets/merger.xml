@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/cardview/src/main/assets"/><source path="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/cardview/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/cardview/src/release/assets"/></dataSet></merger>

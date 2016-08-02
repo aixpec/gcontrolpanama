@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+   	    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/white" >  
+         <TextView
+	        android:id="@+id/list_item_activs_LblTitulo"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@+id/label"
+	        android:textSize="16sp"
+	        android:textColor="@color/primary_text"
+	     >
+	    </TextView>
+	    <TextView
+	        android:id="@+id/list_item_activs_LblSubTitulo"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@+id/label"
+	        android:textSize="12sp"
+	        android:textColor="@color/secondary_text" >
+	    </TextView>
+
+	    </LinearLayout>
+   	    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal" > 
+   	         <com.github.mikephil.charting.charts.HorizontalBarChart
+		        android:id="@+id/list_item_activs_hBarChartAvances"
+		        android:layout_width="match_parent"
+			    android:layout_height="0dp"
+		        android:background="@android:color/white"
+				android:visibility="invisible"
+				 />
+        </LinearLayout>
+   	    <LinearLayout
+   	        android:layout_width="match_parent"
+   	        android:layout_height="0dp"
+   	        android:layout_weight="1"
+			android:gravity="end"
+   	        android:orientation="horizontal"
+   	        android:background="@color/Grey100"
+			android:layout_marginBottom="0dp"
+   	         >
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="30dp"
+				android:layout_weight="1"
+				android:orientation="horizontal"
+				android:gravity="start">
+			<TextView
+				android:id="@+id/list_item_activs_estado"
+				android:layout_width="wrap_content"
+				android:layout_marginTop="5dp"
+				android:layout_height="30dp"
+				android:scaleType="centerInside"
+				android:text="@+id/label"
+				android:textSize="12sp"
+				android:textColor="@color/secondary_text"
+				>
+
+			</TextView>
+			</LinearLayout>
+
+			<ImageView
+			android:id="@+id/list_item_activs_estadofoto"
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:contentDescription="@string/list_item_generico_noImage"
+			android:scaleType="centerInside"
+			android:src="@drawable/no"
+			/>
+   	        <ImageView
+   	            android:id="@+id/list_item_activs_ivfoto"
+   	            android:layout_width="50dp"
+   	            android:layout_height="50dp"
+   	            android:contentDescription="@string/list_item_generico_noImage"
+   	            android:scaleType="centerInside"
+   	            android:src="@drawable/no"
+				android:visibility="visible"
+				/>
+
+   	    </LinearLayout>
+   	    
+</LinearLayout>

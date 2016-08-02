@@ -1,0 +1,794 @@
+[
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_stop_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_stop_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_cast_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_cast_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_moreoverflow_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_divider_mtrl_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/charts_folder.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/charts_folder.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/cast_ic_notification_on.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/9.2.1/res/drawable-hdpi-v4/cast_ic_notification_on.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/hourglass_128.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/hourglass_128.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_trending_up_black_48dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_trending_up_black_48dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_light_pressed.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_pressed.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/check_green_128.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/check_green_128.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/check.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/check.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_focused.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_focused.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/cast_ic_notification_0.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/9.2.1/res/drawable-hdpi-v4/cast_ic_notification_0.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_plusone_medium_off_client.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/9.2.1/res/drawable-hdpi-v4/ic_plusone_medium_off_client.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_play_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_play_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/yellow_dark_button_75.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/yellow_dark_button_75.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_plusone_small_off_client.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/9.2.1/res/drawable-hdpi-v4/ic_plusone_small_off_client.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/double_check.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/double_check.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_route_on_1_mono_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_media_route_on_1_mono_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/yellow_icon.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/yellow_icon.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_view_as_grid.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_view_as_grid.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/elephant_purple.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/elephant_purple.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/aperture.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/aperture.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_help_outline_black_48dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_help_outline_black_48dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_light_normal.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_normal.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_dark_focused.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_focused.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_refresh.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_refresh.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/refresh.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/refresh.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/nothing.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/nothing.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/registro_pendiente_confirmacion.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/registro_pendiente_confirmacion.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_light_normal.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_normal.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/green_button_75.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/green_button_75.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/elephant_green.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/elephant_green.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_rating_star_on_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_btn_rating_star_on_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_plusone_standard_off_client.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/9.2.1/res/drawable-hdpi-v4/ic_plusone_standard_off_client.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_help_black_48dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_help_black_48dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_select_all.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_select_all.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_description_black_48dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_description_black_48dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_cast_on_1_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_cast_on_1_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_pause_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_pause_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_pressed_holo_light.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_camera.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_camera.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_focused.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_focused.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_route_on_mono_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_media_route_on_mono_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_cast_on_2_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_cast_on_2_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_cast_on_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_cast_on_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_default_mtrl_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_cast_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_cast_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_setting_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_setting_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_pause_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_pause_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_forward_30_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_forward_30_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_popup_background_mtrl_mult.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_spinner_mtrl_am_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/yellow_button_75.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/yellow_button_75.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_disabled.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_disabled.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_textfield_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/yellow_button.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/yellow_button.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_pause.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_media_pause.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/places_ic_search.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-places/9.2.1/res/drawable-hdpi-v4/places_ic_search.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_light_focused.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_focused.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_disabled.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_disabled.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_route_on_2_mono_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_media_route_on_2_mono_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_chrome_reader_mode_black_24dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_chrome_reader_mode_black_24dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_accept.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_accept.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/powered_by_google_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-places/9.2.1/res/drawable-hdpi-v4/powered_by_google_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/gray_button.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/gray_button.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/check_green.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/check_green.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/warning.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/warning.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_discard.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_discard.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_normal.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_normal.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_dark_disabled.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_disabled.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_comment_black_48dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_comment_black_48dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/elephant_yellow.jpg",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/elephant_yellow.jpg"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_dark_normal.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_normal.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_replay_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_replay_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/record_sent_warning.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/record_sent_warning.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_pressed.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_pressed.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/wait.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/wait.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/check_white.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/check_white.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_refresh_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_refresh_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_pressed.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_pressed.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/yellow_dark_button.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/yellow_dark_button.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/picture_blue.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/picture_blue.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_view_as_list.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_view_as_list.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/no.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/no.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/camera.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/camera.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_dark_pressed.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_pressed.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_full_open_on_phone.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_full_open_on_phone.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_dark_disabled.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_disabled.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_search.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_search.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/hourglass.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/hourglass.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/blue_shutter.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/blue_shutter.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/record_not_sent.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/record_not_sent.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_send_now.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_send_now.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_replay_30_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_replay_30_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_play_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_play_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_plusone_tall_off_client.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/9.2.1/res/drawable-hdpi-v4/ic_plusone_tall_off_client.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_route_off_mono_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_media_route_off_mono_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/clock.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/clock.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_chrome_reader_mode_black_48dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_chrome_reader_mode_black_48dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/blue_black_shooter.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/blue_black_shooter.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/registro_no_enviado.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/registro_no_enviado.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_skip_next_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_skip_next_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/registro_enviado.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/registro_enviado.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_dark_disabled.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_disabled.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_light_focused.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_focused.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/question_mark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/question_mark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_clear_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_clear_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/double_checked.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/double_checked.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_note_black_48dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_note_black_48dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_clear_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_clear_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_pressed.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_pressed.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_pause_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_pause_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_dark_pressed.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_pressed.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/elephant_red.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/elephant_red.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_about.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_about.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/powered_by_google_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-places/9.2.1/res/drawable-hdpi-v4/powered_by_google_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_play_arrow_grey600_48.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_play_arrow_grey600_48.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_skip_previous_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_skip_previous_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_normal.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_normal.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/cast_ic_notification_1.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/9.2.1/res/drawable-hdpi-v4/cast_ic_notification_1.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_selector_disabled_holo_light.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_back.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_back.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_focused_holo.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_rating_star_off_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_btn_rating_star_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_cast_on_0_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_cast_on_0_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_play_arrow_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_play_arrow_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_cast_white_36.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_cast_white_36.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_dark_pressed.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_pressed.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_longpressed_holo.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_photo_camera_black_48dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_photo_camera_black_48dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/green_button.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/green_button.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_015.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_new_picture.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_new_picture.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_collection.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_collection.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/vintage_camera.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/vintage_camera.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_light_pressed.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_pressed.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_selector_disabled_holo_dark.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_focused.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_focused.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_cast_connected_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_cast_connected_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/shutter.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/shutter.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/red_button.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/red_button.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_replay_10_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_replay_10_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_setting_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_setting_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_stop_grey600_48.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_stop_grey600_48.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/blue_camera.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/blue_camera.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/gray_button_75.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/gray_button_75.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_disabled.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_disabled.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_light_disabled.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_disabled.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_pause_grey600_48.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_pause_grey600_48.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_route_disabled_mono_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_media_route_disabled_mono_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/error.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/error.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/check_gray.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/check_gray.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_new_picture_hd.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_new_picture_hd.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_ab_back_mtrl_am_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_ab_back_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_play.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_media_play.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_search_api_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_light_disabled.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_disabled.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_media_route_on_0_mono_dark.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_media_route_on_0_mono_dark.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_ic_googleplayservices.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_ic_googleplayservices.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_go_search_api_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_go_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_playlist_add_check_black_48dp.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_playlist_add_check_black_48dp.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_dark_focused.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_focused.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/images_icon.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/images_icon.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_cast_off_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_cast_off_light.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/cast_ic_notification_2.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/9.2.1/res/drawable-hdpi-v4/cast_ic_notification_2.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_000.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/blue_shoot.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/blue_shoot.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_pressed_holo_dark.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_cancel.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_cancel.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/places_ic_clear.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-places/9.2.1/res/drawable-hdpi-v4/places_ic_clear.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_picture.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_action_picture.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_015.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_voice_search_api_mtrl_alpha.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/drawable-hdpi/abc_ic_voice_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/pie.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/pie.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/quantum_ic_forward_10_white_24.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.2.1/res/drawable-hdpi-v4/quantum_ic_forward_10_white_24.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_avances.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/src/main/res/drawable-hdpi/ic_avances.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_dark_focused.9.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_focused.9.png"
+    },
+    {
+        "merged": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_cast_disabled_light.png",
+        "source": "/Users/aixpec/Documents/Android/ColonPanama/gcontrolpanama/gcontrolpanama/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/drawable-hdpi/ic_cast_disabled_light.png"
+    }
+]

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:gravity="center">
+
+	    <ImageView android:id="@+id/splash_image"
+	    android:layout_width="wrap_content"
+	    android:layout_height="100dp"
+	    android:layout_marginBottom="10dp"
+	    android:src="@drawable/elephant_logo"
+	    android:layout_gravity="center"
+	    android:contentDescription="@string/app_name"/>
+
+        <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:padding="20dp"
+	    android:background="@color/colorLoginBlack"
+	    android:gravity="center">
+            <TextView
+	        android:id="@+id/activity_login_tvTitle"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="20sp" 
+	        android:text="@string/login_title" 
+	        android:gravity="center"
+	        android:textColor="#FAFAFA"
+	        android:layout_marginBottom="20dp"/>
+            <EditText 
+	        android:id="@+id/activity_login_etEmail"
+	        android:layout_width="match_parent"
+	        android:layout_height="48dp"
+	        android:textSize="15sp" 
+	        android:inputType="textEmailAddress"
+	        android:nextFocusRight="@+id/activity_login_etPassword"
+	        android:background="#FAFAFA"
+	        android:hint="@string/login_email_hint"
+	        android:layout_marginBottom="20dp"/>	    
+	    	<EditText 
+	        android:id="@+id/activity_login_etPassword"
+	        android:layout_width="match_parent"
+	        android:layout_height="48dp"
+	        android:textSize="15sp" 
+	        android:inputType="textPassword"
+	        android:background="#FAFAFA"
+	        android:hint="@string/login_password_hint"
+	        android:layout_marginBottom="20dp"
+	        android:nextFocusRight="@+id/activity_login_btnIngresar"/>
+	    	<Button 
+		    android:id="@+id/activity_login_btnIngresar"
+		    android:text="@string/login_btnIngresar_text"
+		    android:textColor="#FAFAFA"
+		    android:textSize="15sp"
+		    android:layout_height="48dp"
+		    android:layout_width="match_parent"
+		    android:background="@color/accent"
+		    android:layout_marginBottom="10dp"/>
+	    	<Button 
+		    android:id="@+id/activity_login_btnIngresarModoDesconectado"
+		    android:text="@string/login_btnIngresarDesconectado_text"
+		    android:textSize="12sp"
+		    android:layout_height="48dp"
+		    android:layout_width="match_parent"
+		    android:background="@color/colorWarning"/>
+	    </LinearLayout>
+
+        <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:padding="20dp"
+	    android:gravity="end"	>
+	    	
+	    	<TextView
+	        android:id="@+id/activity_login_tvLabelRegistro"
+	        android:text="@string/login_tvRegistrarse"
+	        android:textSize="15sp"
+		    android:layout_height="48dp"
+	        android:layout_width="wrap_content"/>
+	    </LinearLayout>
+        
+</LinearLayout>

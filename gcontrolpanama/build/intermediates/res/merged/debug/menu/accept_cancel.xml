@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:elephant="http://schemas.android.com/apk/res-auto" >
+   
+   <item
+        android:id="@+id/mnuaction_aceptarCancelar_aceptar"
+        android:title="@string/mnuaction_aceptar"
+        elephant:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_accept"/>
+    
+     <item
+        android:id="@+id/mnuaction_aceptarCancelar_cancelar"
+        android:title="@string/mnuaction_cancelar"
+        elephant:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_cancel"/>
+</menu>

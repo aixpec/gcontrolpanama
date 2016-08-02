@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.2'
+    defaultConfig {
+        applicationId 'com.gisystems.gcontrolpanama'
+        minSdkVersion 15
+        targetSdkVersion 22
+        multiDexEnabled true
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+
+
+    }
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    productFlavors {
+    }
+
+
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
+    useLibrary 'org.apache.http.legacy'
+
+
+}
+
+dependencies {
+    compile project(':mPChartLib')
+    compile project(':cardview')
+    compile 'com.google.android.gms:play-services:+'
+    compile 'com.android.support:appcompat-v7:23.0.0'
+    compile 'com.android.support:multidex:1.0.1'
+}

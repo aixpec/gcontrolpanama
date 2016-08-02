@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"  
+    tools:context=".ProyectoDetalleActivity">
+		<LinearLayout
+		    style="@style/AttributeGroupListBackground">	
+		    
+		    <LinearLayout
+	    	style="@style/AttributeListBackground">
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    			    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_Descripcion"
+				        style="@style/AttributeValue"
+				        android:text="@+id/label"
+				        />
+				</LinearLayout>	
+			</LinearLayout>			
+		    	    
+	   		<LinearLayout
+	    	style="@style/AttributeListBackground">
+				
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle3fs"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_10"/>				    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_Tipo"
+				        style="@style/AttributeValue" 				        
+				        android:text="@+id/label"/>
+				</LinearLayout>
+				
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle9f"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_11"/>				    
+			         <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_TipoGestion"
+				        style="@style/AttributeValue" 
+				        android:text="@+id/label"/>
+				</LinearLayout>		
+				
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle3f"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_1"/>				    
+			        
+			       
+			         <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_Estado"
+				        style="@style/AttributeValue" 
+				        android:text="@+id/label"/>
+				</LinearLayout>				
+			</LinearLayout>			
+				   		
+	   		<LinearLayout
+	    	style="@style/AttributeListBackground"
+	    	 >
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle2fs"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_2" />				    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_FechaInicio"
+				        style="@style/AttributeValue"
+				        android:text="@+id/label"
+				        />
+				</LinearLayout>
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle3fss"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_3"/>				    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_FechaFinaliza"
+				        style="@style/AttributeValue" 
+				        android:text="@+id/label"/>
+				</LinearLayout>	
+				
+						
+			</LinearLayout>	
+			
+	   		<LinearLayout
+	    	style="@style/AttributeListBackground">
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle2fa"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_4" />				    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_MontoOriginal"
+				        style="@style/AttributeValue"
+				        android:text="@+id/label"
+				        />
+				</LinearLayout>
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle3fa"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_5"/>				    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_MontoModificado"
+				        style="@style/AttributeValue" 
+				        android:text="@+id/label"/>
+				</LinearLayout>	
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle3fsa"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_6"/>				    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_MontoPagado"
+				        style="@style/AttributeValue" 
+				        android:text="@+id/label"/>
+				</LinearLayout>
+						
+			</LinearLayout>					
+   					
+	   		
+	   		<LinearLayout
+	    	style="@style/AttributeListBackground"
+	    	 >
+		
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle2far"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_7" />				    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_Altitud"
+				        style="@style/AttributeValue"
+				        android:text="@+id/label"
+				        />
+				</LinearLayout>
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle3far"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_8"/>				    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_Latitud"
+				        style="@style/AttributeValue" 
+				        android:text="@+id/label"/>
+				</LinearLayout>	
+				<LinearLayout
+				    style="@style/AttributeListItemBackground">
+				    <TextView
+				        android:id="@+id/tvTitle3fsar"
+				        style="@style/Attribute"
+				        android:text="@string/fragment_detalle_proyecto_9"/>				    
+			        <TextView
+				        android:id="@+id/tv_fragmentDetProyecto_Longitud"
+				        style="@style/AttributeValue" 
+				        android:text="@+id/label"/>
+				</LinearLayout>
+						
+			</LinearLayout>			
+			
+	   
+		</LinearLayout>
+</ScrollView>

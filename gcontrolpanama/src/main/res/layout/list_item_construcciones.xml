@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+	<com.github.mikephil.charting.charts.PieChart
+		android:id="@+id/pieChart2"
+		android:layout_height="0dp"
+		android:layout_weight="0"
+		android:layout_width="0dp"
+		android:layout_marginTop="0dp"
+		android:clickable="true"
+		android:visibility="invisible"/>
+
+    	<LinearLayout
+        android:layout_marginTop="10dp"
+		android:layout_marginBottom="10dp"
+		android:layout_weight="7"
+        android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+
+
+        android:orientation="vertical" >  
+	         <TextView
+		        android:id="@+id/list_item_construccion_LblTitulo"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@+id/label"
+		        android:textSize="16sp"
+		        android:textColor="@color/primary_text"
+		     >
+		    </TextView>
+
+		    <TextView
+		        android:id="@+id/list_item_construccion_LblSubTitulo"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@+id/label"
+		        android:textSize="12sp"
+		        android:textColor="@color/secondary_text" >
+		    </TextView>
+   
+		    <ImageView
+	        android:id="@+id/list_item_construccion_ivfoto"
+	        android:layout_height="0dp"
+	        android:layout_width="0dp"
+	        android:scaleType="centerInside"
+	        android:contentDescription="@string/list_item_generico_noImage"
+	        android:src="@drawable/no"
+	        android:visibility="invisible">
+	        </ImageView>
+		   
+	
+	</LinearLayout>
+	
+    
+    
+</LinearLayout>

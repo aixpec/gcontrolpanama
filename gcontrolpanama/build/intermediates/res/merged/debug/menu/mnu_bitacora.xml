@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:elephant="http://schemas.android.com/apk/res-auto" >
+   
+ 		<item
+        android:id="@+id/mnu_bitacora_search"
+        android:title="@string/mnu_action_Buscar"
+        android:icon="@drawable/ic_action_search"
+        elephant:showAsAction="ifRoom|collapseActionView"/>
+ 
+ 		<item
+        android:id="@+id/mnu_bitacora_enviar_pendientes"
+        android:title="@string/mnu_bitacora_enviar_pendientes"
+        elephant:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_refresh"/>
+ 
+</menu>
