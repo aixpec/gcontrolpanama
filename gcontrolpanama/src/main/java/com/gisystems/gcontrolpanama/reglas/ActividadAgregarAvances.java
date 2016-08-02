@@ -35,7 +35,7 @@ public class ActividadAgregarAvances extends AppCompatActivity {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
 
-        //Prueba de comentario en github
+        //Prueba de comentario en github2
 
         setContentView(R.layout.activity_agregar_avances);
 
