@@ -19,6 +19,7 @@ import com.gisystems.gcontrolpanama.models.Proyecto;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * Clase
  * Created by aixpec on 26/07/16.
  */
 public class ActividadAgregarAvances extends AppCompatActivity {
@@ -33,6 +34,8 @@ public class ActividadAgregarAvances extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+
+        //Prueba de comentario en github
 
         setContentView(R.layout.activity_agregar_avances);
 
@@ -98,7 +101,7 @@ public class ActividadAgregarAvances extends AppCompatActivity {
 
     /***
      * Obtiene las construcciones almacenadas
-     * @params=Cliente,Proyecto,TextoConstruccion
+     *
      */
     private class TareaObtenerListadoConstruccion extends AsyncTask<Object, Void, Cursor> {
 
@@ -180,9 +183,7 @@ public class ActividadAgregarAvances extends AppCompatActivity {
                 try {
                     //Obtener las construcciones coincidentes
                     c = new TareaObtenerListadoConstruccion().execute(new Object []{idCliente, idProyecto, str}).get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
+                } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
                 }
                 return c;
