@@ -57,12 +57,12 @@
 	<string name="PROTOCOL">http://</string>
 	<string name="HOST">190.111.7.50</string>
 	<string name="PORT">:80</string>
-	<string name="VIRTUAL_DIRECTORY">/ApiRestElephantColonPanama/</string>
+	<string name="VIRTUAL_DIRECTORY">/pruebasWslRestElephantPanama/</string>
 	<string name="URI">api/peticion/</string>
 	<string name="sharedPreferencesKey">UserConfig</string>
 	<string name="ProjectsActivity_menu_salir">Salir</string>
 	<string name="mnuItemSalir">mnuItemSalir</string>
-	
+
 	<!--Activity Login  --> 
 	<string name="login_title">Iniciar Sesión</string>
 	<string name="login_email_hint">Email</string>
@@ -150,10 +150,10 @@
     <string name="class_AgregarAvance_4">No ha sido posible almacenar el avance.</string>
     <string name="class_AgregarAvance_5">El avance ha sido enviado satisfactoriamente</string>
     <string name="class_AgregarAvance_6">No ha sido posible enviar el avance al servidor, puede intentarlo más tarde desde la opción de bitácoras</string>
-	<string name="class_AgregarAvance_7">Han sido enviadas %%d de %%d fotografías.</string>
+	<string name="class_AgregarAvance_7">Han sido enviadas %1$d de %2$d fotografías.</string>
 	<string name="class_AgregarAvance_8">¿Desea cancelar el registro del avance?</string>
 	<string name="class_AgregarAvance_9">¿Desea eliminar las fotografías seleccionadas?</string>
-	<string name="class_AgregarAvance_10">Enviando %%d de %%d fotografías.</string>
+	<string name="class_AgregarAvance_10">Enviando %1$d de %2$d fotografías.</string>
 	<!-- Layout -->
 	
 
