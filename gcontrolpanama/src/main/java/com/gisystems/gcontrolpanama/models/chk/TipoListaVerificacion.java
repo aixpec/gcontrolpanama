@@ -45,7 +45,7 @@ public class TipoListaVerificacion {
             + COLUMN_ID_CONFIGURACION 				+ " integer not null, "
             + COLUMN_DESCRIPCION				    + " text not null, "
             + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE + ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + "), "
-            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_CONFIGURACION + " ) REFERENCES " + Configuracion.NOMBRE_TABLA + "("   + Configuracion.COLUMN_ID_CLIENTE + "," + Configuracion.COLUMN_ID_CONFIGURACION + "), "
+            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_CONFIGURACION + " ) REFERENCES " + Configuracion.NOMBRE_TABLA + "("   + Configuracion.COLUMN_ID_CLIENTE + "," + Configuracion.COLUMN_ID_CONFIGURACION + ") "
             + ")";
 
     public static void onCreate(SQLiteDatabase database) {

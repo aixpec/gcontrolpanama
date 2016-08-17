@@ -105,8 +105,8 @@ public class TipoListaVerificacion_Seccion {
             + COLUMN_DE_DATOS_GENERALES 			+ " integer not null, "
             + COLUMN_DE_OBSERVACIONES 				+ " integer not null, "
             + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE + ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + ", "  + COLUMN_ID_SECCION + "), "
-            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_CONFIGURACION + COLUMN_ID_INDICADOR + " ) REFERENCES " + Indicador.NOMBRE_TABLA + "("   + Indicador.COLUMN_ID_CLIENTE + "," + Indicador.COLUMN_ID_CONFIGURACION + "," + Indicador.COLUMN_ID_INDICADOR + "), "
-            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + " ) REFERENCES " + TipoListaVerificacion.NOMBRE_TABLA + "("   + TipoListaVerificacion.COLUMN_ID_CLIENTE + "," + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + "), "
+            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_CONFIGURACION + ", "  + COLUMN_ID_INDICADOR + " ) REFERENCES " + Indicador.NOMBRE_TABLA + "("   + Indicador.COLUMN_ID_CLIENTE + "," + Indicador.COLUMN_ID_CONFIGURACION + "," + Indicador.COLUMN_ID_INDICADOR + "), "
+            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + " ) REFERENCES " + TipoListaVerificacion.NOMBRE_TABLA + "("   + TipoListaVerificacion.COLUMN_ID_CLIENTE + "," + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + ") "
             + ")";
 
     public static void onCreate(SQLiteDatabase database) {

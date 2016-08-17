@@ -100,7 +100,6 @@ public class ListaVerificacion {
             + "("
             + COLUMN_ID_CLIENTE 					+ " integer not null, "
             + COLUMN_ID_LISTA_VERIFICACION 	        + " integer not null, "
-            + COLUMN_ID_TIPO_LISTA_VERIFICACION 	+ " integer not null, "
             + COLUMN_ID_LISTA_VERIFICACION_TEMP 	+ " integer not null, "
             + COLUMN_ID_PROYECTO 	                + " integer not null, "
             + COLUMN_ID_TIPO_LISTA_VERIFICACION		+ " integer not null, "
@@ -109,7 +108,7 @@ public class ListaVerificacion {
             + COLUMN_CREO_FECHA				        + " text not null, "
             + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE + ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + " ) REFERENCES " + TipoListaVerificacion.NOMBRE_TABLA + "("   + TipoListaVerificacion.COLUMN_ID_CLIENTE + "," + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + "), "
-            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_PROYECTO + " ) REFERENCES " + Proyecto.NOMBRE_TABLA + "("   + Proyecto.COLUMN_ID_CLIENTE + "," + Proyecto.COLUMN_ID + "), "
+            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_PROYECTO + " ) REFERENCES " + Proyecto.NOMBRE_TABLA + "("   + Proyecto.COLUMN_ID_CLIENTE + "," + Proyecto.COLUMN_ID + ") "
             + ")";
 
     public static void onCreate(SQLiteDatabase database) {
