@@ -84,6 +84,11 @@ public class ElephantDbHelper extends SQLiteOpenHelper {
 		FotoActividad.onUpgrade(database,oldVersion,newVersion);
 		Construccion.onUpgrade(database,oldVersion,newVersion);
 		ActividadDescripcion.onUpgrade(database,oldVersion,newVersion);
+        // Tablas para checklists
+        ListaVerificacion_Respuesta.onUpgrade(database,oldVersion,newVersion);
+        ListaVerificacion.onUpgrade(database,oldVersion,newVersion);
+        TipoListaVerificacion_Seccion.onUpgrade(database,oldVersion,newVersion);
+        TipoListaVerificacion.onUpgrade(database,oldVersion,newVersion);
 		// Tablas de configuraciones de preguntas / respuestas
 		RespuestaAccionDetalle.onUpgrade(database,oldVersion,newVersion);
 		Respuesta.onUpgrade(database,oldVersion,newVersion);
@@ -94,11 +99,6 @@ public class ElephantDbHelper extends SQLiteOpenHelper {
 		TipoDato.onUpgrade(database,oldVersion,newVersion);
 		TipoIndicador.onUpgrade(database,oldVersion,newVersion);
 		ClaseIndicador.onUpgrade(database,oldVersion,newVersion);
-		// Tablas para checklists
-		ListaVerificacion_Respuesta.onUpgrade(database,oldVersion,newVersion);
-		ListaVerificacion.onUpgrade(database,oldVersion,newVersion);
-		TipoListaVerificacion_Seccion.onUpgrade(database,oldVersion,newVersion);
-		TipoListaVerificacion.onUpgrade(database,oldVersion,newVersion);
 	}
 	
 	public static ElephantDbHelper getInstance(Context context) {
