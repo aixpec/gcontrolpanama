@@ -46,8 +46,7 @@ public class AdaptadorRenglones extends ArrayAdapter<Actividad> {
 	    public ImageView foto;
 		public ImageView ivfoto;
 	 }
-	
-	
+
 	public AdaptadorRenglones(Activity Context, ArrayList<Actividad> Activs){
 		super(Context, R.layout.list_item_actividades, Activs);
 		this.context=Context;
@@ -85,27 +84,26 @@ public class AdaptadorRenglones extends ArrayAdapter<Actividad> {
 	      viewHolder.mChart.setDrawGridBackground(false);
 	      viewHolder.mChart.setPinchZoom(false);
 
-	        XAxis xl = viewHolder.mChart.getXAxis();
-	        xl.setPosition(XAxisPosition.BOTTOM);
-	        xl.setDrawAxisLine(true);
-	        xl.setDrawGridLines(true);
-	        xl.setGridLineWidth(0.1f);
+			XAxis xl = viewHolder.mChart.getXAxis();
+			xl.setPosition(XAxisPosition.BOTTOM);
+			xl.setDrawAxisLine(true);
+			xl.setDrawGridLines(true);
+			xl.setGridLineWidth(0.1f);
 
-	        YAxis yl = viewHolder.mChart.getAxisLeft();
-	        yl.setDrawAxisLine(true);
-	        yl.setDrawGridLines(true);
-	        yl.setGridLineWidth(0.1f);
-	        //yl.mAxisRange();
+			YAxis yl = viewHolder.mChart.getAxisLeft();
+			yl.setDrawAxisLine(true);
+			yl.setDrawGridLines(true);
+			yl.setGridLineWidth(0.1f);
+			//yl.mAxisRange();
 
-	        YAxis yr = viewHolder.mChart.getAxisRight();
-	        yr.setDrawAxisLine(true);
-	        yr.setDrawGridLines(false);      
-	        rowView.setTag(viewHolder);
-	        
-	        viewHolder.mChart.setDoubleTapToZoomEnabled(false);
-	        viewHolder.mChart.setScaleEnabled(false);
+			YAxis yr = viewHolder.mChart.getAxisRight();
+			yr.setDrawAxisLine(true);
+			yr.setDrawGridLines(false);
+			rowView.setTag(viewHolder);
 
-	        
+			viewHolder.mChart.setDoubleTapToZoomEnabled(false);
+			viewHolder.mChart.setScaleEnabled(false);
+
 	    }   
 
 	    ViewHolder holder = (ViewHolder) rowView.getTag();
@@ -139,7 +137,7 @@ public class AdaptadorRenglones extends ArrayAdapter<Actividad> {
 
 		if(activ.getCantidadContratada()>0){
 	    	PorcentajeEjecutado=Utilitarios.round(
-	    			((activ.getCantidadEjecutada()/activ.getCantidadContratada())*100),2);
+	    			((activ.getPorcAvance())*100),2);
 			holder.estado.setText(String.valueOf("Avance  " + PorcentajeEjecutado  + "%"));
 	    }
 	    else
