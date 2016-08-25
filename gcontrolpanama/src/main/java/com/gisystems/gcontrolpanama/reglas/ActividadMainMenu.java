@@ -52,15 +52,12 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
         ctx=this;
 
         establecerComportamientoControles();
-
-
     }
 
     /**
      * Obtener los controles de la vista
      */
     private void obtenerControles(){
-
         //Obtener vistas
         aCTVProyecto = (AutoCompleteTextView)
                 findViewById(R.id.main_menu_aCProyecto);
@@ -76,8 +73,6 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
 
         ibChekList = (ImageButton)
                 findViewById(R.id.main_menu_ibChekList);
-
-
     }
 
 
@@ -152,7 +147,7 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
         aCTVProyecto.setAdapter(sCAProyecto);
 
         ibAvances.setOnClickListener(this);
-
+        ibChekList.setOnClickListener(this);
     }
 
 
@@ -314,6 +309,12 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
                 ActividadMainMenu.this.startActivity(mainIntent);
             break;
 
+            case R.id.main_menu_ibChekList:
+                mainIntent = new Intent(ActividadMainMenu.this,ListasVerificacionActivity.class);
+                mainIntent.putExtra(Proyecto.COLUMN_ID_CLIENTE,idClienteSeleccionado);
+                mainIntent.putExtra(Proyecto.COLUMN_ID,idProyectoSeleccionado);
+                ActividadMainMenu.this.startActivity(mainIntent);
+                break;
         }
 
 
@@ -347,6 +348,10 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
             switch (v.getId()) {
 
                 case R.id.main_menu_ibAvances:
+                    IrAActividad(v.getId());
+                    break;
+
+                case R.id.main_menu_ibChekList:
                     IrAActividad(v.getId());
                     break;
             }
