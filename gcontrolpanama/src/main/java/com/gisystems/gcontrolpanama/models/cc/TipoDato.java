@@ -21,13 +21,13 @@ public class TipoDato {
 
     public static final String NOMBRE_TABLA 				="tblCcTipoDato";
     public static final String COLUMN_ID_TIPO_DATO  		="IdTipoDato";
-    public static final String COLUMN_DESCRIPCION			="Descripcion";
+    public static final String COLUMN_NOMBRE			    ="Nombre";
 
     private static final String DATABASE_CREATE="create table "
             + NOMBRE_TABLA
             + "("
             + COLUMN_ID_TIPO_DATO 					+ " integer not null, "
-            + COLUMN_DESCRIPCION				    + " text not null, "
+            + COLUMN_NOMBRE				            + " text not null, "
             + "PRIMARY KEY ( " + COLUMN_ID_TIPO_DATO + ") "
             + ")";
 
