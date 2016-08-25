@@ -17,6 +17,7 @@ import com.gisystems.gcontrolpanama.models.cc.Respuesta;
 import com.gisystems.gcontrolpanama.models.cc.RespuestaAccionDetalle;
 import com.gisystems.gcontrolpanama.models.cc.TipoDato;
 import com.gisystems.gcontrolpanama.models.cc.TipoIndicador;
+import com.gisystems.gcontrolpanama.models.chk.EstadoListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion_Respuesta;
 import com.gisystems.gcontrolpanama.models.chk.TipoListaVerificacion;
@@ -43,8 +44,10 @@ public class RecepcionDatosAPI {
 	private Context ctx;
 	private String userName = ""; 
 	private String password = "";
+
 	private DAL w;
-	private MiExcepcion miExcepcion; 
+	private MiExcepcion miExcepcion;
+
 	public RecepcionDatosAPI(Context context) {
 		//Obtener datos globales
 		ctx=context;
@@ -53,11 +56,11 @@ public class RecepcionDatosAPI {
 	}
 	
 	public boolean InicializarBD()  {
-		
 		boolean resultado = false;
 		PeticionWSL peticion = null;
 		RespuestaWSL respuesta = null;
 		miExcepcion=new MiExcepcion();
+        BusinessCloud businessCloud = new BusinessCloud();
 		try {	
 			
 			//1. Obtener la petición para la capa WSL de la arquitectura
@@ -77,7 +80,7 @@ public class RecepcionDatosAPI {
 			JSONObject datosJSON;
 			JSONArray array;
 			JSONObject registro;
-            respuesta = BusinessCloud.sendRequestWSL(ctx, peticion);
+            respuesta = businessCloud.sendRequestWSL(ctx, peticion);
             try{
 	            //Iniciar la transacción
 	            w=new DAL(ctx);
@@ -85,34 +88,13 @@ public class RecepcionDatosAPI {
 	            ContentValues values;
 	            
 	            if (respuesta.getEjecutadoSinError()) {
-					w.deleteRow(ActividadDescripcion.NOMBRE_TABLA, null);
-					w.deleteRow(Construccion.NOMBRE_TABLA, null);
-	            	w.deleteRow(Actividad.NOMBRE_TABLA, null);
-	            	w.deleteRow(TipoUnidad.NOMBRE_TABLA, null);
-	            	w.deleteRow(Proyecto.NOMBRE_TABLA, null);
-	            	w.deleteRow(EstadoProyecto.NOMBRE_TABLA, null);
-	             	w.deleteRow(TipoProyecto.NOMBRE_TABLA, null);
-	            	w.deleteRow(Cliente.NOMBRE_TABLA, null);
-					// Tablas para checklists
-					w.deleteRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, null);
-					w.deleteRow(ListaVerificacion.NOMBRE_TABLA, null);
-					w.deleteRow(TipoListaVerificacion_Seccion.NOMBRE_TABLA, null);
-					w.deleteRow(TipoListaVerificacion.NOMBRE_TABLA, null);
-					// Tablas de configuraciones de preguntas / respuestas
-					w.deleteRow(RespuestaAccionDetalle.NOMBRE_TABLA, null);
-					w.deleteRow(Respuesta.NOMBRE_TABLA, null);
-					w.deleteRow(Pregunta.NOMBRE_TABLA, null);
-					w.deleteRow(Indicador.NOMBRE_TABLA, null);
-					w.deleteRow(Configuracion.NOMBRE_TABLA, null);
-					w.deleteRow(AccionRespuesta.NOMBRE_TABLA, null);
-					w.deleteRow(TipoDato.NOMBRE_TABLA, null);
-					w.deleteRow(TipoIndicador.NOMBRE_TABLA, null);
-					w.deleteRow(ClaseIndicador.NOMBRE_TABLA, null);
-	           
+                    EliminarDatosDeLaBD(w);
+
 	            	String datosObtenidos = "";
 					datosObtenidos = respuesta.getParametros();
-					datosJSON = new JSONObject(datosObtenidos);
-	            	
+
+                    datosJSON =  new JSONObject(datosObtenidos);
+
 					//Vaidar que existan en el JSON las entidades a almacenar
 					if( !(datosJSON.has(Cliente.NOMBRE_TABLA)
 							&& datosJSON.has(TipoProyecto.NOMBRE_TABLA)
@@ -121,33 +103,17 @@ public class RecepcionDatosAPI {
 							&& datosJSON.has(TipoUnidad.NOMBRE_TABLA)
 							&& datosJSON.has(Actividad.NOMBRE_TABLA)
 							&& datosJSON.has(Construccion.NOMBRE_TABLA)
-							&& datosJSON.has(ActividadDescripcion.NOMBRE_TABLA)
-                            // Tablas de configuraciones de preguntas / respuestas
-                            && datosJSON.has(ClaseIndicador.NOMBRE_TABLA)
-                            && datosJSON.has(TipoIndicador.NOMBRE_TABLA)
-                            && datosJSON.has(TipoDato.NOMBRE_TABLA)
-                            && datosJSON.has(AccionRespuesta.NOMBRE_TABLA)
-                            && datosJSON.has(Configuracion.NOMBRE_TABLA)
-                            && datosJSON.has(Indicador.NOMBRE_TABLA)
-                            && datosJSON.has(Pregunta.NOMBRE_TABLA)
-                            && datosJSON.has(Respuesta.NOMBRE_TABLA)
-                            && datosJSON.has(RespuestaAccionDetalle.NOMBRE_TABLA)
-                            // Tablas para checklists
-                            && datosJSON.has(TipoListaVerificacion.NOMBRE_TABLA)
-                            && datosJSON.has(TipoListaVerificacion_Seccion.NOMBRE_TABLA)
-                            && datosJSON.has(ListaVerificacion.NOMBRE_TABLA)
-                            && datosJSON.has(ListaVerificacion_Respuesta.NOMBRE_TABLA))) {
+							&& datosJSON.has(ActividadDescripcion.NOMBRE_TABLA))) {
 							w.finalizarTransaccion(false);
 							return false;}
 					
-					//3. Obtener datos para la tabla Clientes				
+					//3. Obtener datos para la tabla Clientes
 						array = datosJSON.getJSONArray(Cliente.NOMBRE_TABLA);
 						if (array.length()==0) {
 							miExcepcion.setMsgCustom("No posee registros en: " + Cliente.NOMBRE_TABLA);
 							throw miExcepcion;
 						}
 						for(int i = 0 ; i < array.length(); i++){
-							
 							registro = array.getJSONObject(i);
 							values=new ContentValues();
 							values.put(Cliente.COLUMN_ID, 			registro.getInt(Cliente.COLUMN_ID));
@@ -323,32 +289,133 @@ public class RecepcionDatosAPI {
 
 					Log.w("RecepcionDatosApi", "Fin incersion DESCRIPCION ACTIVIDADES");
 
+					resultado=true;
+
+                    resultado = InicializarBD_Parte2(w);
+
+					w.finalizarTransaccion(resultado);
+
+                    if (resultado) {
+                        //Establecer el estado de la sincronización a true
+                        AppValues.actualizarAppValueSync(ctx, true);
+                    }
+	            }
+	            else
+	            {
+	            	w.finalizarTransaccion(false);
+	            	resultado = false;
+	            }
+
+			} catch (Exception e) {
+				resultado=false;
+				w.finalizarTransaccion(false);
+				ManejoErrores.registrarError(this.ctx, e,
+										   RecepcionDatosAPI.class.getSimpleName(), "InicializarBD",
+										   peticion, respuesta);
+			}
+		} catch (Exception e) {
+			resultado=false;
+			ManejoErrores.registrarError(this.ctx, e,
+									   RecepcionDatosAPI.class.getSimpleName(), "InicializarBD",
+									   peticion, respuesta);
+		}
+		
+		return resultado;
+	}
+
+    private void EliminarDatosDeLaBD(DAL w)  {
+        // Tablas para checklists
+        w.deleteRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, null);
+        w.deleteRow(ListaVerificacion.NOMBRE_TABLA, null);
+        w.deleteRow(TipoListaVerificacion_Seccion.NOMBRE_TABLA, null);
+        w.deleteRow(TipoListaVerificacion.NOMBRE_TABLA, null);
+        w.deleteRow(EstadoListaVerificacion.NOMBRE_TABLA, null);
+        // Tablas de configuraciones de preguntas / respuestas
+        w.deleteRow(RespuestaAccionDetalle.NOMBRE_TABLA, null);
+        w.deleteRow(Respuesta.NOMBRE_TABLA, null);
+        w.deleteRow(Pregunta.NOMBRE_TABLA, null);
+        w.deleteRow(Indicador.NOMBRE_TABLA, null);
+        w.deleteRow(Configuracion.NOMBRE_TABLA, null);
+        w.deleteRow(AccionRespuesta.NOMBRE_TABLA, null);
+        w.deleteRow(TipoDato.NOMBRE_TABLA, null);
+        w.deleteRow(TipoIndicador.NOMBRE_TABLA, null);
+        w.deleteRow(ClaseIndicador.NOMBRE_TABLA, null);
+        // Tablas de proyectos y actividades
+        w.deleteRow(ActividadDescripcion.NOMBRE_TABLA, null);
+        w.deleteRow(Construccion.NOMBRE_TABLA, null);
+        w.deleteRow(Actividad.NOMBRE_TABLA, null);
+        w.deleteRow(TipoUnidad.NOMBRE_TABLA, null);
+        w.deleteRow(Proyecto.NOMBRE_TABLA, null);
+        w.deleteRow(EstadoProyecto.NOMBRE_TABLA, null);
+        w.deleteRow(TipoProyecto.NOMBRE_TABLA, null);
+        w.deleteRow(Cliente.NOMBRE_TABLA, null);
+    }
+
+    private boolean InicializarBD_Parte2(DAL w)  {
+        boolean resultado;
+        PeticionWSL peticion = null;
+        RespuestaWSL respuesta = null;
+        miExcepcion=new MiExcepcion();
+        BusinessCloud businessCloud = new BusinessCloud();
+        try {
+
+            //1. Obtener la petición para la capa WSL de la arquitectura
+            ArrayList<Object> parametros = new ArrayList<>();
+            parametros.add(this.userName);
+            String nombreArchivoAssembly = "Gisystems.Elephant.BLL.dll";
+            String namespaceClase = "Gisystems.Elephant.BLL";
+            String nombreClase = "ApiAppMovil";
+            String metodoEjecutara = "ObtenerDatosInicializacionBD_Parte2";
+            String pathLog = "";
+            peticion = Utilitarios.ObtenerPeticionWSL(ctx,
+                    Utilitarios.TipoFuncion.ejecutarMetodo,
+                    this.userName, this.password, parametros, nombreArchivoAssembly, namespaceClase,
+                    nombreClase, metodoEjecutara, pathLog);
+
+            //2. Enviar petición. Conexión al API REST de la capa WSL
+            JSONObject datosJSON;
+            JSONArray array;
+            JSONObject registro;
+            respuesta = businessCloud.sendRequestWSL(ctx, peticion);
+            try{
+                ContentValues values;
+
+                if (respuesta.getEjecutadoSinError()) {
+
+                    String datosObtenidos = "";
+                    datosObtenidos = respuesta.getParametros();
+                    datosJSON = new JSONObject(datosObtenidos);
+
+                    //Vaidar que existan en el JSON las entidades a almacenar
+                    if( !(// Tablas de configuraciones de preguntas / respuestas
+                          datosJSON.has(ClaseIndicador.NOMBRE_TABLA)
+                            && datosJSON.has(TipoIndicador.NOMBRE_TABLA)
+                            && datosJSON.has(TipoDato.NOMBRE_TABLA)
+                            && datosJSON.has(AccionRespuesta.NOMBRE_TABLA)
+                            && datosJSON.has(Configuracion.NOMBRE_TABLA)
+                            && datosJSON.has(Indicador.NOMBRE_TABLA)
+                            && datosJSON.has(Pregunta.NOMBRE_TABLA)
+                            && datosJSON.has(Respuesta.NOMBRE_TABLA)
+                            && datosJSON.has(RespuestaAccionDetalle.NOMBRE_TABLA)
+                            // Tablas para checklists
+                            && datosJSON.has(TipoListaVerificacion.NOMBRE_TABLA)
+                            && datosJSON.has(TipoListaVerificacion_Seccion.NOMBRE_TABLA)
+                            && datosJSON.has(ListaVerificacion.NOMBRE_TABLA)
+                            && datosJSON.has(ListaVerificacion_Respuesta.NOMBRE_TABLA))) {
+                        w.finalizarTransaccion(false);
+                        return false;}
+
                     // ********************************************************************
                     // ********* Tablas de configuraciones de preguntas / respuestas ******
                     // ********************************************************************
-                    //11. Obtener datos para la tabla Clases de Indicador
+
+                    //3. Obtener datos para la tabla Clases de Indicador
                     array = datosJSON.getJSONArray(ClaseIndicador.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
                         values = new ContentValues();
                         values.put(ClaseIndicador.COLUMN_ID_CLASE_INDICADOR, 	registro.getInt(ClaseIndicador.COLUMN_ID_CLASE_INDICADOR));
-                        values.put(ClaseIndicador.COLUMN_DESCRIPCION, 			registro.getString(ClaseIndicador.COLUMN_DESCRIPCION));
-
-                        if (w.insertRow(ActividadDescripcion.NOMBRE_TABLA, values)<0)
-                            throw new EmptyStackException();
-
-                        values.clear();
-                    }
-
-                    Log.w("RecepcionDatosApi", "Fin inserción CLASES DE INDICADOR");
-
-                    //12. Obtener datos para la tabla Clases de Indicador
-                    array = datosJSON.getJSONArray(ClaseIndicador.NOMBRE_TABLA);
-                    for(int i = 0 ; i < array.length(); i++){
-                        registro = array.getJSONObject(i);
-                        values = new ContentValues();
-                        values.put(ClaseIndicador.COLUMN_ID_CLASE_INDICADOR, 	registro.getInt(ClaseIndicador.COLUMN_ID_CLASE_INDICADOR));
-                        values.put(ClaseIndicador.COLUMN_DESCRIPCION, 			registro.getString(ClaseIndicador.COLUMN_DESCRIPCION));
+                        values.put(ClaseIndicador.COLUMN_NOMBRE, 			registro.getString(ClaseIndicador.COLUMN_NOMBRE));
 
                         if (w.insertRow(ClaseIndicador.NOMBRE_TABLA, values)<0)
                             throw new EmptyStackException();
@@ -358,7 +425,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción CLASES DE INDICADOR");
 
-                    //13. Obtener datos para la tabla Tipos de Indicador
+                    //4. Obtener datos para la tabla Tipos de Indicador
                     array = datosJSON.getJSONArray(TipoIndicador.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -374,15 +441,15 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción TIPOS DE INDICADOR");
 
-                    //14. Obtener datos para la tabla Tipos de Dato
+                    //5. Obtener datos para la tabla Tipos de Dato
                     array = datosJSON.getJSONArray(TipoDato.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
                         values = new ContentValues();
                         values.put(TipoDato.COLUMN_ID_TIPO_DATO, 	registro.getInt(TipoDato.COLUMN_ID_TIPO_DATO));
-                        values.put(TipoDato.COLUMN_DESCRIPCION, 	registro.getString(TipoDato.COLUMN_DESCRIPCION));
+                        values.put(TipoDato.COLUMN_NOMBRE, 	registro.getString(TipoDato.COLUMN_NOMBRE));
 
-                        if (w.insertRow(TipoIndicador.NOMBRE_TABLA, values)<0)
+                        if (w.insertRow(TipoDato.NOMBRE_TABLA, values)<0)
                             throw new EmptyStackException();
 
                         values.clear();
@@ -390,7 +457,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción TIPOS DE DATO");
 
-                    //15. Obtener datos para la tabla Acciones por Respuesta
+                    //6. Obtener datos para la tabla Acciones por Respuesta
                     array = datosJSON.getJSONArray(AccionRespuesta.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -407,7 +474,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción ACCIONES POR RESPUESTA");
 
-                    //16. Obtener datos para la tabla de Configuraciones
+                    //7. Obtener datos para la tabla de Configuraciones
                     array = datosJSON.getJSONArray(Configuracion.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -424,7 +491,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción CONFIGURACIONES");
 
-                    //17. Obtener datos para la tabla de Indicadores
+                    //8. Obtener datos para la tabla de Indicadores
                     array = datosJSON.getJSONArray(Indicador.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -445,7 +512,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción INDICADORES");
 
-                    //18. Obtener datos para la tabla de Preguntas
+                    //9. Obtener datos para la tabla de Preguntas
                     array = datosJSON.getJSONArray(Pregunta.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -466,7 +533,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción PREGUNTAS");
 
-                    //19. Obtener datos para la tabla de Respuestas
+                    //10. Obtener datos para la tabla de Respuestas
                     array = datosJSON.getJSONArray(Respuesta.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -486,7 +553,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción RESPUESTAS");
 
-                    //20. Obtener datos para la tabla de Detalle de Acciones por Respuesta
+                    //11. Obtener datos para la tabla de Detalle de Acciones por Respuesta
                     array = datosJSON.getJSONArray(RespuestaAccionDetalle.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -516,8 +583,24 @@ public class RecepcionDatosAPI {
                     // ********************************************************************
                     // ********* Tablas para checklists ***********************************
                     // ********************************************************************
+                    //12. Obtener datos para la tabla Estados de Listas de Verificación
+                    array = datosJSON.getJSONArray(EstadoListaVerificacion.NOMBRE_TABLA);
+                    for(int i = 0 ; i < array.length(); i++){
+                        registro = array.getJSONObject(i);
+                        values = new ContentValues();
+                        values.put(EstadoListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION, 	registro.getInt(EstadoListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION));
+                        values.put(EstadoListaVerificacion.COLUMN_DESCRIPCION, 	registro.getString(EstadoListaVerificacion.COLUMN_DESCRIPCION));
+                        values.put(EstadoListaVerificacion.COLUMN_LISTAR_EN_APP_MOVIL, 	registro.getInt(EstadoListaVerificacion.COLUMN_LISTAR_EN_APP_MOVIL));
 
-                    //21. Obtener datos para la tabla de Tipos de Lista de Verificación
+                        if (w.insertRow(EstadoListaVerificacion.NOMBRE_TABLA, values)<0)
+                            throw new EmptyStackException();
+
+                        values.clear();
+                    }
+
+                    Log.w("RecepcionDatosApi", "Fin inserción ESTADOS DE LISTAS DE VERIFICACION");
+
+                    //13. Obtener datos para la tabla de Tipos de Lista de Verificación
                     array = datosJSON.getJSONArray(TipoListaVerificacion.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -535,7 +618,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción TIPOS DE LISTA DE VERIFICACION");
 
-                    //22. Obtener datos para la tabla de Secciones por Tipo de Lista de Verificación
+                    //14. Obtener datos para la tabla de Secciones por Tipo de Lista de Verificación
                     array = datosJSON.getJSONArray(TipoListaVerificacion_Seccion.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -549,7 +632,7 @@ public class RecepcionDatosAPI {
                         values.put(TipoListaVerificacion_Seccion.COLUMN_DE_DATOS_GENERALES, 	registro.getInt(TipoListaVerificacion_Seccion.COLUMN_DE_DATOS_GENERALES));
                         values.put(TipoListaVerificacion_Seccion.COLUMN_DE_OBSERVACIONES, 	registro.getInt(TipoListaVerificacion_Seccion.COLUMN_DE_OBSERVACIONES));
 
-                        if (w.insertRow(TipoListaVerificacion.NOMBRE_TABLA, values)<0)
+                        if (w.insertRow(TipoListaVerificacion_Seccion.NOMBRE_TABLA, values)<0)
                             throw new EmptyStackException();
 
                         values.clear();
@@ -557,7 +640,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción SECCIONES POR TIPO DE LISTA DE VERIFICACION");
 
-                    //23. Obtener datos para la tabla de Listas de Verificación
+                    //15. Obtener datos para la tabla de Listas de Verificación
                     array = datosJSON.getJSONArray(ListaVerificacion.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -579,7 +662,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción LISTAS DE VERIFICACION");
 
-                    //24. Obtener datos para la tabla de Respuestas de las Listas de Verificación
+                    //16. Obtener datos para la tabla de Respuestas de las Listas de Verificación
                     array = datosJSON.getJSONArray(ListaVerificacion_Respuesta.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -590,9 +673,13 @@ public class RecepcionDatosAPI {
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA));
+                        values.put(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP));
                         values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR));
                         values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA));
-                        values.put(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA));
+                        if (registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA) > 0)
+                        {
+                            values.put(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA));
+                        }
                         values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA));
                         values.put(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO));
@@ -607,41 +694,27 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción RESPUESTAS DE LAS LISTAS DE VERIFICACION");
 
+                    resultado=true;
+                }
+                else
+                {
+                    resultado= false;
+                }
 
-					resultado=true;
-					w.finalizarTransaccion(true);
-					//Establecer el estado de la sincronización a true
-					AppValues.actualizarAppValueSync(ctx, true);	
-					
-	            }
-	            else
-	            {
-	            	w.finalizarTransaccion(false);
-	            	//w.cerrarDb();
-	            	return false;
-	            }
-				
-			} catch (Exception e) {
-				resultado=false;
-				w.finalizarTransaccion(false);
-				ManejoErrores.registrarError(this.ctx, e,
-										   RecepcionDatosAPI.class.getSimpleName(), "InicializarBD",
-										   peticion, respuesta);
-			}
-			finally{
-				w.finalizarTransaccion(false);
-				//w.cerrarDb();
-			}
-		} catch (Exception e) {
-			resultado=false;
-			ManejoErrores.registrarError(this.ctx, e,
-									   RecepcionDatosAPI.class.getSimpleName(), "InicializarBD",
-									   peticion, respuesta);
-		}
-		
-		return resultado;
-	}
-	
+            } catch (Exception e) {
+                resultado=false;
+                ManejoErrores.registrarError(this.ctx, e,
+                        RecepcionDatosAPI.class.getSimpleName(), "InicializarBD_Parte2",
+                        peticion, respuesta);
+            }
+        } catch (Exception e) {
+            resultado=false;
+            ManejoErrores.registrarError(this.ctx, e,
+                    RecepcionDatosAPI.class.getSimpleName(), "InicializarBD_Parte2",
+                    peticion, respuesta);
+        }
+        return resultado;
+    }
 	
 
 	
