@@ -1,11 +1,19 @@
 package com.gisystems.gcontrolpanama.models.chk;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.gisystems.exceptionhandling.ManejoErrores;
+import com.gisystems.gcontrolpanama.database.DAL;
+import com.gisystems.gcontrolpanama.models.AppValues;
+import com.gisystems.gcontrolpanama.models.FotoActividad;
 import com.gisystems.gcontrolpanama.models.Proyecto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by rlemus on 15/08/2016.
@@ -106,7 +114,7 @@ public class ListaVerificacion {
             + COLUMN_ESTADO_REGISTRO				+ " text not null, "
             + COLUMN_CREO_USUARIO				    + " text not null, "
             + COLUMN_CREO_FECHA				        + " text not null, "
-            + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE + ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + "), "
+            + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_LISTA_VERIFICACION + ", " + COLUMN_ID_LISTA_VERIFICACION_TEMP + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + " ) REFERENCES " + TipoListaVerificacion.NOMBRE_TABLA + "("   + TipoListaVerificacion.COLUMN_ID_CLIENTE + "," + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_PROYECTO + " ) REFERENCES " + Proyecto.NOMBRE_TABLA + "("   + Proyecto.COLUMN_ID_CLIENTE + "," + Proyecto.COLUMN_ID + ") "
             + ")";
@@ -122,6 +130,44 @@ public class ListaVerificacion {
                 + ", which will destroy all old data");
         database.execSQL("DROP TABLE IF EXISTS " + NOMBRE_TABLA);
         onCreate(database);
+    }
+
+
+    public boolean ActualizarIdListaVerificacion(Context ctx){
+        boolean resultado=false;
+        if (this.getIdListaVerificacion_Temp() >= 0) {
+            return false;
+        }
+        DAL w = new DAL(ctx);
+        try{
+            w.iniciarTransaccion();
+            //Actualizar el Id del avance
+            ContentValues values = new ContentValues();
+            values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION , this.getIdListaVerificacion());
+            values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION_TEMP , 0 );
+            values.put(ListaVerificacion.COLUMN_ESTADO_REGISTRO, AppValues.EstadosEnvio.Enviado.name());
+            String where=ListaVerificacion.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
+                    + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION_TEMP + "=" + String.valueOf(this.getIdListaVerificacion_Temp());
+            resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
+
+            if(resultado) {
+                this.setEstadoRegistro(AppValues.EstadosEnvio.Enviado.name());
+                this.setIdListaVerificacion_Temp(0);
+            }
+            w.finalizarTransaccion(true);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            resultado=false;
+            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "ActualizarIdListaVerificacion",
+                    null, null);
+        }
+        finally{
+            //w.cerrarDb();
+        }
+        return resultado;
     }
 
 }
