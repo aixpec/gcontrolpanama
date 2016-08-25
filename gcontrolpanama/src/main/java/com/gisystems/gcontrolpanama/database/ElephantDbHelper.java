@@ -20,6 +20,7 @@ import com.gisystems.gcontrolpanama.models.cc.Respuesta;
 import com.gisystems.gcontrolpanama.models.cc.RespuestaAccionDetalle;
 import com.gisystems.gcontrolpanama.models.cc.TipoDato;
 import com.gisystems.gcontrolpanama.models.cc.TipoIndicador;
+import com.gisystems.gcontrolpanama.models.chk.EstadoListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion_Respuesta;
 import com.gisystems.gcontrolpanama.models.chk.TipoListaVerificacion;
@@ -41,7 +42,6 @@ public class ElephantDbHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase database) {
-		// TODO Auto-generated method stub
 		AppValues.onCreate(database);
 		Cliente.onCreate(database);
 		TipoProyecto.onCreate(database);
@@ -64,6 +64,7 @@ public class ElephantDbHelper extends SQLiteOpenHelper {
 		Respuesta.onCreate(database);
 		RespuestaAccionDetalle.onCreate(database);
 		// Tablas para checklists
+        EstadoListaVerificacion.onCreate(database);
 		TipoListaVerificacion.onCreate(database);
 		TipoListaVerificacion_Seccion.onCreate(database);
 		ListaVerificacion.onCreate(database);
@@ -72,7 +73,6 @@ public class ElephantDbHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
 		AppValues.onUpgrade(database, oldVersion, newVersion);
 		Cliente.onUpgrade(database,oldVersion,newVersion);
 		TipoProyecto.onUpgrade(database,oldVersion,newVersion);
@@ -89,6 +89,7 @@ public class ElephantDbHelper extends SQLiteOpenHelper {
         ListaVerificacion.onUpgrade(database,oldVersion,newVersion);
         TipoListaVerificacion_Seccion.onUpgrade(database,oldVersion,newVersion);
         TipoListaVerificacion.onUpgrade(database,oldVersion,newVersion);
+        EstadoListaVerificacion.onUpgrade(database,oldVersion,newVersion);
 		// Tablas de configuraciones de preguntas / respuestas
 		RespuestaAccionDetalle.onUpgrade(database,oldVersion,newVersion);
 		Respuesta.onUpgrade(database,oldVersion,newVersion);
