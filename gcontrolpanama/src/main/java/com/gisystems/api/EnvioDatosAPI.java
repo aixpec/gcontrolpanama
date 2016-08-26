@@ -9,6 +9,8 @@ import com.gisystems.gcontrolpanama.models.ActividadAvance;
 import com.gisystems.gcontrolpanama.models.AppValues;
 import com.gisystems.gcontrolpanama.models.FotoActividad;
 import com.gisystems.exceptionhandling.ManejoErrores;
+import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion;
+import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion_Respuesta;
 import com.gisystems.utils.Base64;
 import com.gisystems.utils.Utilitarios;
 import android.content.Context;
@@ -27,48 +29,50 @@ public class EnvioDatosAPI {
 	private String metodoEjecutara = "";
 	private String pathLog = ""; 
 	//private String TAG=EnvioDatosAPI.class.getSimpleName();
-	 
+
+    BusinessCloud businessCloud;
+
 	public EnvioDatosAPI(Context context) {
 		this.context = context;	
 		//Obtener datos globales
 		ObtenerDatosGlobales();
 	}
-	
-	public boolean Enviar_Registro_Log_Errores(String mensaje_error, String stack_trace,
-											   String nombre_clase, String nombre_metodo,
-											   String json_peticion, String json_respuesta) {
-		boolean resultado = false;
-		try {
-			String accion = "I";
-			String id_usuario = this.userName; 
-			String id_disp_movil =  Utilitarios.ObtenerAndroid_ID(this.context); 
-			long corr_error = 0;
-			//1. Obtener la petici�n para la capa WSL de la arquitectura
-			ArrayList<Object> parametros = new ArrayList<Object>();
-			parametros.add(accion);
-			parametros.add(id_usuario );
-			parametros.add(id_disp_movil );
-			parametros.add(corr_error);
-			parametros.add(mensaje_error );
-			parametros.add(stack_trace);
-			parametros.add(nombre_clase );
-			parametros.add(nombre_metodo);
-			parametros.add(json_peticion );
-			parametros.add(json_respuesta);
-			metodoEjecutara = "Actualizar_Log_Errores";
-			//2. Enviar datos de secciones de trabajo actualizadas y obtener respuesta
-			PeticionWSL peticion = Utilitarios.ObtenerPeticionWSL(context, 
-					Utilitarios.TipoFuncion.ejecutarMetodo, 
-					this.userName, this.password, parametros, this.nombreArchivoAssembly, this.namespaceClase, 
-					this.nombreClase, this.metodoEjecutara, this.pathLog);
-			RespuestaWSL respuesta = null;
-			respuesta = BusinessCloud.sendRequestWSL(context, peticion);
-			resultado = (respuesta.getEjecutadoSinError());
-		} catch (Exception e) {
-			Log.w(ManejoErrores.LOG_TAG, "Error en Enviar_Registro_Log_Errores. " + e.getStackTrace());
-		}
-		return resultado;
-	}
+
+    public boolean Enviar_Registro_Log_Errores(String mensaje_error, String stack_trace,
+                                               String nombre_clase, String nombre_metodo,
+                                               String json_peticion, String json_respuesta) {
+        boolean resultado = false;
+        try {
+            String accion = "I";
+            String id_usuario = this.userName;
+            String id_disp_movil =  Utilitarios.ObtenerAndroid_ID(this.context);
+            long corr_error = 0;
+            //1. Obtener la petición para la capa WSL de la arquitectura
+            ArrayList<Object> parametros = new ArrayList<Object>();
+            parametros.add(accion);
+            parametros.add(id_usuario );
+            parametros.add(id_disp_movil );
+            parametros.add(corr_error);
+            parametros.add(mensaje_error );
+            parametros.add(stack_trace);
+            parametros.add(nombre_clase );
+            parametros.add(nombre_metodo);
+            parametros.add(json_peticion );
+            parametros.add(json_respuesta);
+            metodoEjecutara = "Actualizar_Log_Errores";
+            //2. Enviar datos de secciones de trabajo actualizadas y obtener respuesta
+            PeticionWSL peticion = Utilitarios.ObtenerPeticionWSL(context,
+                    Utilitarios.TipoFuncion.ejecutarMetodo,
+                    this.userName, this.password, parametros, this.nombreArchivoAssembly, this.namespaceClase,
+                    this.nombreClase, this.metodoEjecutara, this.pathLog);
+            RespuestaWSL respuesta = null;
+            respuesta = businessCloud.sendRequestWSL(context, peticion);
+            resultado = (respuesta.getEjecutadoSinError());
+        } catch (Exception e) {
+            Log.w(ManejoErrores.LOG_TAG, "Error en Enviar_Registro_Log_Errores. " + e.getStackTrace());
+        }
+        return resultado;
+    }
 		
 	public boolean EnviarAvanceHistorico(ActividadAvance Avance) {
 				int idAntiguedad = -1;
@@ -95,7 +99,7 @@ public class EnvioDatosAPI {
 						this.userName, this.password, parametros, this.nombreArchivoAssembly, this.namespaceClase, 
 						this.nombreClase, this.metodoEjecutara, this.pathLog);
 						RespuestaWSL respuesta = null;
-						respuesta = BusinessCloud.sendRequestWSL(context, peticion);
+						respuesta = businessCloud.sendRequestWSL(context, peticion);
 						
 						//Validar el ID obtenido
 						idAntiguedad=(respuesta.getEjecutadoSinError())
@@ -176,7 +180,7 @@ public class EnvioDatosAPI {
 					nombreClase, metodoEjecutara, pathLog);
 			
 			//3. Enviar petición. Conexión al API REST de la capa WSL
-            respuesta = BusinessCloud.sendRequestWSL(context, peticion);
+            respuesta = businessCloud.sendRequestWSL(context, peticion);
           
 			//4. Actualizar datos en BD local SQLite
             
@@ -257,7 +261,7 @@ public class EnvioDatosAPI {
 					nombreClase, metodoEjecutara, pathLog);
 			
 			//3. Enviar petición. Conexión al API REST de la capa WSL
-            respuesta = BusinessCloud.sendRequestWSL(context, peticion);
+            respuesta = businessCloud.sendRequestWSL(context, peticion);
           
 			//4. Actualizar datos en BD local SQLite
 			if (respuesta.getEjecutadoSinError()) {
@@ -363,5 +367,100 @@ public class EnvioDatosAPI {
 		return resultado;
 	}
 	*/
+
+	public boolean EnviarListaVerificacion(ListaVerificacion lista) {
+		int IdListaVerificacion = -1;
+		boolean valor=false;
+		try {
+			if(Utilitarios.isConnectionAvailable(context)){
+				String id_usuario = this.userName;
+				String id_disp_movil =  Utilitarios.ObtenerAndroid_ID(this.context);
+				//1. Obtener la petici�n para la capa WSL de la arquitectura
+				ArrayList<Object> parametros = new ArrayList<Object>();
+				parametros.add(lista.getIdCliente());
+				parametros.add(lista.getIdProyecto() );
+				parametros.add(lista.getIdTipoListaVerificacion() );
+				parametros.add(id_usuario );
+				parametros.add(id_disp_movil );
+				metodoEjecutara = "fCrearListaVerificacion";
+				//2. Enviar datos del avance y obtener el ID como respuesta
+				PeticionWSL peticion = Utilitarios.ObtenerPeticionWSL(context,
+						Utilitarios.TipoFuncion.ejecutarMetodo,
+						this.userName, this.password, parametros, this.nombreArchivoAssembly, this.namespaceClase,
+						this.nombreClase, this.metodoEjecutara, this.pathLog);
+				RespuestaWSL respuesta = null;
+				respuesta = businessCloud.sendRequestWSL(context, peticion);
+
+				//Validar el ID obtenido
+                IdListaVerificacion=(respuesta.getEjecutadoSinError())
+						?Integer.valueOf(respuesta.getParametros()):-1;
+
+				if (lista.getIdListaVerificacion()<0){
+                    valor=lista.ActualizarIdListaVerificacion(context, IdListaVerificacion);
+				}
+				else{
+					valor=false;
+				}
+			}
+		} catch (Exception e) {
+			valor=false;
+			Log.w(ManejoErrores.LOG_TAG, "Error en EnviarListaVerificacion. " + e.getMessage());
+		}
+
+		return valor;
+	}
+
+    public boolean EnviarListaVerificacionRespuesta(ListaVerificacion_Respuesta resp) {
+        boolean valor=false;
+        try {
+            if(Utilitarios.isConnectionAvailable(context)){
+                String id_usuario = this.userName;
+                String id_disp_movil =  Utilitarios.ObtenerAndroid_ID(this.context);
+                //1. Obtener la petici�n para la capa WSL de la arquitectura
+                ArrayList<Object> parametros = new ArrayList<Object>();
+                parametros.add(resp.getIdCliente());
+                parametros.add(resp.getIdListaVerificacion() );
+                parametros.add(resp.getIdConfiguracion() );
+                parametros.add(resp.getIdIndicador());
+                parametros.add(resp.getIdPregunta() );
+                parametros.add(resp.getIdListaVerificacionRespuesta() );
+                parametros.add(resp.getDescripcionIndicador());
+                parametros.add(resp.getDescripcionPregunta());
+                parametros.add(resp.getIdRespuesta());
+                parametros.add(resp.getDescripcionRespuesta());
+                parametros.add(resp.getIdRespuesta());
+                parametros.add(resp.getValorRespuesta());
+                parametros.add(resp.getCreoUsuario());
+                parametros.add(resp.getCreoFecha());
+                parametros.add(id_usuario );
+                parametros.add(id_disp_movil );
+                metodoEjecutara = "fCrearListaVerificacionRespuesta";
+                //2. Enviar datos del avance y obtener el ID como respuesta
+                PeticionWSL peticion = Utilitarios.ObtenerPeticionWSL(context,
+                        Utilitarios.TipoFuncion.ejecutarMetodo,
+                        this.userName, this.password, parametros, this.nombreArchivoAssembly, this.namespaceClase,
+                        this.nombreClase, this.metodoEjecutara, this.pathLog);
+                RespuestaWSL respuesta = null;
+                respuesta = businessCloud.sendRequestWSL(context, peticion);
+
+                //Validar el ID obtenido
+                int IdListaVerificacionRespuesta = -1;
+                IdListaVerificacionRespuesta=(respuesta.getEjecutadoSinError())
+                        ?Integer.valueOf(respuesta.getParametros()):-1;
+
+                if (resp.getIdListaVerificacionRespuesta()<0){
+                    valor=resp.ActualizarIdListaVerificacionRespuesta(context,IdListaVerificacionRespuesta);
+                }
+                else{
+                    resp.ActualizarEstadoRegistro(context, AppValues.EstadosEnvio.No_Enviado);
+                    valor=false;
+                }
+            }
+        } catch (Exception e) {
+            valor=false;
+            Log.w(ManejoErrores.LOG_TAG, "Error en EnviarListaVerificacionRespuesta. " + e.getMessage());
+        }
+        return valor;
+    }
 
 }
