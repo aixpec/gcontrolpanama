@@ -647,10 +647,10 @@ public class RecepcionDatosAPI {
                         values = new ContentValues();
                         values.put(ListaVerificacion.COLUMN_ID_CLIENTE, 	registro.getInt(ListaVerificacion.COLUMN_ID_CLIENTE));
                         values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION, 	registro.getInt(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION));
-                        values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION_TEMP, 	registro.getInt(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION_TEMP));
                         values.put(ListaVerificacion.COLUMN_ID_PROYECTO, 	registro.getInt(ListaVerificacion.COLUMN_ID_PROYECTO));
                         values.put(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION, 	registro.getInt(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION));
-                        values.put(ListaVerificacion.COLUMN_ESTADO_REGISTRO, 	registro.getString(ListaVerificacion.COLUMN_ESTADO_REGISTRO));
+                        values.put(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION, 	registro.getInt(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION));
+                        values.put(ListaVerificacion.COLUMN_ESTADO_REGISTRO, 	AppValues.EstadosEnvio.Enviado.name());
                         values.put(ListaVerificacion.COLUMN_CREO_USUARIO, 	registro.getString(ListaVerificacion.COLUMN_CREO_USUARIO));
                         values.put(ListaVerificacion.COLUMN_CREO_FECHA, 	registro.getString(ListaVerificacion.COLUMN_CREO_FECHA));
 
@@ -669,7 +669,6 @@ public class RecepcionDatosAPI {
                         values = new ContentValues();
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION));
-                        values.put(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_TEMP, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_TEMP));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA));
@@ -682,7 +681,7 @@ public class RecepcionDatosAPI {
                         }
                         values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA));
                         values.put(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA));
-                        values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO));
+                        values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, 	AppValues.EstadosEnvio.Enviado.name());
                         values.put(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO));
                         values.put(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA));
 
