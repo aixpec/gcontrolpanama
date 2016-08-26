@@ -23,12 +23,10 @@ public class ListaVerificacion_Respuesta {
 
     private int idCliente;
     private int idListaVerificacion;
-    private int idListaVerificacion_Temp;
     private int idConfiguracion;
     private int idIndicador;
     private int idPregunta;
     private int idListaVerificacionRespuesta;
-    private int idListaVerificacionRespuesta_Temp;
     private String descripcionIndicador;
     private String descripcionPregunta;
     private int idRespuesta;
@@ -52,14 +50,6 @@ public class ListaVerificacion_Respuesta {
 
     public void setIdListaVerificacion(int idListaVerificacion) {
         this.idListaVerificacion = idListaVerificacion;
-    }
-
-    public int getIdListaVerificacion_Temp() {
-        return idListaVerificacion_Temp;
-    }
-
-    public void setIdListaVerificacion_Temp(int idListaVerificacion_Temp) {
-        this.idListaVerificacion_Temp = idListaVerificacion_Temp;
     }
 
     public int getIdConfiguracion() {
@@ -92,14 +82,6 @@ public class ListaVerificacion_Respuesta {
 
     public void setIdListaVerificacionRespuesta(int IdListaVerificacionRespuesta) {
         this.idListaVerificacionRespuesta = IdListaVerificacionRespuesta;
-    }
-
-    public int getIdListaVerificacionRespuesta_Temp() {
-        return this.idListaVerificacionRespuesta_Temp;
-    }
-
-    public void setIdListaVerificacionRespuesta_Temp(int IdListaVerificacionRespuesta_Temp) {
-        this.idListaVerificacionRespuesta_Temp = IdListaVerificacionRespuesta_Temp;
     }
 
     public String getDescripcionIndicador() {
@@ -169,12 +151,10 @@ public class ListaVerificacion_Respuesta {
     public static final String NOMBRE_TABLA 				        ="tblChkListaVerificacion_Respuesta";
     public static final String COLUMN_ID_CLIENTE			        ="IdCliente";
     public static final String COLUMN_ID_LISTA_VERIFICACION         ="IdListaVerificacion";
-    public static final String COLUMN_ID_LISTA_VERIFICACION_TEMP    ="IdListaVerificacion_Temp";
     public static final String COLUMN_ID_CONFIGURACION	            ="idConfiguracion";
     public static final String COLUMN_ID_INDICADOR	                ="IdIndicador";
     public static final String COLUMN_ID_PREGUNTA	                ="IdPregunta";
     public static final String COLUMN_ID_LISTA_VERIFICACION_RESP    ="IdListaVerificacionRespuesta";
-    public static final String COLUMN_ID_LISTA_VERIFICACION_RESP_T  ="IdListaVerificacionRespuesta_Temp";
     public static final String COLUMN_DESCRIPCION_INDICADOR		    ="DescripcionIndicador";
     public static final String COLUMN_DESCRIPCION_PREGUNTA		    ="DescripcionPregunta";
     public static final String COLUMN_ID_RESPUESTA	                ="IdRespuesta";
@@ -189,12 +169,10 @@ public class ListaVerificacion_Respuesta {
             + "("
             + COLUMN_ID_CLIENTE 					+ " integer not null, "
             + COLUMN_ID_LISTA_VERIFICACION 	        + " integer not null, "
-            + COLUMN_ID_LISTA_VERIFICACION_TEMP 	+ " integer not null, "
             + COLUMN_ID_CONFIGURACION 	            + " integer not null, "
             + COLUMN_ID_INDICADOR 	                + " integer not null, "
             + COLUMN_ID_PREGUNTA		            + " integer not null, "
             + COLUMN_ID_LISTA_VERIFICACION_RESP		+ " integer not null, "
-            + COLUMN_ID_LISTA_VERIFICACION_RESP_T	+ " integer not null, "
             + COLUMN_DESCRIPCION_INDICADOR			+ " text not null, "
             + COLUMN_DESCRIPCION_PREGUNTA			+ " text not null, "
             + COLUMN_ID_RESPUESTA		            + " integer null, "
@@ -203,8 +181,8 @@ public class ListaVerificacion_Respuesta {
             + COLUMN_ESTADO_REGISTRO				+ " text not null, "
             + COLUMN_CREO_USUARIO				    + " text not null, "
             + COLUMN_CREO_FECHA				        + " text not null, "
-            + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE + ", "  + COLUMN_ID_LISTA_VERIFICACION + ", "  + COLUMN_ID_LISTA_VERIFICACION_TEMP + ", "  + COLUMN_ID_CONFIGURACION + ", "  + COLUMN_ID_INDICADOR + ", "  + COLUMN_ID_PREGUNTA + ", " + COLUMN_ID_LISTA_VERIFICACION_RESP + ", " + COLUMN_ID_LISTA_VERIFICACION_RESP_T +  "), "
-            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_LISTA_VERIFICACION + ", "  + COLUMN_ID_LISTA_VERIFICACION_TEMP + " ) REFERENCES " + ListaVerificacion.NOMBRE_TABLA + "("   + ListaVerificacion.COLUMN_ID_CLIENTE + "," + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + "," + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION_TEMP + ")  ON UPDATE CASCADE, "
+            + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE + ", "  + COLUMN_ID_LISTA_VERIFICACION + ", "  + COLUMN_ID_CONFIGURACION + ", "  + COLUMN_ID_INDICADOR + ", "  + COLUMN_ID_PREGUNTA + ", " + COLUMN_ID_LISTA_VERIFICACION_RESP + "), "
+            + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_LISTA_VERIFICACION + " ) REFERENCES " + ListaVerificacion.NOMBRE_TABLA + "("   + ListaVerificacion.COLUMN_ID_CLIENTE + "," + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + ")  ON UPDATE CASCADE, "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_CONFIGURACION +  ", "  + COLUMN_ID_INDICADOR +  ", "  + COLUMN_ID_PREGUNTA + " ) REFERENCES " + Pregunta.NOMBRE_TABLA + "("   + Pregunta.COLUMN_ID_CLIENTE + "," + Pregunta.COLUMN_ID_CONFIGURACION + "," + Pregunta.COLUMN_ID_INDICADOR + "," + Pregunta.COLUMN_ID_PREGUNTA + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_CONFIGURACION +  ", "  + COLUMN_ID_INDICADOR +  ", "  + COLUMN_ID_PREGUNTA +  ", "  + COLUMN_ID_RESPUESTA + " ) REFERENCES " + Respuesta.NOMBRE_TABLA + "("   + Respuesta.COLUMN_ID_CLIENTE + "," + Respuesta.COLUMN_ID_CONFIGURACION + "," + Respuesta.COLUMN_ID_INDICADOR + "," + Respuesta.COLUMN_ID_PREGUNTA + "," + Respuesta.COLUMN_ID_RESPUESTA + ") "
             + ")";
@@ -222,7 +200,7 @@ public class ListaVerificacion_Respuesta {
         onCreate(database);
     }
 
-    public boolean ActualizarIdListaVerificacionRespuesta(Context ctx){
+    public boolean ActualizarIdListaVerificacionRespuesta(Context ctx, int IdListaVerificacionRespuestaNuevo){
         boolean resultado=false;
         if (this.getIdListaVerificacionRespuesta() >= 0) {
             return false;
@@ -232,22 +210,19 @@ public class ListaVerificacion_Respuesta {
             w.iniciarTransaccion();
             //Actualizar el Id del avance
             ContentValues values = new ContentValues();
-            values.put(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP , this.getIdListaVerificacionRespuesta());
-            values.put(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP_T , 0);
+            values.put(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP , IdListaVerificacionRespuestaNuevo);
             values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, AppValues.EstadosEnvio.Enviado.name());
             String where=ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(this.getIdListaVerificacion())
-                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_TEMP + "=" + String.valueOf(this.getIdListaVerificacion_Temp())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + "=" + String.valueOf(this.getIdConfiguracion())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + "=" + String.valueOf(this.getIdIndicador())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + "=" + String.valueOf(this.getIdPregunta())
-                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP + "=" + String.valueOf(this.getIdListaVerificacionRespuesta())
-                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP_T + "=" + String.valueOf(this.getIdListaVerificacionRespuesta_Temp());
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP + "=" + String.valueOf(this.getIdListaVerificacionRespuesta());
             resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
 
             if(resultado) {
+                this.setIdListaVerificacionRespuesta(IdListaVerificacionRespuestaNuevo);
                 this.setEstadoRegistro(AppValues.EstadosEnvio.Enviado.name());
-                this.setIdListaVerificacionRespuesta_Temp(0);
             }
             w.finalizarTransaccion(true);
         }
@@ -259,17 +234,11 @@ public class ListaVerificacion_Respuesta {
                     ListaVerificacion_Respuesta.class.getSimpleName(), "ActualizarIdListaVerificacionRespuesta",
                     null, null);
         }
-        finally{
-            //w.cerrarDb();
-        }
         return resultado;
     }
 
     public boolean ActualizarEstadoRegistro(Context ctx, AppValues.EstadosEnvio nuevoEstado){
         boolean resultado=false;
-        if (this.getIdListaVerificacion_Temp() >= 0) {
-            return false;
-        }
         DAL w = new DAL(ctx);
         try{
             w.iniciarTransaccion();
@@ -277,15 +246,15 @@ public class ListaVerificacion_Respuesta {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
             //Actualizar el Id del avance
             ContentValues values = new ContentValues();
-            values.put(ListaVerificacion.COLUMN_ESTADO_REGISTRO, nuevoEstado.name());
-            String where=ListaVerificacion.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
-                    + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION_TEMP + "=" + String.valueOf(this.getIdListaVerificacion_Temp());
-            resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
+            values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, nuevoEstado.name());
+            String where=ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(this.getIdListaVerificacion())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + "=" + String.valueOf(this.getIdConfiguracion())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + "=" + String.valueOf(this.getIdIndicador())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + "=" + String.valueOf(this.getIdPregunta())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP + "=" + String.valueOf(this.getIdListaVerificacionRespuesta());
+            resultado= (w.updateRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, values, where)>0);
 
-            if(resultado) {
-                this.setEstadoRegistro(AppValues.EstadosEnvio.Enviado.name());
-                this.setIdListaVerificacion_Temp(0);
-            }
             w.finalizarTransaccion(true);
         }
         catch (Exception e)
@@ -293,12 +262,10 @@ public class ListaVerificacion_Respuesta {
             w.finalizarTransaccion(false);
             resultado=false;
             ManejoErrores.registrarError_MostrarDialogo(ctx, e,
-                    ListaVerificacion.class.getSimpleName(), "ActualizarIdListaVerificacion",
+                    ListaVerificacion.class.getSimpleName(), "ActualizarEstadoRegistro",
                     null, null);
         }
-        finally{
-            //w.cerrarDb();
-        }
+
         return resultado;
     }
 

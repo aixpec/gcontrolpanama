@@ -22,9 +22,10 @@ public class ListaVerificacion {
 
     private int idCliente;
     private int idListaVerificacion;
-    private int idListaVerificacion_Temp;
     private int idProyecto;
     private int idTipoListaVerificacion;
+    private String tipoListaVerificacion;
+    private int idEstadoListaVerificacion;
     private String estadoRegistro;
     private String creoUsuario;
     private Date creoFecha;
@@ -45,14 +46,6 @@ public class ListaVerificacion {
         this.idListaVerificacion = idListaVerificacion;
     }
 
-    public int getIdListaVerificacion_Temp() {
-        return idListaVerificacion_Temp;
-    }
-
-    public void setIdListaVerificacion_Temp(int idListaVerificacion_Temp) {
-        this.idListaVerificacion_Temp = idListaVerificacion_Temp;
-    }
-
     public int getIdProyecto() {
         return idProyecto;
     }
@@ -67,6 +60,22 @@ public class ListaVerificacion {
 
     public void setIdTipoListaVerificacion(int idTipoListaVerificacion) {
         this.idTipoListaVerificacion = idTipoListaVerificacion;
+    }
+
+    public String getTipoListaVerificacion() {
+        return tipoListaVerificacion;
+    }
+
+    public void setTipoListaVerificacion(String tipoListaVerificacion) {
+        this.tipoListaVerificacion = tipoListaVerificacion;
+    }
+
+    public int getIdEstadoListaVerificacion() {
+        return idEstadoListaVerificacion;
+    }
+
+    public void setIdEstadoListaVerificacion(int idEstadoListaVerificacion) {
+        this.idEstadoListaVerificacion = idEstadoListaVerificacion;
     }
 
     public String getEstadoRegistro() {
@@ -96,9 +105,9 @@ public class ListaVerificacion {
     public static final String NOMBRE_TABLA 				        ="tblChkListaVerificacion";
     public static final String COLUMN_ID_CLIENTE			        ="IdCliente";
     public static final String COLUMN_ID_LISTA_VERIFICACION         ="IdListaVerificacion";
-    public static final String COLUMN_ID_LISTA_VERIFICACION_TEMP    ="IdListaVerificacion_Temp";
     public static final String COLUMN_ID_PROYECTO	                ="IdProyecto";
     public static final String COLUMN_ID_TIPO_LISTA_VERIFICACION    ="IdTipoListaVerificacion";
+    public static final String COLUMN_ID_ESTADO_LISTA_VERIFICACION  ="IdEstadoListaVerificacion";
     public static final String COLUMN_ESTADO_REGISTRO		        ="EstadoRegistro";
     public static final String COLUMN_CREO_USUARIO			        ="CreoUsuario";
     public static final String COLUMN_CREO_FECHA			        ="CreoFecha";
@@ -108,13 +117,13 @@ public class ListaVerificacion {
             + "("
             + COLUMN_ID_CLIENTE 					+ " integer not null, "
             + COLUMN_ID_LISTA_VERIFICACION 	        + " integer not null, "
-            + COLUMN_ID_LISTA_VERIFICACION_TEMP 	+ " integer not null, "
             + COLUMN_ID_PROYECTO 	                + " integer not null, "
             + COLUMN_ID_TIPO_LISTA_VERIFICACION		+ " integer not null, "
+            + COLUMN_ID_ESTADO_LISTA_VERIFICACION	+ " integer not null, "
             + COLUMN_ESTADO_REGISTRO				+ " text not null, "
             + COLUMN_CREO_USUARIO				    + " text not null, "
             + COLUMN_CREO_FECHA				        + " text not null, "
-            + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_LISTA_VERIFICACION + ", " + COLUMN_ID_LISTA_VERIFICACION_TEMP + "), "
+            + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_LISTA_VERIFICACION + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + " ) REFERENCES " + TipoListaVerificacion.NOMBRE_TABLA + "("   + TipoListaVerificacion.COLUMN_ID_CLIENTE + "," + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_PROYECTO + " ) REFERENCES " + Proyecto.NOMBRE_TABLA + "("   + Proyecto.COLUMN_ID_CLIENTE + "," + Proyecto.COLUMN_ID + ") "
             + ")";
@@ -133,9 +142,9 @@ public class ListaVerificacion {
     }
 
 
-    public boolean ActualizarIdListaVerificacion(Context ctx){
+    public boolean ActualizarIdListaVerificacion(Context ctx, int idListaVerificacionNuevo){
         boolean resultado=false;
-        if (this.getIdListaVerificacion_Temp() >= 0) {
+        if (this.getIdListaVerificacion() >= 0) {
             return false;
         }
         DAL w = new DAL(ctx);
@@ -143,16 +152,15 @@ public class ListaVerificacion {
             w.iniciarTransaccion();
             //Actualizar el Id del avance
             ContentValues values = new ContentValues();
-            values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION , this.getIdListaVerificacion());
-            values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION_TEMP , 0 );
+            values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION , idListaVerificacionNuevo);
             values.put(ListaVerificacion.COLUMN_ESTADO_REGISTRO, AppValues.EstadosEnvio.Enviado.name());
             String where=ListaVerificacion.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
-                    + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION_TEMP + "=" + String.valueOf(this.getIdListaVerificacion_Temp());
+                    + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(this.getIdListaVerificacion());
             resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
 
             if(resultado) {
+                this.setIdListaVerificacion(idListaVerificacionNuevo);
                 this.setEstadoRegistro(AppValues.EstadosEnvio.Enviado.name());
-                this.setIdListaVerificacion_Temp(0);
             }
             w.finalizarTransaccion(true);
         }
@@ -164,9 +172,7 @@ public class ListaVerificacion {
                     ListaVerificacion.class.getSimpleName(), "ActualizarIdListaVerificacion",
                     null, null);
         }
-        finally{
-            //w.cerrarDb();
-        }
+
         return resultado;
     }
 

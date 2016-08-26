@@ -3,6 +3,8 @@ package com.gisystems.gcontrolpanama.models.chk;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.gisystems.gcontrolpanama.R;
+
 /**
  * Created by rlemus on 19/08/2016.
  */
@@ -36,7 +38,26 @@ public class EstadoListaVerificacion {
         this.listarEnAppMovil = listarEnAppMovil;
     }
 
+    public static int getIdImageResource(int IdEstadoListaVerificacion) {
+        int img_resource = -1;
+        switch (IdEstadoListaVerificacion)
+        {
+            case ID_SIN_FINALIZAR:
+                img_resource = R.drawable.check_green;
+                break;
+            case ID_FINALIZADO_CON_INCONFORMIDADES:
+                img_resource = R.drawable.check_gray;
+                break;
+            case ID_FINALIZADO:
+                img_resource = R.drawable.double_check;
+                break;
+        }
+        return img_resource;
+    }
 
+    public static final int ID_SIN_FINALIZAR = 1;
+    public static final int ID_FINALIZADO_CON_INCONFORMIDADES = 2;
+    public static final int ID_FINALIZADO = 3;
 
     public static final String NOMBRE_TABLA 				="tblChkEstadoListaVerificacion";
     public static final String COLUMN_ID_ESTADO_LISTA_VERIFICACION 		="IdEstadoListaVerificacion";
