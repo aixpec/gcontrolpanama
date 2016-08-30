@@ -297,7 +297,6 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
 
     public void IrAActividad(int Id)
     {
-
         Intent mainIntent=null;
 
         switch (Id){
@@ -316,12 +315,7 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
                 ActividadMainMenu.this.startActivity(mainIntent);
                 break;
         }
-
-
-
-
             //ActividadMainMenu.this.finish();
-
     }
 
     public void mostrarMensajeErrorProyecto(){
