@@ -151,7 +151,7 @@ public class ListaVerificacion_Respuesta {
     public static final String NOMBRE_TABLA 				        ="tblChkListaVerificacion_Respuesta";
     public static final String COLUMN_ID_CLIENTE			        ="IdCliente";
     public static final String COLUMN_ID_LISTA_VERIFICACION         ="IdListaVerificacion";
-    public static final String COLUMN_ID_CONFIGURACION	            ="idConfiguracion";
+    public static final String COLUMN_ID_CONFIGURACION	            ="IdConfiguracion";
     public static final String COLUMN_ID_INDICADOR	                ="IdIndicador";
     public static final String COLUMN_ID_PREGUNTA	                ="IdPregunta";
     public static final String COLUMN_ID_LISTA_VERIFICACION_RESP    ="IdListaVerificacionRespuesta";

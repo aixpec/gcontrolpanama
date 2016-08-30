@@ -2,6 +2,7 @@ package com.gisystems.gcontrolpanama.models.chk;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -12,6 +13,8 @@ import com.gisystems.gcontrolpanama.models.FotoActividad;
 import com.gisystems.gcontrolpanama.models.Proyecto;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -174,6 +177,62 @@ public class ListaVerificacion {
         }
 
         return resultado;
+    }
+
+
+    //Devuelve las listas de verificación abiertas por cliente y proyecto
+    public static ArrayList<ListaVerificacion> obtenerListasAbiertasPorClienteProyecto(Context ctx, int idCliente, int idProyecto){
+        DAL w = new DAL(ctx);
+        ArrayList<ListaVerificacion> listas = new ArrayList<ListaVerificacion>();
+        ListaVerificacion lista;
+
+        Cursor c = null;
+
+        try{
+            String query = "Select "
+                    + " L." + ListaVerificacion.COLUMN_ID_CLIENTE + ", "
+                    + " L." + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + ", "
+                    + " L." + ListaVerificacion.COLUMN_CREO_FECHA + ", "
+                    + " L." + ListaVerificacion.COLUMN_CREO_USUARIO + ", "
+                    + " T." + TipoListaVerificacion.COLUMN_DESCRIPCION + ", "
+                    + " FROM " + ListaVerificacion.NOMBRE_TABLA + " L "
+                    + " JOIN " + TipoListaVerificacion.NOMBRE_TABLA + " T "
+                    + "   ON T." + TipoListaVerificacion.COLUMN_ID_CLIENTE + " = L." + ListaVerificacion.COLUMN_ID_CLIENTE
+                    + "   AND T." + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + " = L." + ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION
+                    + " WHERE L." + ListaVerificacion.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
+                    + "   and L." + ListaVerificacion.COLUMN_ID_PROYECTO + " = " + String.valueOf(idProyecto);
+
+            c =  w.getRow(query);
+
+            if(c.moveToFirst()){
+                do {
+                    lista=new ListaVerificacion();
+                    lista.setIdCliente(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_CLIENTE)));
+                    lista.setIdListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION)));
+                    Calendar cal = Calendar.getInstance();
+                    cal.set(Calendar.YEAR, 1988);
+                    cal.set(Calendar.MONTH, Calendar.JANUARY);
+                    cal.set(Calendar.DAY_OF_MONTH, 1);
+                    Date dateRepresentation = cal.getTime();
+                    //lista.setCreoFecha(new Date(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_FECHA))));
+                    lista.setCreoFecha(dateRepresentation);
+                    lista.setCreoUsuario(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_USUARIO)));
+                    lista.setTipoListaVerificacion(c.getString(c.getColumnIndexOrThrow(TipoListaVerificacion.COLUMN_DESCRIPCION)));
+                    listas.add(lista);
+                    lista=null;
+                }
+                while(c.moveToNext());
+                c.close();
+            }
+
+        }
+        catch (Exception e){
+            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "obtenerListasAbiertasPorClienteProyecto",
+                    null, null);
+        }
+
+        return listas;
     }
 
 }
