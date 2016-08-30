@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <ImageView
+        android:id="@+id/list_item_checklists_imgEstado"
+        android:contentDescription="@string/ListasVerificacionActivity_0"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_marginLeft="4dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="4dip"
+        android:src="@drawable/check_green" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/list_item_checklists_lblPrimeraLinea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/list_item_checklists_imgEstado"
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/list_item_checklists_lblSegundaLinea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/list_item_checklists_lblPrimeraLinea"
+        android:layout_toRightOf="@id/list_item_checklists_imgEstado"
+        android:textAppearance="?android:attr/textAppearanceSmall" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/list_item_checklists_lblTerceraLinea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/list_item_checklists_lblSegundaLinea"
+        android:layout_toRightOf="@id/list_item_checklists_imgEstado"
+        android:textSize="12sp" >
+    </TextView>
+
+</RelativeLayout>
