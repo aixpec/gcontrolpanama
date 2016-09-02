@@ -424,8 +424,8 @@ public class EnvioDatosAPI {
                 parametros.add(resp.getIdIndicador());
                 parametros.add(resp.getIdPregunta() );
                 parametros.add(resp.getIdListaVerificacionRespuesta() );
-                parametros.add(resp.getDescripcionIndicador());
-                parametros.add(resp.getDescripcionPregunta());
+                parametros.add(resp.getIndicador());
+                parametros.add(resp.getPregunta());
                 parametros.add(resp.getIdRespuesta());
                 parametros.add(resp.getDescripcionRespuesta());
                 parametros.add(resp.getIdRespuesta());
