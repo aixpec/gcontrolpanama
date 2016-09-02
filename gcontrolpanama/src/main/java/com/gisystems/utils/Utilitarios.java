@@ -37,17 +37,17 @@ public class Utilitarios {
 	public static final int MEDIA_TYPE_IMAGE = 1;
 	public static final int MEDIA_TYPE_VIDEO = 2;
 	
-    //Lista de los posibles orígenes de la solicitud a la capa WSL.
+    //PreguntaListaUI de los posibles orígenes de la solicitud a la capa WSL.
 	public static enum TipoOrigen {
 	        Escritorio, Web, Android;
 	}
 
-    //Lista de las posibles funciones solicitadas a la capa WSL.
+    //PreguntaListaUI de las posibles funciones solicitadas a la capa WSL.
 	public static enum TipoFuncion {
         validarUsuario, ejecutarMetodo;
 	}
 
-	//Lista de los posibles orígenes de la solicitud a la capa WSL.
+	//PreguntaListaUI de los posibles orígenes de la solicitud a la capa WSL.
 	public static enum TipoFoto {
 		    Proyecto, ActividadConAvance, ActividadSinAvance;
 		}
@@ -74,9 +74,7 @@ public class Utilitarios {
         PeticionWSL peticionWSL;
         RespuestaWSL respuesta = null;
          
-        ArrayList<Object> parametros = new ArrayList<Object>(); 
-		parametros.add(userName);
-		parametros.add(password);
+        ArrayList<Object> parametros = new ArrayList<Object>();
         String nombreArchivoAssembly = ""; 
         String namespaceClase = "";
 		String nombreClase = ""; 
@@ -90,7 +88,8 @@ public class Utilitarios {
         			namespaceClase, nombreClase, metodoEjecutara, 
         			pathLog);
             //2. Conexión al API REST de la capa WSL
-            respuesta = BusinessCloud.sendRequestWSL(context, peticionWSL);
+			BusinessCloud businessCloud = new BusinessCloud();
+            respuesta = businessCloud.sendRequestWSL(context, peticionWSL);
             //3. Obtener resultado
             if (respuesta != null) {
             if (respuesta.getEjecutadoSinError()) {
@@ -200,14 +199,12 @@ public static Bitmap redimensionarImagen(String path){
 	    return bd.doubleValue();
 	}
 
-	/**
-	 *
-	 * Método que verifica si hay o no conexión a internet.
-	 *
-	 * @return verdadero/falso si hay o no conexión a internet.
-	 * @throws IOException.
-	 * @throws UnknownHostException.
-	 */
+    /**
+     *
+     * Método que verifica si hay o no conexión a internet.
+     *
+     * @return verdadero/falso si hay o no conexión a internet.
+     */
 	public static boolean isConnectionAvailable(Context context) throws IOException {
         NetworkInfo info = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         if (info==null || !info.isConnected()) {
