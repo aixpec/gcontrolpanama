@@ -8,7 +8,6 @@ import com.gisystems.gcontrolpanama.models.cc.RespuestaIngresada;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.widget.LinearLayout;
 
