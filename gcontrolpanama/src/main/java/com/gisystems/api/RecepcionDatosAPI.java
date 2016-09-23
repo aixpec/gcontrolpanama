@@ -565,7 +565,7 @@ public class RecepcionDatosAPI {
                         values.put(RespuestaAccionDetalle.COLUMN_ID_RESPUESTA, 	registro.getInt(RespuestaAccionDetalle.COLUMN_ID_RESPUESTA));
                         values.put(RespuestaAccionDetalle.COLUMN_ID_RESPUESTA_ACCION_DETALLE_CORR, 	registro.getInt(RespuestaAccionDetalle.COLUMN_ID_RESPUESTA_ACCION_DETALLE_CORR));
                         values.put(RespuestaAccionDetalle.COLUMN_ID_ACCION_RESPUESTA, 	registro.getInt(RespuestaAccionDetalle.COLUMN_ID_ACCION_RESPUESTA));
-                        values.put(RespuestaAccionDetalle.COLUMN_ID_A_PREGUNTA, 	registro.getString(RespuestaAccionDetalle.COLUMN_ID_A_PREGUNTA));
+                        values.put(RespuestaAccionDetalle.COLUMN_IR_A_PREGUNTA, 	registro.getString(RespuestaAccionDetalle.COLUMN_IR_A_PREGUNTA));
                         values.put(RespuestaAccionDetalle.COLUMN_DESHABILITAR_PREGUNTA_COD, 	registro.getInt(RespuestaAccionDetalle.COLUMN_DESHABILITAR_PREGUNTA_COD));
                         values.put(RespuestaAccionDetalle.COLUMN_HABILITAR_PREGUNTA_COD, 	registro.getInt(RespuestaAccionDetalle.COLUMN_HABILITAR_PREGUNTA_COD));
                         values.put(RespuestaAccionDetalle.COLUMN_CAMBIAR_LIMITE_PREGUNTA_COD, 	registro.getInt(RespuestaAccionDetalle.COLUMN_CAMBIAR_LIMITE_PREGUNTA_COD));
@@ -600,7 +600,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción ESTADOS DE LISTAS DE VERIFICACION");
 
-                    //13. Obtener datos para la tabla de Tipos de Lista de Verificación
+                    //13. Obtener datos para la tabla de Tipos de PreguntaListaUI de Verificación
                     array = datosJSON.getJSONArray(TipoListaVerificacion.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -618,7 +618,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción TIPOS DE LISTA DE VERIFICACION");
 
-                    //14. Obtener datos para la tabla de Secciones por Tipo de Lista de Verificación
+                    //14. Obtener datos para la tabla de Secciones por Tipo de PreguntaListaUI de Verificación
                     array = datosJSON.getJSONArray(TipoListaVerificacion_Seccion.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -650,7 +650,7 @@ public class RecepcionDatosAPI {
                         values.put(ListaVerificacion.COLUMN_ID_PROYECTO, 	registro.getInt(ListaVerificacion.COLUMN_ID_PROYECTO));
                         values.put(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION, 	registro.getInt(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION));
                         values.put(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION, 	registro.getInt(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION));
-                        values.put(ListaVerificacion.COLUMN_ESTADO_REGISTRO, 	AppValues.EstadosEnvio.Enviado.name());
+                        values.put(ListaVerificacion.COLUMN_ESTADO_ENVIO, 	AppValues.EstadosEnvio.Enviado.name());
                         values.put(ListaVerificacion.COLUMN_CREO_USUARIO, 	registro.getString(ListaVerificacion.COLUMN_CREO_USUARIO));
                         values.put(ListaVerificacion.COLUMN_CREO_FECHA, 	registro.getString(ListaVerificacion.COLUMN_CREO_FECHA));
 
@@ -672,7 +672,6 @@ public class RecepcionDatosAPI {
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA));
-                        values.put(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP, 	registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP));
                         values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR));
                         values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA));
                         if (registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA) > 0)
@@ -682,6 +681,7 @@ public class RecepcionDatosAPI {
                         values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA));
                         values.put(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA));
                         values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, 	AppValues.EstadosEnvio.Enviado.name());
+                        values.put(ListaVerificacion_Respuesta.COLUMN_ELIMINADO, 0);
                         values.put(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO));
                         values.put(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA));
 

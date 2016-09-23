@@ -39,10 +39,10 @@ public class RespuestaWSL {
 		if (json.startsWith("\"")) {
 			json = json.substring(1);
 		}
-		json = json.replace("\\\\\\\"", "###");
-		json = json.replace("\"", "\'");
-		json = json.replace("###", "\"");
-		json = json.replace("\\", "");
+		//json = json.replace("\\\\\\\"", "###");
+		//json = json.replace("\"", "\'");
+		//json = json.replace("###", "\"");
+		//json = json.replace("\\", "");
 		setRespuestaFormatoJSON(json);
 	}
 
@@ -89,7 +89,7 @@ public class RespuestaWSL {
 			}
 		} catch (Exception e) {
 			this.motivo = e.getMessage();
-			Log.e("Error en ObtenerDatosDelJSON: ", Log.getStackTraceString(e));
+			Log.e("Err_ObtenerDatosDelJSON", Log.getStackTraceString(e));
 		}
 	}
 

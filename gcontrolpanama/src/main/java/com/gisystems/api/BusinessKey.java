@@ -28,7 +28,7 @@ public class BusinessKey {
 	 * @param host
 	 * @param port
 	 * @param virtualDirectory
-	 * @param webService
+	 * @param uri
 	 */
 	public BusinessKey(String protocol, String host, String port, String virtualDirectory, String uri) {
 		super();
@@ -48,6 +48,7 @@ public class BusinessKey {
 	 * @return el nombre del host.
 	 */
 	public String getHOST() {
+		HOST = "www.covialgt.com";
 		return HOST;
 	}
 	
@@ -57,6 +58,7 @@ public class BusinessKey {
 	 * @return la ruta del servicio.
 	 */
 	public String getSERVICE_URL() {
+		SERVICE_URL = "http://190.111.7.50:80/pruebasWslRestElephantPanama/";
 		return SERVICE_URL;
 	}
 	

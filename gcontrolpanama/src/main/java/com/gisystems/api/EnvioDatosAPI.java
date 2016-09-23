@@ -3,7 +3,9 @@ package com.gisystems.api;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import com.gisystems.gcontrolpanama.models.ActividadAvance;
 import com.gisystems.gcontrolpanama.models.AppValues;
@@ -30,7 +32,7 @@ public class EnvioDatosAPI {
 	private String pathLog = ""; 
 	//private String TAG=EnvioDatosAPI.class.getSimpleName();
 
-    BusinessCloud businessCloud;
+    BusinessCloud businessCloud = new BusinessCloud();
 
 	public EnvioDatosAPI(Context context) {
 		this.context = context;	
@@ -369,7 +371,7 @@ public class EnvioDatosAPI {
 	*/
 
 	public boolean EnviarListaVerificacion(ListaVerificacion lista) {
-		int IdListaVerificacion = -1;
+		int IdListaVerificacion;
 		boolean valor=false;
 		try {
 			if(Utilitarios.isConnectionAvailable(context)){
@@ -406,9 +408,9 @@ public class EnvioDatosAPI {
 			valor=false;
 			Log.w(ManejoErrores.LOG_TAG, "Error en EnviarListaVerificacion. " + e.getMessage());
 		}
-
 		return valor;
 	}
+
 
     public boolean EnviarListaVerificacionRespuesta(ListaVerificacion_Respuesta resp) {
         boolean valor=false;
@@ -417,21 +419,20 @@ public class EnvioDatosAPI {
                 String id_usuario = this.userName;
                 String id_disp_movil =  Utilitarios.ObtenerAndroid_ID(this.context);
                 //1. Obtener la petici�n para la capa WSL de la arquitectura
-                ArrayList<Object> parametros = new ArrayList<Object>();
+                ArrayList<Object> parametros = new ArrayList<>();
                 parametros.add(resp.getIdCliente());
                 parametros.add(resp.getIdListaVerificacion() );
                 parametros.add(resp.getIdConfiguracion() );
                 parametros.add(resp.getIdIndicador());
                 parametros.add(resp.getIdPregunta() );
-                parametros.add(resp.getIdListaVerificacionRespuesta() );
                 parametros.add(resp.getIndicador());
                 parametros.add(resp.getPregunta());
                 parametros.add(resp.getIdRespuesta());
                 parametros.add(resp.getDescripcionRespuesta());
-                parametros.add(resp.getIdRespuesta());
                 parametros.add(resp.getValorRespuesta());
-                parametros.add(resp.getCreoUsuario());
-                parametros.add(resp.getCreoFecha());
+                parametros.add(id_usuario);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                parametros.add(sdf.format(resp.getFechaCaptura()));
                 parametros.add(id_usuario );
                 parametros.add(id_disp_movil );
                 metodoEjecutara = "fCrearListaVerificacionRespuesta";
@@ -444,12 +445,11 @@ public class EnvioDatosAPI {
                 respuesta = businessCloud.sendRequestWSL(context, peticion);
 
                 //Validar el ID obtenido
-                int IdListaVerificacionRespuesta = -1;
-                IdListaVerificacionRespuesta=(respuesta.getEjecutadoSinError())
+                int filasAfectadas=(respuesta.getEjecutadoSinError())
                         ?Integer.valueOf(respuesta.getParametros()):-1;
 
-                if (resp.getIdListaVerificacionRespuesta()<0){
-                    valor=resp.ActualizarIdListaVerificacionRespuesta(context,IdListaVerificacionRespuesta);
+                if (filasAfectadas > 0){
+                    valor=resp.ActualizarEstadoListaVerificacionRespuesta(context);
                 }
                 else{
                     resp.ActualizarEstadoRegistro(context, AppValues.EstadosEnvio.No_Enviado);

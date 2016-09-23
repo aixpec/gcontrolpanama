@@ -9,15 +9,23 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import org.apache.http.HttpResponse;
+/*import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.protocol.HTTP;
+import org.apache.http.protocol.HTTP;*/
 
 import com.gisystems.gcontrolpanama.R;
+import com.gisystems.exceptionhandling.ManejoErrores;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 /**
  * Implementa los metodos para conectarse a un servidor y consumir y postear data.
@@ -32,21 +40,43 @@ import com.gisystems.gcontrolpanama.R;
 public class BusinessCloud {
 
 	private static BusinessKey businessKey;
-	
+
 	/**
-	 * M�todo que env�a una petici�n a la capa WSL de la arquitectura de Gisystems.
-	 * 
-	 * @return verdadero/falso si hay o no conexi�n a internet.
-	 * @throws Exception.
-	 * @throws UnknownHostException.
+	 * Método que envía una petición a la capa WSL de la arquitectura de Gisystems.
+	 *
+	 * @return verdadero/falso si hay o no conexión a internet.
 	 */
-	public static RespuestaWSL sendRequestWSL(Context context, PeticionWSL peticionWSL)
+	public RespuestaWSL sendRequestWSL(Context context, PeticionWSL peticionWSL)
 			throws Exception {
 		RespuestaWSL respuestaWSL = null;
-		if (isConnectionAvailable(context)) {
-				String respuesta;
-				respuesta = postData(context, prepareJSON(peticionWSL.toJSON()));
-				respuestaWSL = new RespuestaWSL(respuesta); 
+		try {
+			if (isConnectionAvailable(context)) {
+				BusinessKey businessKey = new BusinessKey(context.getString(R.string.PROTOCOL),
+						context.getString(R.string.HOST),
+						context.getString(R.string.PORT),
+						context.getString(R.string.VIRTUAL_DIRECTORY),
+						"");
+
+				Retrofit retrofit = new Retrofit.Builder()
+						.baseUrl(businessKey.getSERVICE_URL())
+						.addConverterFactory(GsonConverterFactory.create())
+						.build();
+
+				RetrofitAPI service = retrofit.create(RetrofitAPI.class);
+
+				Call<String> r = service.enviarPeticionABCDEF(peticionWSL.toJSON());
+
+				String respuesta = r.execute().body();
+				respuestaWSL = new RespuestaWSL(respuesta);
+			}
+		} catch (IOException|IllegalStateException|NullPointerException e) {
+			ManejoErrores.registrarError(context, e,
+					BusinessCloud.class.getSimpleName(), "sendRequestWSL",
+					peticionWSL, null);
+		} catch (Exception e) {
+			ManejoErrores.registrarError(context, e,
+					EnvioDatosAPI.class.getSimpleName(), "sendRequestWSL",
+					peticionWSL, null);
 		}
 		return respuestaWSL;
 	}
@@ -55,8 +85,6 @@ public class BusinessCloud {
 	 * M�todo que verifica si hay o no conexi�n a internet.
 	 * 
 	 * @return verdadero/falso si hay o no conexi�n a internet.
-	 * @throws IOException.
-	 * @throws UnknownHostException.
 	 */
 	public static boolean isConnectionAvailable(Context context)
 			throws IOException {
@@ -79,65 +107,7 @@ public class BusinessCloud {
 		return respuesta;
 	}
 	
-	
-	/**
-	 * Genera una petici�n POST al API REST
-	 * 
-	 * @param content
-	 *            Contenido del post.
-	 * 
-	 * @return String String que generalmente contiene un objeto JSON que ser�
-	 *         parseado por el m�todo que llame al m�todo actual.
-	 */
-	private static String postData(Context context, String content)
-			throws Exception {
-		boolean isServerAvailable = false;
-		String response = "";
 
-		businessKey = new BusinessKey(context.getString(R.string.PROTOCOL),
-				context.getString(R.string.HOST),
-				context.getString(R.string.PORT),
-				context.getString(R.string.VIRTUAL_DIRECTORY),
-				context.getString(R.string.URI));
-
-		try {
-			isServerAvailable = isConnectionAvailable(context);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println("SERVER AVAILABLE: "
-				+ String.valueOf(isServerAvailable));
-		if (isServerAvailable) {
-			System.out.println("About to post\nURL: "
-					+ businessKey.getSERVICE_URL() + "content: " + content);
-			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost(businessKey.getSERVICE_URL());
-
-			ByteArrayEntity baEntity = new ByteArrayEntity(
-					content.getBytes("UTF8"));
-			baEntity.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE,
-					"application/json; charset=utf-8"));
-			post.setEntity(baEntity);
-
-			try {
-				HttpResponse httpResponse = client.execute(post);
-				InputStream respuesta = httpResponse.getEntity().getContent();
-				Scanner scanner = new Scanner(new InputStreamReader(respuesta)); 
-				response = scanner.useDelimiter("\\A").next();
-				scanner.close();
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} finally {
-				
-			}
-		}
-
-		return response;
-	}
 		
 
 }
