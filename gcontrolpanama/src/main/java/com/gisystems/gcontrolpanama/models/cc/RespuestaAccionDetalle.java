@@ -82,7 +82,7 @@ public class RespuestaAccionDetalle {
     public static final String COLUMN_ID_RESPUESTA  		="IdRespuesta";
     public static final String COLUMN_ID_ACCION_RESPUESTA  			="IdAccionRespuesta";
     public static final String COLUMN_ID_RESPUESTA_ACCION_DETALLE_CORR  ="idRespuestaAccionDetalleCorr";
-    public static final String COLUMN_ID_A_PREGUNTA  			    ="irAPregunta";
+    public static final String COLUMN_IR_A_PREGUNTA  			    ="irAPregunta";
     public static final String COLUMN_DESHABILITAR_PREGUNTA_COD		="DeshabilitarPreguntaCod";
     public static final String COLUMN_HABILITAR_PREGUNTA_COD  		="HabilitarPreguntaCod";
     public static final String COLUMN_CAMBIAR_LIMITE_PREGUNTA_COD  	="CambiarLimitePreguntaCod";
@@ -99,7 +99,7 @@ public class RespuestaAccionDetalle {
             + COLUMN_ID_RESPUESTA 				    + " integer not null, "
             + COLUMN_ID_RESPUESTA_ACCION_DETALLE_CORR 	+ " integer not null, "
             + COLUMN_ID_ACCION_RESPUESTA 				+ " integer not null, "
-            + COLUMN_ID_A_PREGUNTA				        + " text not null, "
+            + COLUMN_IR_A_PREGUNTA				        + " text not null, "
             + COLUMN_DESHABILITAR_PREGUNTA_COD 			+ " integer not null, "
             + COLUMN_HABILITAR_PREGUNTA_COD 			+ " integer not null, "
             + COLUMN_CAMBIAR_LIMITE_PREGUNTA_COD 		+ " integer not null, "

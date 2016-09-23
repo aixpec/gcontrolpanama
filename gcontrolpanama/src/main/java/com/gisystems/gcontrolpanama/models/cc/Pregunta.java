@@ -1,7 +1,14 @@
 package com.gisystems.gcontrolpanama.models.cc;
 
+import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.gisystems.exceptionhandling.ManejoErrores;
+import com.gisystems.gcontrolpanama.database.DAL;
+
+import java.util.ArrayList;
 
 /**
  * Created by rlemus on 15/08/2016.
@@ -13,8 +20,10 @@ public class Pregunta {
     private int idIndicador;
     private int idPregunta;
     private int idTipoDato;
+    private String indicador;
     private String pregunta;
     private boolean requerido;
+    private ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
 
     public int getIdCliente() {return idCliente;}
 
@@ -36,13 +45,22 @@ public class Pregunta {
 
     public void setIdTipoDato(int idTipoDato) {this.idTipoDato = idTipoDato;}
 
+    public String getIndicador() {return indicador;}
+
+    public void setIndicador(String descripcion) {this.indicador = descripcion;}
+
     public String getPregunta() {return pregunta;}
 
-    public void setPregunta(String descripcion) {this.pregunta = pregunta;}
+    public void setPregunta(String descripcion) {this.pregunta = descripcion;}
 
     public boolean getRequerido() {return requerido;}
 
     public void setRequerido(boolean requerido) {this.requerido = requerido;}
+
+    public ArrayList<Respuesta> getRespuestas() {return respuestas;}
+
+    public void setRespuestas(ArrayList<Respuesta> respuestas) {this.respuestas = respuestas;}
+
 
     public static final String NOMBRE_TABLA 				="tblCcPregunta";
     public static final String COLUMN_ID_CLIENTE			="IdCliente";
@@ -52,6 +70,7 @@ public class Pregunta {
     public static final String COLUMN_ID_TIPO_DATO  		="IdTipoDato";
     public static final String COLUMN_PREGUNTA  			="Pregunta";
     public static final String COLUMN_REQUERIDO			    ="Requerido";
+    public static final String COLUMN_INDICADOR  			="Indicador";
 
     private static final String DATABASE_CREATE="create table "
             + NOMBRE_TABLA
@@ -80,5 +99,7 @@ public class Pregunta {
         database.execSQL("DROP TABLE IF EXISTS " + NOMBRE_TABLA);
         onCreate(database);
     }
+
+
 
 }

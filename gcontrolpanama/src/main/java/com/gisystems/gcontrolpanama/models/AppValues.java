@@ -20,10 +20,12 @@ public class AppValues {
 	public static final String COLUMN_SYNC			=	"Sync";
 	public static final String COLUMN_MODO_LOCAL	=	"ModoLocal";
 	private static Cursor cCursor;
-	public static final String LLAVE_SPUSUARIONOMBRE="username";
-	public static final String LLAVE_SPUSUARIOPASS="password";
-	public static final String LLAVE_SPFIRSTRUN="first_run";
-	public static final String LLAVE_SPUSUARIOVALIDO="usuario_valido";
+	public static final String LLAVE_SPUSUARIONOMBRE	=	"username";
+	public static final String LLAVE_SPUSUARIOPASS		=	"password";
+	public static final String LLAVE_SPFIRSTRUN			=	"first_run";
+	public static final String LLAVE_SPUSUARIOVALIDO	=	"usuario_valido";
+	public static final String LLAVE_SPDEVICEID	        =	"device_id";
+    public static final String LLAVE_SPSUSCRIBERID	    =	"suscriber_id";
 	
 	
 	private static final String DATABASE_CREATE="create table "
@@ -98,7 +100,23 @@ public class AppValues {
 		editor.putBoolean(LLAVE_SPUSUARIOVALIDO, Valor);
 		editor.commit();		
 	}
-	
+
+    public static void SharedPref_guardarDeviceID(Context ctx, String deviceID)
+    {
+        SharedPreferences prefs = ctx.getSharedPreferences(ctx.getString(R.string.sharedPreferencesKey),Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(LLAVE_SPDEVICEID, deviceID);
+        editor.commit();
+    }
+
+    public static void SharedPref_guardarSuscriberID(Context ctx, String suscriberID)
+    {
+        SharedPreferences prefs = ctx.getSharedPreferences(ctx.getString(R.string.sharedPreferencesKey),Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(LLAVE_SPSUSCRIBERID, suscriberID);
+        editor.commit();
+    }
+
 	public static String SharedPref_obtenerUsuarioNombre(Context ctx){
 		return ctx.getSharedPreferences(ctx.getString(R.string.sharedPreferencesKey),Context.MODE_PRIVATE).getString(LLAVE_SPUSUARIONOMBRE, ""); }
 	
@@ -110,7 +128,13 @@ public class AppValues {
 
 	public static boolean SharedPref_obtenerValorEsUsuarioValido(Context ctx){
 		return ctx.getSharedPreferences(ctx.getString(R.string.sharedPreferencesKey),Context.MODE_PRIVATE).getBoolean(LLAVE_SPUSUARIOVALIDO, false); }
-	
+
+    public static String SharedPref_obtenerDeviceID(Context ctx){
+        return ctx.getSharedPreferences(ctx.getString(R.string.sharedPreferencesKey),Context.MODE_PRIVATE).getString(LLAVE_SPDEVICEID, ""); }
+
+    public static String SharedPref_obtenerSuscriberID(Context ctx){
+        return ctx.getSharedPreferences(ctx.getString(R.string.sharedPreferencesKey),Context.MODE_PRIVATE).getString(LLAVE_SPSUSCRIBERID, ""); }
+
 	/*Devuelve un valor booleano indicando si la aplicación se encuentra sincronizada o no
 	 * @param context Contexto de la aplicación
 	 * */

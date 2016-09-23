@@ -11,6 +11,8 @@ import com.gisystems.gcontrolpanama.database.DAL;
 import com.gisystems.gcontrolpanama.models.AppValues;
 import com.gisystems.gcontrolpanama.models.FotoActividad;
 import com.gisystems.gcontrolpanama.models.Proyecto;
+import com.gisystems.gcontrolpanama.models.cc.Indicador;
+import com.gisystems.gcontrolpanama.models.cc.Pregunta;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class ListaVerificacion {
     private int idTipoListaVerificacion;
     private String tipoListaVerificacion;
     private int idEstadoListaVerificacion;
+    private String estadoListaVerificacion;
     private String estadoRegistro;
     private String creoUsuario;
     private Date creoFecha;
@@ -81,6 +84,14 @@ public class ListaVerificacion {
         this.idEstadoListaVerificacion = idEstadoListaVerificacion;
     }
 
+    public String getEstadoListaVerificacion() {
+        return estadoListaVerificacion;
+    }
+
+    public void setEstadoListaVerificacion(String estadoListaVerificacion) {
+        this.estadoListaVerificacion = estadoListaVerificacion;
+    }
+
     public String getEstadoRegistro() {
         return estadoRegistro;
     }
@@ -110,8 +121,10 @@ public class ListaVerificacion {
     public static final String COLUMN_ID_LISTA_VERIFICACION         ="IdListaVerificacion";
     public static final String COLUMN_ID_PROYECTO	                ="IdProyecto";
     public static final String COLUMN_ID_TIPO_LISTA_VERIFICACION    ="IdTipoListaVerificacion";
+    public static final String COLUMN_TIPO_LISTA_VERIFICACION       ="TipoListaVerificacion";
     public static final String COLUMN_ID_ESTADO_LISTA_VERIFICACION  ="IdEstadoListaVerificacion";
-    public static final String COLUMN_ESTADO_REGISTRO		        ="EstadoRegistro";
+    public static final String COLUMN_ESTADO_LISTA_VERIFICACION     ="EstadoListaVerificacion";
+    public static final String COLUMN_ESTADO_ENVIO		            ="EstadoEnvio";
     public static final String COLUMN_CREO_USUARIO			        ="CreoUsuario";
     public static final String COLUMN_CREO_FECHA			        ="CreoFecha";
 
@@ -123,7 +136,7 @@ public class ListaVerificacion {
             + COLUMN_ID_PROYECTO 	                + " integer not null, "
             + COLUMN_ID_TIPO_LISTA_VERIFICACION		+ " integer not null, "
             + COLUMN_ID_ESTADO_LISTA_VERIFICACION	+ " integer not null, "
-            + COLUMN_ESTADO_REGISTRO				+ " text not null, "
+            + COLUMN_ESTADO_ENVIO				    + " text not null, "
             + COLUMN_CREO_USUARIO				    + " text not null, "
             + COLUMN_CREO_FECHA				        + " text not null, "
             + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_LISTA_VERIFICACION + "), "
@@ -156,7 +169,7 @@ public class ListaVerificacion {
             //Actualizar el Id del avance
             ContentValues values = new ContentValues();
             values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION , idListaVerificacionNuevo);
-            values.put(ListaVerificacion.COLUMN_ESTADO_REGISTRO, AppValues.EstadosEnvio.Enviado.name());
+            values.put(ListaVerificacion.COLUMN_ESTADO_ENVIO, AppValues.EstadosEnvio.Enviado.name());
             String where=ListaVerificacion.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
                     + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(this.getIdListaVerificacion());
             resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
@@ -171,7 +184,7 @@ public class ListaVerificacion {
         {
             w.finalizarTransaccion(false);
             resultado=false;
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+            ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion.class.getSimpleName(), "ActualizarIdListaVerificacion",
                     null, null);
         }
@@ -194,13 +207,19 @@ public class ListaVerificacion {
                     + " L." + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + ", "
                     + " L." + ListaVerificacion.COLUMN_CREO_FECHA + ", "
                     + " L." + ListaVerificacion.COLUMN_CREO_USUARIO + ", "
-                    + " T." + TipoListaVerificacion.COLUMN_DESCRIPCION + ", "
+                    + " L." + ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION + ", "
+                    + " L." + ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + ", "
+                    + " T." + TipoListaVerificacion.COLUMN_DESCRIPCION + " as " + ListaVerificacion.COLUMN_TIPO_LISTA_VERIFICACION + ", "
+                    + " E." + EstadoListaVerificacion.COLUMN_DESCRIPCION + " as " + ListaVerificacion.COLUMN_ESTADO_LISTA_VERIFICACION
                     + " FROM " + ListaVerificacion.NOMBRE_TABLA + " L "
                     + " JOIN " + TipoListaVerificacion.NOMBRE_TABLA + " T "
                     + "   ON T." + TipoListaVerificacion.COLUMN_ID_CLIENTE + " = L." + ListaVerificacion.COLUMN_ID_CLIENTE
                     + "   AND T." + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + " = L." + ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION
+                    + " JOIN " + EstadoListaVerificacion.NOMBRE_TABLA + " E "
+                    + "   ON E." + EstadoListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION + " = L." + EstadoListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION
                     + " WHERE L." + ListaVerificacion.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
-                    + "   and L." + ListaVerificacion.COLUMN_ID_PROYECTO + " = " + String.valueOf(idProyecto);
+                    + "   and L." + ListaVerificacion.COLUMN_ID_PROYECTO + " = " + String.valueOf(idProyecto)
+                    + " ORDER BY L." + ListaVerificacion.COLUMN_CREO_FECHA + ", T." + TipoListaVerificacion.COLUMN_DESCRIPCION;
 
             c =  w.getRow(query);
 
@@ -209,30 +228,192 @@ public class ListaVerificacion {
                     lista=new ListaVerificacion();
                     lista.setIdCliente(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_CLIENTE)));
                     lista.setIdListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION)));
+                    lista.setIdTipoListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION)));
                     Calendar cal = Calendar.getInstance();
-                    cal.set(Calendar.YEAR, 1988);
-                    cal.set(Calendar.MONTH, Calendar.JANUARY);
-                    cal.set(Calendar.DAY_OF_MONTH, 1);
+                    String pattern = "yyyy-MM-dd";
+                    SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.ENGLISH );
+                    cal.setTime(sdf.parse(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_FECHA))));// all done
                     Date dateRepresentation = cal.getTime();
-                    //lista.setCreoFecha(new Date(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_FECHA))));
                     lista.setCreoFecha(dateRepresentation);
                     lista.setCreoUsuario(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_USUARIO)));
-                    lista.setTipoListaVerificacion(c.getString(c.getColumnIndexOrThrow(TipoListaVerificacion.COLUMN_DESCRIPCION)));
+                    lista.setTipoListaVerificacion(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_TIPO_LISTA_VERIFICACION)));
+                    lista.setIdEstadoListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION)));
+                    lista.setEstadoListaVerificacion(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ESTADO_LISTA_VERIFICACION)));
                     listas.add(lista);
-                    lista=null;
                 }
                 while(c.moveToNext());
                 c.close();
             }
-
         }
         catch (Exception e){
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+            ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion.class.getSimpleName(), "obtenerListasAbiertasPorClienteProyecto",
                     null, null);
         }
 
         return listas;
     }
+
+
+    public static long insertarNuevaListaVerificacion(Context ctx,
+                                                      int idCliente,
+                                                      int idProyecto,
+                                                      int idTipoListaVerificacion){
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
+        long resultado=-1;
+
+        ContentValues values = new ContentValues();
+        values.put(ListaVerificacion.COLUMN_ID_CLIENTE, 		            idCliente);
+        values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION, 		    obtenerSiguienteIdListaVerificacion(ctx, idCliente));
+        values.put(ListaVerificacion.COLUMN_ID_PROYECTO, 		            idProyecto);
+        values.put(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION, 	idTipoListaVerificacion);
+        values.put(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION,   EstadoListaVerificacion.ID_SIN_FINALIZAR);
+        values.put(ListaVerificacion.COLUMN_ESTADO_ENVIO, 	AppValues.EstadosEnvio.No_Enviado.name());
+        values.put(ListaVerificacion.COLUMN_CREO_USUARIO, 	AppValues.SharedPref_obtenerUsuarioNombre(ctx));
+        values.put(ListaVerificacion.COLUMN_CREO_FECHA, 	sdf.format(date));
+
+        DAL w = new DAL(ctx);
+        try{
+            w.iniciarTransaccion();
+            resultado=w.insertRow(NOMBRE_TABLA, values);
+
+            if (resultado!=-1)
+            {
+                values.clear();
+            }
+            else{
+                w.finalizarTransaccion(false);
+                return -1;
+            }
+
+            w.finalizarTransaccion(true);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            resultado=-1;
+            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "insertarNuevaListaVerificacion",
+                    null, null);
+        }
+        return resultado;
+    }
+
+    public static int obtenerSiguienteIdListaVerificacion(Context ctx, int idCliente) {
+        int ultimoId = 0;
+        String query = " SELECT Min(" + COLUMN_ID_LISTA_VERIFICACION + ") as minID ";
+        query += " FROM " + NOMBRE_TABLA;
+        query += " WHERE " + COLUMN_ID_CLIENTE + " = " + idCliente;
+        DAL w = new DAL(ctx);
+        Cursor currentCursor = w.getRow(query);
+        if (currentCursor.moveToFirst()) {
+            while (!currentCursor.isAfterLast()) {
+                ultimoId = currentCursor.getInt(0);
+                if (ultimoId > 0) {
+                    ultimoId = 0;
+                }
+                currentCursor.moveToNext();
+            }
+        }
+        return (ultimoId - 1);
+    }
+
+    private static int obtenerNuevoEstadoListaVerificacion(Context ctx,
+                                                          int idCliente,
+                                                          int idListaVerificacion) {
+        int idNuevoEstado = 0;
+        int idEstadoActual = 0;
+        int cantidadPreguntasRequeridasSinResponder = 0;
+        int cantidadRespuestasInconforme = 0;
+        String query = "Select  L."  + ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION + ", "
+                + " (SELECT COUNT(*)"
+                + "  FROM " + Pregunta.NOMBRE_TABLA + " P"
+                + "  LEFT OUTER JOIN " + ListaVerificacion_Respuesta.NOMBRE_TABLA + " R"
+                + "    ON R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + " = P." + Pregunta.COLUMN_ID_CLIENTE
+                + "   AND R." + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + " = " + idListaVerificacion
+                + "   AND R." + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + " = P." + Pregunta.COLUMN_ID_CONFIGURACION
+                + "   AND R." + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + " = P." + Pregunta.COLUMN_ID_INDICADOR
+                + "   AND R." + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + " = P." + Pregunta.COLUMN_ID_PREGUNTA
+                + "   AND R." + ListaVerificacion_Respuesta.COLUMN_ELIMINADO + " = 0"
+                + "  WHERE P." + Pregunta.COLUMN_ID_CLIENTE + " = S." + TipoListaVerificacion_Seccion.COLUMN_ID_CLIENTE
+                + "   AND P." + Pregunta.COLUMN_ID_CONFIGURACION + " = S." + TipoListaVerificacion_Seccion.COLUMN_ID_CONFIGURACION
+                + "   AND P." + Pregunta.COLUMN_ID_INDICADOR + " = S." + TipoListaVerificacion_Seccion.COLUMN_ID_INDICADOR
+                + "   AND P." + Pregunta.COLUMN_REQUERIDO + " = 1"
+                + "   AND R." + ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA + " is null  ) as " + TipoListaVerificacion_Seccion.COLUMN_CANTIDAD_PREGUNTAS_REQUERIDAS_SIN_RESPONDER + ", "
+                + "  (SELECT COUNT(*)"
+                + "   FROM " + ListaVerificacion_Respuesta.NOMBRE_TABLA + " R "
+                + "   WHERE R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + " = S." + TipoListaVerificacion_Seccion.COLUMN_ID_CLIENTE
+                + "     AND R." + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + " = " + idListaVerificacion
+                + "     AND R." + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + " = S." + TipoListaVerificacion_Seccion.COLUMN_ID_CONFIGURACION
+                + "     AND R." + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + " = S." + TipoListaVerificacion_Seccion.COLUMN_ID_INDICADOR
+                + "     AND R." + ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA + " = 1"
+                + "     AND (R." + ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA + " like 'NC%') "
+                + "     AND S." + TipoListaVerificacion_Seccion.COLUMN_DE_DATOS_GENERALES + " = 0"
+                + "     AND S." + TipoListaVerificacion_Seccion.COLUMN_DE_OBSERVACIONES + " = 0"
+                + "     AND R." + ListaVerificacion_Respuesta.COLUMN_ELIMINADO + " = 0"
+                + "   ) as " + TipoListaVerificacion_Seccion.COLUMN_CANTIDAD_RESPUESTAS_INCONFORME
+                + " FROM " + ListaVerificacion.NOMBRE_TABLA + " L "
+                + " JOIN " + TipoListaVerificacion_Seccion.NOMBRE_TABLA + " S "
+                + "   ON S." + TipoListaVerificacion_Seccion.COLUMN_ID_CLIENTE + " = L." + ListaVerificacion.COLUMN_ID_CLIENTE
+                + "   AND S." + TipoListaVerificacion_Seccion.COLUMN_ID_TIPO_LISTA_VERIFICACION + " = L." + ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION
+                + " WHERE L." + ListaVerificacion.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
+                + "   and L." + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + " = " + String.valueOf(idListaVerificacion);
+        DAL w = new DAL(ctx);
+        Cursor currentCursor = w.getRow(query);
+        if (currentCursor.moveToFirst()) {
+            while (!currentCursor.isAfterLast()) {
+                idEstadoActual = currentCursor.getInt(currentCursor.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION));
+                cantidadPreguntasRequeridasSinResponder = currentCursor.getInt(currentCursor.getColumnIndexOrThrow(TipoListaVerificacion_Seccion.COLUMN_CANTIDAD_PREGUNTAS_REQUERIDAS_SIN_RESPONDER));
+                cantidadRespuestasInconforme = currentCursor.getInt(currentCursor.getColumnIndexOrThrow(TipoListaVerificacion_Seccion.COLUMN_CANTIDAD_RESPUESTAS_INCONFORME));
+                currentCursor.moveToNext();
+            }
+        }
+        if (cantidadPreguntasRequeridasSinResponder > 0) {
+                idNuevoEstado = EstadoListaVerificacion.ID_SIN_FINALIZAR;
+        } else {
+            if (cantidadRespuestasInconforme > 0) {
+                idNuevoEstado = EstadoListaVerificacion.ID_FINALIZADO_CON_INCONFORMIDADES;
+            } else {
+                idNuevoEstado = EstadoListaVerificacion.ID_FINALIZADO;
+            }
+        }
+        if (idEstadoActual == idNuevoEstado) {
+            idNuevoEstado = -1;
+        }
+        return idNuevoEstado;
+    }
+
+    public static boolean ActualizarEstadoListaVerificacion(Context ctx,
+                                                            int idCliente,
+                                                            int idListaVerificacion){
+        boolean resultado;
+        int idNuevoEstado = obtenerNuevoEstadoListaVerificacion(ctx,idCliente,idListaVerificacion);
+        if (idNuevoEstado < 0) {
+            return false;
+        }
+        DAL w = new DAL(ctx);
+        try{
+            w.iniciarTransaccion();
+            //Actualizar el Id del estado de la lista de verificación
+            ContentValues values = new ContentValues();
+            values.put(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION , idNuevoEstado);
+            values.put(ListaVerificacion.COLUMN_ESTADO_ENVIO, AppValues.EstadosEnvio.No_Enviado.name());
+            String where=ListaVerificacion.COLUMN_ID_CLIENTE + "=" + String.valueOf(idCliente)
+                    + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(idListaVerificacion);
+            resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
+            w.finalizarTransaccion(true);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            resultado=false;
+            ManejoErrores.registrarError(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "ActualizarEstadoListaVerificacion",
+                    null, null);
+        }
+        return resultado;
+    }
+
 
 }

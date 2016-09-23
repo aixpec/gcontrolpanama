@@ -43,13 +43,13 @@ public class EstadoListaVerificacion {
         switch (IdEstadoListaVerificacion)
         {
             case ID_SIN_FINALIZAR:
-                img_resource = R.drawable.check_green;
+                img_resource = R.drawable.ic_assignment_black;
                 break;
             case ID_FINALIZADO_CON_INCONFORMIDADES:
-                img_resource = R.drawable.check_gray;
+                img_resource = R.drawable.ic_assignment_late_black;
                 break;
             case ID_FINALIZADO:
-                img_resource = R.drawable.double_check;
+                img_resource = R.drawable.check_gray;
                 break;
         }
         return img_resource;

@@ -2,47 +2,35 @@ package com.gisystems.gcontrolpanama.models.chk;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.gisystems.api.EnvioDatosAPI;
 import com.gisystems.exceptionhandling.ManejoErrores;
 import com.gisystems.gcontrolpanama.database.DAL;
 import com.gisystems.gcontrolpanama.models.AppValues;
+import com.gisystems.gcontrolpanama.models.FotoActividad;
 import com.gisystems.gcontrolpanama.models.Proyecto;
 import com.gisystems.gcontrolpanama.models.cc.Pregunta;
+import com.gisystems.gcontrolpanama.models.cc.PreguntaRespondida;
 import com.gisystems.gcontrolpanama.models.cc.Respuesta;
+import com.gisystems.gcontrolpanama.models.cc.RespuestaIngresada;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
 /**
  * Created by rlemus on 15/08/2016.
  */
-public class ListaVerificacion_Respuesta {
+public class ListaVerificacion_Respuesta extends RespuestaIngresada {
 
-    private int idCliente;
     private int idListaVerificacion;
-    private int idConfiguracion;
-    private int idIndicador;
-    private int idPregunta;
-    private int idListaVerificacionRespuesta;
-    private String descripcionIndicador;
-    private String descripcionPregunta;
-    private int idRespuesta;
-    private String descripcionRespuesta;
-    private String valorRespuesta;
     private String estadoRegistro;
     private String creoUsuario;
     private Date creoFecha;
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
 
     public int getIdListaVerificacion() {
         return idListaVerificacion;
@@ -50,78 +38,6 @@ public class ListaVerificacion_Respuesta {
 
     public void setIdListaVerificacion(int idListaVerificacion) {
         this.idListaVerificacion = idListaVerificacion;
-    }
-
-    public int getIdConfiguracion() {
-        return idConfiguracion;
-    }
-
-    public void setIdConfiguracion(int idConfiguracion) {
-        this.idConfiguracion = idConfiguracion;
-    }
-
-    public int getIdIndicador() {
-        return this.idIndicador;
-    }
-
-    public void setIdIndicador(int idIndicador) {
-        this.idIndicador = idIndicador;
-    }
-
-    public int getIdPregunta() {
-        return this.idPregunta;
-    }
-
-    public void setIdPregunta(int idPregunta) {
-        this.idPregunta = idPregunta;
-    }
-
-    public int getIdListaVerificacionRespuesta() {
-        return this.idListaVerificacionRespuesta;
-    }
-
-    public void setIdListaVerificacionRespuesta(int IdListaVerificacionRespuesta) {
-        this.idListaVerificacionRespuesta = IdListaVerificacionRespuesta;
-    }
-
-    public String getDescripcionIndicador() {
-        return this.descripcionIndicador;
-    }
-
-    public void setDescripcionIndicador(String descripcionIndicador) {
-        this.descripcionIndicador = descripcionIndicador;
-    }
-
-    public String getDescripcionPregunta() {
-        return this.descripcionPregunta;
-    }
-
-    public void setDescripcionPregunta(String descripcionPregunta) {
-        this.descripcionPregunta = descripcionPregunta;
-    }
-
-    public int getIdRespuesta() {
-        return this.idRespuesta;
-    }
-
-    public void setIdRespuesta(int idRespuesta) {
-        this.idRespuesta = idRespuesta;
-    }
-
-    public String getDescripcionRespuesta() {
-        return this.descripcionRespuesta;
-    }
-
-    public void setDescripcionRespuesta(String descripcionRespuesta) {
-        this.descripcionRespuesta = descripcionRespuesta;
-    }
-
-    public String getValorRespuesta() {
-        return this.valorRespuesta;
-    }
-
-    public void setValorRespuesta(String valorRespuesta) {
-        this.valorRespuesta = valorRespuesta;
     }
 
     public String getEstadoRegistro() {
@@ -154,13 +70,13 @@ public class ListaVerificacion_Respuesta {
     public static final String COLUMN_ID_CONFIGURACION	            ="IdConfiguracion";
     public static final String COLUMN_ID_INDICADOR	                ="IdIndicador";
     public static final String COLUMN_ID_PREGUNTA	                ="IdPregunta";
-    public static final String COLUMN_ID_LISTA_VERIFICACION_RESP    ="IdListaVerificacionRespuesta";
     public static final String COLUMN_DESCRIPCION_INDICADOR		    ="DescripcionIndicador";
     public static final String COLUMN_DESCRIPCION_PREGUNTA		    ="DescripcionPregunta";
     public static final String COLUMN_ID_RESPUESTA	                ="IdRespuesta";
     public static final String COLUMN_DESCRIPCION_RESPUESTA		    ="DescripcionRespuesta";
     public static final String COLUMN_VALOR_RESPUESTA		        ="ValorRespuesta";
     public static final String COLUMN_ESTADO_REGISTRO		        ="EstadoRegistro";
+    public static final String COLUMN_ELIMINADO		                ="Eliminado";
     public static final String COLUMN_CREO_USUARIO			        ="CreoUsuario";
     public static final String COLUMN_CREO_FECHA			        ="CreoFecha";
 
@@ -172,16 +88,16 @@ public class ListaVerificacion_Respuesta {
             + COLUMN_ID_CONFIGURACION 	            + " integer not null, "
             + COLUMN_ID_INDICADOR 	                + " integer not null, "
             + COLUMN_ID_PREGUNTA		            + " integer not null, "
-            + COLUMN_ID_LISTA_VERIFICACION_RESP		+ " integer not null, "
             + COLUMN_DESCRIPCION_INDICADOR			+ " text not null, "
             + COLUMN_DESCRIPCION_PREGUNTA			+ " text not null, "
             + COLUMN_ID_RESPUESTA		            + " integer null, "
             + COLUMN_DESCRIPCION_RESPUESTA			+ " text null, "
             + COLUMN_VALOR_RESPUESTA				+ " text not null, "
             + COLUMN_ESTADO_REGISTRO				+ " text not null, "
+            + COLUMN_ELIMINADO				        + " integer not null DEFAULT 0, "
             + COLUMN_CREO_USUARIO				    + " text not null, "
             + COLUMN_CREO_FECHA				        + " text not null, "
-            + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE + ", "  + COLUMN_ID_LISTA_VERIFICACION + ", "  + COLUMN_ID_CONFIGURACION + ", "  + COLUMN_ID_INDICADOR + ", "  + COLUMN_ID_PREGUNTA + ", " + COLUMN_ID_LISTA_VERIFICACION_RESP + "), "
+            + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE + ", "  + COLUMN_ID_LISTA_VERIFICACION + ", "  + COLUMN_ID_CONFIGURACION + ", "  + COLUMN_ID_INDICADOR + ", "  + COLUMN_ID_PREGUNTA + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_LISTA_VERIFICACION + " ) REFERENCES " + ListaVerificacion.NOMBRE_TABLA + "("   + ListaVerificacion.COLUMN_ID_CLIENTE + "," + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + ")  ON UPDATE CASCADE, "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_CONFIGURACION +  ", "  + COLUMN_ID_INDICADOR +  ", "  + COLUMN_ID_PREGUNTA + " ) REFERENCES " + Pregunta.NOMBRE_TABLA + "("   + Pregunta.COLUMN_ID_CLIENTE + "," + Pregunta.COLUMN_ID_CONFIGURACION + "," + Pregunta.COLUMN_ID_INDICADOR + "," + Pregunta.COLUMN_ID_PREGUNTA + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_CONFIGURACION +  ", "  + COLUMN_ID_INDICADOR +  ", "  + COLUMN_ID_PREGUNTA +  ", "  + COLUMN_ID_RESPUESTA + " ) REFERENCES " + Respuesta.NOMBRE_TABLA + "("   + Respuesta.COLUMN_ID_CLIENTE + "," + Respuesta.COLUMN_ID_CONFIGURACION + "," + Respuesta.COLUMN_ID_INDICADOR + "," + Respuesta.COLUMN_ID_PREGUNTA + "," + Respuesta.COLUMN_ID_RESPUESTA + ") "
@@ -200,28 +116,72 @@ public class ListaVerificacion_Respuesta {
         onCreate(database);
     }
 
-    public boolean ActualizarIdListaVerificacionRespuesta(Context ctx, int IdListaVerificacionRespuestaNuevo){
-        boolean resultado=false;
-        if (this.getIdListaVerificacionRespuesta() >= 0) {
-            return false;
-        }
+    public ListaVerificacion_Respuesta() {
+    }
+
+    public ListaVerificacion_Respuesta(RespuestaIngresada respuestaIngresada,
+                                       int idListaVerificacion) {
+        this.setIdCliente(respuestaIngresada.getIdCliente());
+        this.setIdConfiguracion(respuestaIngresada.getIdConfiguracion());
+        this.setIdIndicador(respuestaIngresada.getIdIndicador());
+        this.setIdPregunta(respuestaIngresada.getIdPregunta());
+        this.setIdTipoDato(respuestaIngresada.getIdTipoDato());
+        this.setIndicador(respuestaIngresada.getIndicador());
+        this.setPregunta(respuestaIngresada.getPregunta());
+        this.setRequerido(respuestaIngresada.getRequerido());
+
+        this.setIdRespuesta(respuestaIngresada.getIdRespuesta());
+        this.setDescripcionRespuesta(respuestaIngresada.getDescripcionRespuesta());
+        this.setValorRespuesta(respuestaIngresada.getValorRespuesta());
+        this.setFechaCaptura(respuestaIngresada.getFechaCaptura());
+        this.setCreoFecha(respuestaIngresada.getFechaCaptura());
+
+        this.setIdListaVerificacion(idListaVerificacion);
+    }
+
+
+    @Override
+    public long GrabarRespuestaEnBD(Context ctx) {
+        long resultado = 0;
+        this.setValorRespuesta(this.getValorRespuesta().trim());
+        this.setDescripcionRespuesta(this.getDescripcionRespuesta().trim());
+        boolean yaExisteUnRegistro = existeYaUnaRespuestaEnLaBD(ctx);
+        if (!yaExisteUnRegistro) {
+            if (this.getValorRespuesta().length() > 0) {
+                resultado = insertarRespuestaBD(ctx);
+            }
+        } else {
+            resultado = actualizarRespuestaBD(ctx);
+        };
+        return resultado;
+    }
+
+    @Override
+    public long EnviarRespuestaAlServidor(Context ctx) {
+        EnvioDatosAPI envioDatosAPI = new EnvioDatosAPI(ctx);
+        long resultado = 0;
+        if (envioDatosAPI.EnviarListaVerificacionRespuesta(this)) {
+            resultado = 1;
+        };
+        return resultado;
+    }
+
+    public boolean ActualizarEstadoListaVerificacionRespuesta(Context ctx){
+        boolean resultado;
         DAL w = new DAL(ctx);
         try{
             w.iniciarTransaccion();
             //Actualizar el Id del avance
             ContentValues values = new ContentValues();
-            values.put(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP , IdListaVerificacionRespuestaNuevo);
             values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, AppValues.EstadosEnvio.Enviado.name());
             String where=ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(this.getIdListaVerificacion())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + "=" + String.valueOf(this.getIdConfiguracion())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + "=" + String.valueOf(this.getIdIndicador())
-                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + "=" + String.valueOf(this.getIdPregunta())
-                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP + "=" + String.valueOf(this.getIdListaVerificacionRespuesta());
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + "=" + String.valueOf(this.getIdPregunta());
             resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
 
             if(resultado) {
-                this.setIdListaVerificacionRespuesta(IdListaVerificacionRespuestaNuevo);
                 this.setEstadoRegistro(AppValues.EstadosEnvio.Enviado.name());
             }
             w.finalizarTransaccion(true);
@@ -238,12 +198,10 @@ public class ListaVerificacion_Respuesta {
     }
 
     public boolean ActualizarEstadoRegistro(Context ctx, AppValues.EstadosEnvio nuevoEstado){
-        boolean resultado=false;
+        boolean resultado;
         DAL w = new DAL(ctx);
         try{
             w.iniciarTransaccion();
-            Date date = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
             //Actualizar el Id del avance
             ContentValues values = new ContentValues();
             values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, nuevoEstado.name());
@@ -251,8 +209,7 @@ public class ListaVerificacion_Respuesta {
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(this.getIdListaVerificacion())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + "=" + String.valueOf(this.getIdConfiguracion())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + "=" + String.valueOf(this.getIdIndicador())
-                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + "=" + String.valueOf(this.getIdPregunta())
-                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION_RESP + "=" + String.valueOf(this.getIdListaVerificacionRespuesta());
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + "=" + String.valueOf(this.getIdPregunta());
             resultado= (w.updateRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, values, where)>0);
 
             w.finalizarTransaccion(true);
@@ -266,6 +223,172 @@ public class ListaVerificacion_Respuesta {
                     null, null);
         }
 
+        return resultado;
+    }
+
+    //Devuelve las respuestas ingresadas por pregunta
+    public static ArrayList<ListaVerificacion_Respuesta> obtenerRespuestasIngresadas_X_Pregunta(Context ctx,
+                                                                                                int idCliente,
+                                                                                                int idListaVerificacion,
+                                                                                                Pregunta pregunta){
+        DAL w = new DAL(ctx);
+        ArrayList<ListaVerificacion_Respuesta> respuestas = new ArrayList<>();
+        ListaVerificacion_Respuesta respuesta;
+
+        Cursor c;
+
+        try {
+            String query = "Select  "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_CREO_FECHA
+                    + " FROM " + ListaVerificacion_Respuesta.NOMBRE_TABLA + " R "
+                    + " WHERE R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
+                    + "   and R." + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + " = " + String.valueOf(idListaVerificacion)
+                    + "   and R." + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + " = " + String.valueOf(pregunta.getIdConfiguracion())
+                    + "   and R." + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + " = " + String.valueOf(pregunta.getIdIndicador())
+                    + "   and R." + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + " = " + String.valueOf(pregunta.getIdPregunta())
+                    + "   and R." + ListaVerificacion_Respuesta.COLUMN_ELIMINADO + " = 0";
+            c =  w.getRow(query);
+
+            if(c.moveToFirst()){
+                do {
+                    respuesta=new ListaVerificacion_Respuesta();
+                    respuesta.setIdCliente(idCliente);
+                    respuesta.setIdListaVerificacion(idListaVerificacion);
+                    respuesta.setIdConfiguracion(pregunta.getIdConfiguracion());
+                    respuesta.setIdIndicador(pregunta.getIdIndicador());
+                    respuesta.setIdPregunta(pregunta.getIdPregunta());
+                    respuesta.setIdRespuesta(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA)));
+                    respuesta.setDescripcionRespuesta(c.getString(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA)));
+                    respuesta.setValorRespuesta(c.getString(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA)));
+
+                    respuesta.setIndicador(pregunta.getIndicador());
+                    respuesta.setPregunta(pregunta.getPregunta());
+
+                    respuestas.add(respuesta);
+                }
+                while(c.moveToNext());
+                c.close();
+            }
+        }
+        catch (Exception e){
+            ManejoErrores.registrarError(ctx, e,
+                    TipoListaVerificacion_Seccion.class.getSimpleName(), "obtenerRespuestasIngresadas_X_Pregunta",
+                    null, null);
+        }
+        return respuestas;
+    }
+
+    public long insertarRespuestaBD(Context ctx){
+
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss",Locale.getDefault());
+        long resultado;
+
+        this.creoUsuario = AppValues.SharedPref_obtenerUsuarioNombre(ctx);
+        this.creoFecha = date;
+
+        ContentValues values = new ContentValues();
+
+        values.put(ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE, 		        this.getIdCliente());
+        values.put(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION, 	this.getIdListaVerificacion());
+        values.put(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION, 		this.getIdConfiguracion());
+        values.put(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR, 		    this.getIdIndicador());
+        values.put(ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA, 		        this.getIdPregunta());
+        values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR, 	this.getIndicador());
+        values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA, 	this.getPregunta());
+        if (this.getIdRespuesta() > 0) {
+            values.put(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA, this.getIdRespuesta());
+        }
+        values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA, 	this.getDescripcionRespuesta());
+        values.put(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA, 		    this.getValorRespuesta());
+        values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, 	        AppValues.EstadosEnvio.No_Enviado.name());
+        values.put(ListaVerificacion_Respuesta.COLUMN_ELIMINADO, 	            0);
+        values.put(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO, 	        this.creoUsuario);
+        values.put(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA, 	            sdf.format(this.creoFecha));
+
+        DAL w = new DAL(ctx);
+        try{
+            w.iniciarTransaccion();
+            resultado=w.insertRow(NOMBRE_TABLA, values);
+            w.finalizarTransaccion(true);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            resultado=-1;
+            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                    ListaVerificacion_Respuesta.class.getSimpleName(), "insertarRespuestaBD",
+                    null, null);
+        }
+        return resultado;
+    }
+
+    public boolean existeYaUnaRespuestaEnLaBD(Context ctx) {
+        int cantidadExistente = 0;
+        String query = " SELECT count(*) as cantidadExistente ";
+        query += " FROM " + NOMBRE_TABLA;
+        query += " WHERE " + COLUMN_ID_CLIENTE + " = " + this.getIdCliente();
+        query += " AND " + COLUMN_ID_LISTA_VERIFICACION + " = " + this.getIdListaVerificacion();
+        query += " AND " + COLUMN_ID_CONFIGURACION + " = " + this.getIdConfiguracion();
+        query += " AND " + COLUMN_ID_INDICADOR + " = " + this.getIdIndicador();
+        query += " AND " + COLUMN_ID_PREGUNTA + " = " + this.getIdPregunta();
+
+        DAL w = new DAL(ctx);
+        Cursor currentCursor = w.getRow(query);
+        if (currentCursor.moveToFirst()) {
+            while (!currentCursor.isAfterLast()) {
+                cantidadExistente = currentCursor.getInt(0);
+                currentCursor.moveToNext();
+            }
+        }
+        return (cantidadExistente > 0);
+    }
+
+    public long actualizarRespuestaBD(Context ctx){
+        long resultado;
+        DAL w = new DAL(ctx);
+        try{
+            w.iniciarTransaccion();
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss",Locale.getDefault());
+            //Actualizar el Id del avance
+            ContentValues values = new ContentValues();
+            values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR, 	this.getIndicador());
+            values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA, 	this.getPregunta());
+            if (this.getIdRespuesta() > 0) {
+                values.put(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA, this.getIdRespuesta());
+            }
+            values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA, 	this.getDescripcionRespuesta());
+            values.put(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA, 		    this.getValorRespuesta());
+            values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, 	        AppValues.EstadosEnvio.No_Enviado.name());
+            values.put(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO, 	        AppValues.SharedPref_obtenerUsuarioNombre(ctx));
+            values.put(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA, 	            sdf.format(date));
+            if (this.getValorRespuesta().length() > 0) {
+                values.put(ListaVerificacion_Respuesta.COLUMN_ELIMINADO, 	        0);
+            } else {
+                values.put(ListaVerificacion_Respuesta.COLUMN_ELIMINADO, 	        1);
+            }
+            String where=ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(this.getIdListaVerificacion())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + "=" + String.valueOf(this.getIdConfiguracion())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + "=" + String.valueOf(this.getIdIndicador())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + "=" + String.valueOf(this.getIdPregunta())
+                    + " and " + ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA  + " <> '" +  String.valueOf(this.getValorRespuesta()) + "'";
+            resultado= w.updateRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, values, where);
+
+            w.finalizarTransaccion(true);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            resultado=-1;
+            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                    ListaVerificacion_Respuesta.class.getSimpleName(), "actualizarRespuestaBD",
+                    null, null);
+        }
         return resultado;
     }
 

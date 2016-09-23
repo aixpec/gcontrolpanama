@@ -1,5 +1,7 @@
 package com.gisystems.gcontrolpanama.models.cc;
 
+import android.content.Context;
+
 import java.util.Date;
 
 /**
@@ -8,8 +10,8 @@ import java.util.Date;
 public class RespuestaIngresada extends Pregunta {
 
     private int idRespuesta;
-    private String descripcionRespuesta;
-    private String valorRespuesta;
+    private String descripcionRespuesta = "";
+    private String valorRespuesta = "";
     private Date fechaCaptura;
 
     public RespuestaIngresada() {
@@ -57,4 +59,13 @@ public class RespuestaIngresada extends Pregunta {
     public void setFechaCaptura(Date fechaCaptura) {
         this.fechaCaptura = fechaCaptura;
     }
+
+    public long GrabarRespuestaEnBD(Context ctx) {
+        return 0;
+    }
+
+    public long EnviarRespuestaAlServidor(Context ctx) {
+        return 0;
+    }
+
 }

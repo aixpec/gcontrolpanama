@@ -10,7 +10,7 @@ public class LogApp {
 	public static final String COLUMN_ID="IdLog";
 	public static final String COLUMN_MSG="Msg";
 	public static final String COLUMN_ORIGEN="Origen";
-	public static final String COLUMN_FECHA="Fecha";
+	public static final String COLUMN_FECHA="PreguntaFechaUI";
 	public static final String COLUMN_USUARIO="Usuario";
 	
 	private static final String DATABASE_CREATE="create table "
