@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '23.0.2'
+    buildToolsVersion '23.0.3'
     defaultConfig {
         applicationId 'com.gisystems.gcontrolpanama'
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 23
         multiDexEnabled true
 
         compileOptions {
@@ -34,14 +34,17 @@ android {
     }
 
     useLibrary 'org.apache.http.legacy'
-
-
 }
 
 dependencies {
     compile project(':mPChartLib')
-    compile project(':cardview')
+//    compile project(':cardview')
     compile 'com.google.android.gms:play-services:+'
-    compile 'com.android.support:appcompat-v7:23.0.0'
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:cardview-v7:23.0.0'
     compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
 }
