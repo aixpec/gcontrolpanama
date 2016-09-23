@@ -25,6 +25,7 @@ import com.gisystems.gcontrolpanama.R;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 import com.gisystems.gcontrolpanama.models.Proyecto;
+import com.gisystems.gcontrolpanama.reglas.checklists.ListasVerificacionActivity;
 import com.gisystems.utils.Utilitarios;
 
 import java.util.concurrent.ExecutionException;

@@ -7,6 +7,7 @@ import com.gisystems.gcontrolpanama.models.AppValues;
 import com.gisystems.exceptionhandling.ManejoErrores;
 import com.gisystems.utils.Utilitarios;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,10 +15,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -39,9 +43,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private Boolean usuario_valido=false;
 	private Button btnValidarCredenciales;
 	private Button btnModoDesconectado;
-	ProgressDialog pDialog;
-	
-	@Override
+	private ProgressDialog pDialog;
+
+    private static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE  = 544;
+
+    @Override
 	protected void onCreate(Bundle savedState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedState);
@@ -153,7 +159,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 			
 			if (id==R.id.activity_login_btnIngresar)
 			{
-				verificarUsuario();
+                if (tengoPermisoParaAccederAlTelefono()) {
+                    verificarUsuario();
+                } else {
+                    solicitarPermisosAlUsuario();
+                }
 			}
 			else if (id==R.id.activity_login_btnIngresarModoDesconectado)
 			{								
@@ -393,5 +403,55 @@ public class LoginActivity extends Activity implements OnClickListener {
 		if (pDialog != null) pDialog.dismiss();
 		super.onPause();
 	}
-    
+
+
+    private boolean tengoPermisoParaAccederAlTelefono() {
+        return (ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.READ_PHONE_STATE)
+                == PackageManager.PERMISSION_GRANTED);
+    }
+
+    //https://developer.android.com/training/permissions/requesting.html
+    private void solicitarPermisosAlUsuario() {
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(LoginActivity.this,
+                    Manifest.permission.READ_PHONE_STATE)) {
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(LoginActivity.this,
+                        new String[]{Manifest.permission.READ_PHONE_STATE},
+                        MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+    }
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode,
+										   String permissions[], int[] grantResults) {
+		switch (requestCode) {
+			case MY_PERMISSIONS_REQUEST_READ_PHONE_STATE: {
+				// If request is cancelled, the result arrays are empty.
+				if (grantResults.length > 0
+						&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+					// permission was granted, yay!
+                    verificarUsuario();
+				} else {
+					// permission denied, boo! Disable the
+					// functionality that depends on this permission.
+				}
+				return;
+			}
+		}
+	}
+
 }
