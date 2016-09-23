@@ -28,7 +28,7 @@
         android:required="false" />
     <uses-permission
         android:name="android.permission.READ_PHONE_STATE"
-        android:required="false" />
+        android:required="true" />
     <uses-permission
         android:name="android.permission.CAMERA"
         android:required="false" />
@@ -59,8 +59,7 @@
         android:name="android.hardware.touchscreen"
         android:required="false" />
 
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -82,14 +81,14 @@
         <activity
             android:name=".reglas.ActividadMainMenu"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".reglas.ActividadAgregarAvances"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".reglas.LoginActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".reglas.ProyectosListadoActivity"
             android:label="@string/app_name">
@@ -106,21 +105,26 @@
         </activity>
         <activity
             android:name=".reglas.BitacoraActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".reglas.ProyectoDetalleActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".reglas.ConstruccionDetalleActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".reglas.ActividadAgregarAvancesActivity"
-            android:label="@string/titulo_AgregarAvances"></activity>
+            android:label="@string/titulo_AgregarAvances" />
         <activity
             android:name=".reglas.FotoNuevaActivity"
             android:label="@string/titulo_NuevaFoto"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".reglas.ListasVerificacionActivity"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".reglas.checklists.ListasVerificacionActivity"
+            android:label="@string/titulo_ListasVerificacion" />
+
+        <activity android:name=".reglas.checklists.ListasVerificacionSecciones" />
+        <activity android:name=".reglas.checklists.ListasVerificacionPreguntas" />
     </application>
 
 </manifest>
