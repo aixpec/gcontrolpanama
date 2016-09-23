@@ -2,33 +2,25 @@ package com.gisystems.gcontrolpanama.adaptadores;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gisystems.gcontrolpanama.R;
 import com.gisystems.gcontrolpanama.models.chk.EstadoListaVerificacion;
-import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion;
-import com.gisystems.utils.Utilitarios;
+import com.gisystems.gcontrolpanama.models.chk.TipoListaVerificacion_Seccion;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 
-public class AdaptadorChecklists extends ArrayAdapter<ListaVerificacion> implements View.OnClickListener {
+public class AdaptadorSeccionesDeChecklist extends ArrayAdapter<TipoListaVerificacion_Seccion> implements View.OnClickListener {
 
     private Activity context;
-    private final ArrayList<ListaVerificacion> arrayOriginalListas;
-    private ArrayList<ListaVerificacion> arrayModificadoListas;
+    private final ArrayList<TipoListaVerificacion_Seccion> arrayOriginalSecciones;
+    private ArrayList<TipoListaVerificacion_Seccion> arrayModificadoSecciones;
     static class ViewHolder {
         public ImageView imgEstado;
         public TextView primeraLinea;
@@ -36,13 +28,13 @@ public class AdaptadorChecklists extends ArrayAdapter<ListaVerificacion> impleme
         public TextView terceraLinea;
     }
 
-    public AdaptadorChecklists(Activity Context, ArrayList<ListaVerificacion> Listas){
-        super(Context, R.layout.list_item_checklists, Listas);
+    public AdaptadorSeccionesDeChecklist(Activity Context, ArrayList<TipoListaVerificacion_Seccion> secciones){
+        super(Context, R.layout.list_item_checklists, secciones);
         this.context=Context;
 
-        this.arrayModificadoListas=Listas;
-        this.arrayOriginalListas = new ArrayList<ListaVerificacion>();
-        this.arrayOriginalListas.addAll(Listas);
+        this.arrayModificadoSecciones=secciones;
+        this.arrayOriginalSecciones = new ArrayList<>();
+        this.arrayOriginalSecciones.addAll(secciones);
     }
 
     @SuppressLint("InflateParams") @Override
@@ -64,21 +56,19 @@ public class AdaptadorChecklists extends ArrayAdapter<ListaVerificacion> impleme
 
         // fill data
         ViewHolder holder = (ViewHolder) rowView.getTag();
-        final ListaVerificacion lista = arrayModificadoListas.get(position);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH );
-        holder.primeraLinea.setText(sdf.format(lista.getCreoFecha()));
-        holder.segundaLinea.setText(lista.getTipoListaVerificacion());
-        String terceraLinea = lista.getCreoUsuario() + " - " + lista.getEstadoListaVerificacion();
+        final TipoListaVerificacion_Seccion seccion = arrayModificadoSecciones.get(position);
+        holder.primeraLinea.setText(seccion.getNombre());
+        String segundaLinea = "Preguntas sin responder: " + seccion.getCantidadPreguntasRequeridasSinResponder() + " / " + seccion.getCantidadPreguntasRequeridas();
+        holder.segundaLinea.setText(segundaLinea);
+        String terceraLinea = seccion.getDescripcionEstado();
         holder.terceraLinea.setText(terceraLinea);
-        holder.imgEstado.setImageResource(EstadoListaVerificacion.getIdImageResource(lista.getIdEstadoListaVerificacion()));
+        holder.imgEstado.setImageResource(seccion.getIdImageResource());
 
         return rowView;
     }
 
-
     @Override
     public void onClick(View v) {
     }
-
 
 }

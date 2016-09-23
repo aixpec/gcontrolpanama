@@ -80,8 +80,8 @@ public class AdaptadorBitacora extends ArrayAdapter<BitacoraItem> {
 			holder.tvActividad.setText(Actividad.obtenerActividad(context, avance.getIdCliente(), avance.getIdProyecto(), avance.getIdConstruccion(), avance.getIdActividad()).getCodigoInstitucional());
 			//holder.tvActividad.setText(String.valueOf(avance.getIdActividad()));
 
-		    holder.tvFechaCaptura.setText("Fecha de captura: " + avance.getFechaCaptura());
-		    holder.tvFechaEnvio.setText( "Fecha de envío: " + avance.getFechaEnvio());
+		    holder.tvFechaCaptura.setText("PreguntaFechaUI de captura: " + avance.getFechaCaptura());
+		    holder.tvFechaEnvio.setText( "PreguntaFechaUI de envío: " + avance.getFechaEnvio());
 		    holder.tvEstado.setText("Estado: " + avance.getEdoEnvio().name()); 
 		    holder.tvIdAntiguedad.setText("Id. Recibido: " + String.valueOf(avance.getIdAntiguedad()));
 		    holder.ivFoto.setImageBitmap(item.getImagenEstado());
