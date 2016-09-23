@@ -1,6 +1,7 @@
 package com.gisystems.gcontrolpanama.reglas.cc;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.content.Context;
 import android.text.Editable;
@@ -38,7 +39,7 @@ public class PreguntaListaTextoUI extends PreguntaUI {
     private void crearViews_ListaTexto() {
         int padding = Math.round(dipToPx(10));
         LinearLayout.LayoutParams layoutParams;
-        layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         txtFiltro = new EditText(context);
         txtFiltro.setLayoutParams(layoutParams);
         txtFiltro.setPadding(padding, padding, padding, padding);
@@ -47,7 +48,7 @@ public class PreguntaListaTextoUI extends PreguntaUI {
         this.addView(txtFiltro);
 
         spnRespuesta = new Spinner(context);
-        layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, Math.round(dipToPx(60)));
+        layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, Math.round(dipToPx(60)));
         spnRespuesta.setPadding(padding, padding, padding, padding);
         spnRespuesta.setLayoutParams(layoutParams);
         habilitarListenerSpinnerItemSeleccionado();
@@ -203,16 +204,24 @@ public class PreguntaListaTextoUI extends PreguntaUI {
         if (respuestaValida)
         {
             try {
+                //**Verificar que tenga un objeto RespuestaIngresada
+                if (this.preguntaRespondida.getRespuestasSeleccionadas().size() > 0) {
+                    respuestaSeleccionada =  this.preguntaRespondida.getRespuestasSeleccionadas().get(0);
+                } else {
+                    respuestaSeleccionada =  new RespuestaIngresada(this.pregunta);
+                    this.preguntaRespondida.getRespuestasSeleccionadas().add(respuestaSeleccionada);
+                }
                 //**************************************
                 //**** Respuesta de la pregunta 1 ******
-                respuestaSeleccionada =  new RespuestaIngresada();
                 respuestaSeleccionada.setValorRespuesta(respuesta);
+                respuestaSeleccionada.setFechaCaptura(new Date());
                 //la posicion del spinner sera la misma que la del arreglo
                 for(int index = 0; index < pregunta.getRespuestas().size(); index++)
                 {
                     if ( pregunta.getRespuestas().get(index).getRespuesta().equals(spnRespuesta.getSelectedItem().toString()))
                     {
                         respuestaSeleccionada.setIdRespuesta(pregunta.getRespuestas().get(index).getIdRespuesta());
+                        respuestaSeleccionada.setDescripcionRespuesta(respuesta);
                         break;
                     }
                 }

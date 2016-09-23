@@ -195,6 +195,22 @@ public class FuncionesGlobales {
                     }
 
                     break;
+                case Hora: //Hora
+                    try {
+                        if(isThisDateValid(respuesta.toString(), "hh:mm"))
+                        {
+                            isValid = true;
+                        }
+                        else
+                        {
+                            throw new IllegalArgumentException("Ingrese una hora válida");
+                        }
+
+                    } catch (Exception e) {
+                        throw new IllegalArgumentException("Ingrese una hora válida");
+                    }
+
+                    break;
                 case Lista_Texto:
                     try {
                         if (respuesta.toString().length() > 0)

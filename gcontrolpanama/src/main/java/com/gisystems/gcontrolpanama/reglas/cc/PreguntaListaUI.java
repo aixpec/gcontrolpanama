@@ -1,8 +1,10 @@
 package com.gisystems.gcontrolpanama.reglas.cc;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -36,17 +38,9 @@ public class PreguntaListaUI extends PreguntaUI {
     private void crearViews_Lista() {
         int padding = Math.round(dipToPx(10));
         LinearLayout.LayoutParams layoutParams;
-        layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        txtFiltro = new EditText(context);
-        txtFiltro.setLayoutParams(layoutParams);
-        txtFiltro.setPadding(padding, padding, padding, padding);
-        txtFiltro.setInputType(InputType.TYPE_CLASS_TEXT);
-        txtFiltro.setImeOptions(0x000000b1);
-        habilitarListenerFiltroParaSpinner();
-        this.addView(txtFiltro);
 
         spnRespuesta = new Spinner(context);
-        layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, Math.round(dipToPx(60)));
+        layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, Math.round(dipToPx(60)));
         spnRespuesta.setPadding(padding, padding, padding, padding);
         spnRespuesta.setLayoutParams(layoutParams);
         this.addView(spnRespuesta);
@@ -61,6 +55,20 @@ public class PreguntaListaUI extends PreguntaUI {
         }
         // Asociar el adaptador al respectivo spinner
         spnRespuesta.setAdapter(adapterLista);
+
+        layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        txtFiltro = new EditText(context);
+        txtFiltro.setLayoutParams(layoutParams);
+        txtFiltro.setPadding(padding, padding, padding, padding);
+        txtFiltro.setInputType(InputType.TYPE_CLASS_TEXT);
+        txtFiltro.setImeOptions(0x000000b1);
+        if (Build.VERSION.SDK_INT <  Build.VERSION_CODES.M) {
+            txtFiltro.setTextAppearance(context,android.R.style.TextAppearance_Small);
+        } else {
+            txtFiltro.setTextAppearance(android.R.style.TextAppearance_Small);
+        }
+        habilitarListenerFiltroParaSpinner();
+        this.addView(txtFiltro);
     }
 
     @Override
@@ -105,6 +113,9 @@ public class PreguntaListaUI extends PreguntaUI {
 
     @Override
     public void mostrarRespuestas() {
+        if (preguntaRespondida.getRespuestasSeleccionadas().size() == 0) {
+            return;
+        }
         //1. Verificar si la respuesta a la pregunta de lugar visitado es "otro"
         boolean respuestaEsOtro = false;
         int contador = 0;
@@ -165,21 +176,27 @@ public class PreguntaListaUI extends PreguntaUI {
         if (respuestaValida)
         {
             try {
+                //**Verificar que tenga un objeto RespuestaIngresada
+                if (this.preguntaRespondida.getRespuestasSeleccionadas().size() > 0) {
+                    respuestaSeleccionada =  this.preguntaRespondida.getRespuestasSeleccionadas().get(0);
+                } else {
+                    respuestaSeleccionada =  new RespuestaIngresada(this.pregunta);
+                    this.preguntaRespondida.getRespuestasSeleccionadas().add(respuestaSeleccionada);
+                }
                 //**************************************
                 //**** Respuesta de la pregunta 1 ******
-                respuestaSeleccionada =  new RespuestaIngresada();
                 respuestaSeleccionada.setValorRespuesta(respuesta);
+                respuestaSeleccionada.setFechaCaptura(new Date());
                 //la posicion del spinner sera la misma que la del arreglo
                 for(int index = 0; index < pregunta.getRespuestas().size(); index++)
                 {
                     if ( pregunta.getRespuestas().get(index).getRespuesta().equals(spnRespuesta.getSelectedItem().toString()))
                     {
                         respuestaSeleccionada.setIdRespuesta(pregunta.getRespuestas().get(index).getIdRespuesta());
+                        respuestaSeleccionada.setDescripcionRespuesta(pregunta.getRespuestas().get(index).getRespuesta());
                         break;
                     }
                 }
-
-                this.preguntaRespondida.getRespuestasSeleccionadas().add(respuestaSeleccionada);
             } catch (Exception e) {
                 e.printStackTrace();
             }

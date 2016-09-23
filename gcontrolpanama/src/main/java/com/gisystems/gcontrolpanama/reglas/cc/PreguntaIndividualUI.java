@@ -2,8 +2,12 @@ package com.gisystems.gcontrolpanama.reglas.cc;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gisystems.gcontrolpanama.models.cc.Pregunta;
@@ -12,7 +16,7 @@ import com.gisystems.gcontrolpanama.models.cc.RespuestaIngresada;
 
 import java.util.ArrayList;
 
-public class PreguntaIndividualUI extends LinearLayout {
+public class PreguntaIndividualUI extends CardView {
 
     private Context actividadCreo;
     private Context context;
@@ -26,12 +30,13 @@ public class PreguntaIndividualUI extends LinearLayout {
         this.context = actividad;
         this.actividadCreo = actividad;
         this.pregunta = pregunta;
+        this.preguntaRespondida = preguntaRespondida;
         this.tipoCampo = TipoCampoUI.getTipoCampoCorrespondiente(pregunta.getIdTipoDato());
         crearLayout();
     }
 
-    private void agregarDescripcionPregunta() {
-        LinearLayout.LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+    private TextView agregarDescripcionPregunta() {
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
         int Dips10 = obtenerMagnitudEnDIPs(10);
         int Dips5 = obtenerMagnitudEnDIPs(5);
         layoutParams.setMargins(Dips10, Dips5, Dips10, Dips10);
@@ -40,20 +45,26 @@ public class PreguntaIndividualUI extends LinearLayout {
         txt.setText(preg);
         txt.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
         txt.setLayoutParams(layoutParams);
-        this.addView(txt);
+        return txt;
     }
 
     private void crearLayout() {
-        this.setOrientation(LinearLayout.VERTICAL);
+        //*** Layout del CardView
         LinearLayout.LayoutParams layoutParams;
-        layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(0, 0, 0, obtenerMagnitudEnDIPs(10));
         this.setLayoutParams(layoutParams);
-        agregarDescripcionPregunta();
+        this.setContentPadding(15, 15, 15, 15);
+        //*** Agregar un LinearLayout que abarque el CardView
+        LinearLayout layoutFondo = new LinearLayout(context);
+        layoutFondo.setOrientation(LinearLayout.VERTICAL);
+        layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        layoutFondo.setLayoutParams(layoutParams);
+        layoutFondo.addView(agregarDescripcionPregunta());
         //*** Layout de datos
         LinearLayout layoutDatos = new LinearLayout(context);
         layoutDatos.setOrientation(LinearLayout.VERTICAL);
-        layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT );
+        layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         layoutDatos.setLayoutParams(layoutParams);
         //*** Crear views correspondientes al tipo de campo
         switch (tipoCampo) {
@@ -67,11 +78,13 @@ public class PreguntaIndividualUI extends LinearLayout {
                 layoutPregunta = new PreguntaNumeroUI(this.actividadCreo, this.pregunta, this.preguntaRespondida);
                 break;
             case Texto:
+                layoutPregunta = new PreguntaTextoUI(this.actividadCreo, this.pregunta, this.preguntaRespondida);
                 break;
             case Fecha:
                 layoutPregunta = new PreguntaFechaUI(this.actividadCreo, this.pregunta, this.preguntaRespondida);
                 break;
             case Hora:
+                layoutPregunta = new PreguntaHoraUI(this.actividadCreo, this.pregunta, this.preguntaRespondida);
                 break;
             case Lista_Texto:
                 layoutPregunta = new PreguntaListaTextoUI(this.actividadCreo, this.pregunta, this.preguntaRespondida);
@@ -84,7 +97,8 @@ public class PreguntaIndividualUI extends LinearLayout {
         if (layoutPregunta != null) {
             layoutDatos.addView(layoutPregunta);
         }
-        addView(layoutDatos);
+        layoutFondo.addView(layoutDatos);
+        this.addView(layoutFondo);
     }
 
     public boolean esRespuestaIngresada() {
@@ -111,7 +125,7 @@ public class PreguntaIndividualUI extends LinearLayout {
         return respuesta;
     }
 
-    public void mostrarRespuestas(PreguntaRespondida preguntaRespondida) {
+    public void mostrarRespuestas() {
         if (layoutPregunta != null) {
             layoutPregunta.mostrarRespuestas();
         }

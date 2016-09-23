@@ -2,11 +2,14 @@ package com.gisystems.gcontrolpanama.reglas.cc;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.gisystems.gcontrolpanama.R;
 import com.gisystems.gcontrolpanama.models.cc.Pregunta;
 import com.gisystems.gcontrolpanama.models.cc.PreguntaRespondida;
 import com.gisystems.gcontrolpanama.models.cc.RespuestaIngresada;
@@ -31,26 +35,31 @@ public class PreguntaFechaUI extends PreguntaUI {
     private void crearViews() {
         LinearLayout.LayoutParams layoutParams;
         this.setOrientation(LinearLayout.VERTICAL);
-        layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         this.setLayoutParams(layoutParams);
-
         // Agregar datepicker
-        dtpRespuesta = new DatePicker(context);
-        layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        dtpRespuesta.setLayoutParams(layoutParams);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            dtpRespuesta = new DatePicker(context);
+            layoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+            dtpRespuesta.setLayoutParams(layoutParams);
+            dtpRespuesta.setCalendarViewShown(false);
+        } else {
+            LayoutInflater inflater = LayoutInflater.from( context );
+            dtpRespuesta = (DatePicker)inflater.inflate(  R.layout.datepicker, null );
+        }
         this.addView(dtpRespuesta);
         ((LayoutParams)dtpRespuesta.getLayoutParams()).gravity = Gravity.CENTER_HORIZONTAL;
 
         //Agregar layout para botones de restar o sumar días
         LinearLayout layoutBotones = new LinearLayout(context);
         layoutBotones.setOrientation(LinearLayout.HORIZONTAL);
-        layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        layoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         layoutBotones.setLayoutParams(layoutParams);
         layoutBotones.setPadding(0, Math.round(dipToPx(15)), 0, 0);
 
         //Agregar views para restar o sumar días
         txtDias = new EditText(context);
-        layoutParams = new LayoutParams(Math.round(dipToPx(60)), Math.round(dipToPx(50)));
+        layoutParams = new LinearLayout.LayoutParams(Math.round(dipToPx(60)), Math.round(dipToPx(50)));
         txtDias.setLayoutParams(layoutParams);
         txtDias.setInputType(InputType.TYPE_CLASS_NUMBER);
         txtDias.setMaxEms(3);
@@ -99,7 +108,7 @@ public class PreguntaFechaUI extends PreguntaUI {
             String[] Fecha;
             Fecha = this.preguntaRespondida.getRespuestasSeleccionadas().get(0).getValorRespuesta().split("-");
             if (Fecha.length == 3) {
-                dtpRespuesta.updateDate(Integer.parseInt(Fecha[2]), (Integer.parseInt(Fecha[1])) - 1, Integer.parseInt(Fecha[0]));
+                dtpRespuesta.updateDate(Integer.parseInt(Fecha[0]), (Integer.parseInt(Fecha[1])) - 1, Integer.parseInt(Fecha[2]));
             } else {
                 Toast.makeText(context, "No se ha podido obtener la fecha anterior", Toast.LENGTH_SHORT).show();
             }
@@ -111,10 +120,15 @@ public class PreguntaFechaUI extends PreguntaUI {
         RespuestaIngresada respuestaSeleccionada;
         Boolean respuestaValida = false;
         String respuesta;
-        //**Vaciar lista
-        this.preguntaRespondida.getRespuestasSeleccionadas().clear();
+        //**Verificar que tenga un objeto RespuestaIngresada
+        if (this.preguntaRespondida.getRespuestasSeleccionadas().size() > 0) {
+            respuestaSeleccionada =  this.preguntaRespondida.getRespuestasSeleccionadas().get(0);
+        } else {
+            respuestaSeleccionada =  new RespuestaIngresada(this.pregunta);
+            this.preguntaRespondida.getRespuestasSeleccionadas().add(respuestaSeleccionada);
+        }
         //**Obtener respuesta
-        respuesta = dtpRespuesta.getDayOfMonth() + "-" + String.valueOf( dtpRespuesta.getMonth()+1) + "-" + dtpRespuesta.getYear();
+        respuesta = dtpRespuesta.getYear() + "-" + String.valueOf( dtpRespuesta.getMonth()+1) + "-" + dtpRespuesta.getDayOfMonth();
         //**Validar respuesta
         if (respuesta.length() > 0) {
             try {
@@ -127,10 +141,9 @@ public class PreguntaFechaUI extends PreguntaUI {
         if (respuestaValida)
         {
             try {
-                respuestaSeleccionada =  new RespuestaIngresada(this.pregunta);
                 respuestaSeleccionada.setValorRespuesta(respuesta);
-                //Almacenando las respuestas seleccionadas en la pregunta
-                this.preguntaRespondida.getRespuestasSeleccionadas().add(respuestaSeleccionada);
+                respuestaSeleccionada.setDescripcionRespuesta(respuesta);
+                respuestaSeleccionada.setFechaCaptura(new Date());
             } catch (Exception e) {
                 e.printStackTrace();
             }

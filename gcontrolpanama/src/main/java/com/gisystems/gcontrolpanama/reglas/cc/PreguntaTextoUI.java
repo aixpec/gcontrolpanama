@@ -1,8 +1,5 @@
 package com.gisystems.gcontrolpanama.reglas.cc;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 import android.content.Context;
 import android.text.InputType;
 import android.widget.EditText;
@@ -13,11 +10,17 @@ import com.gisystems.gcontrolpanama.models.cc.Pregunta;
 import com.gisystems.gcontrolpanama.models.cc.PreguntaRespondida;
 import com.gisystems.gcontrolpanama.models.cc.RespuestaIngresada;
 
-public class PreguntaNumeroUI extends PreguntaUI {
+import java.util.ArrayList;
+import java.util.Date;
+
+/**
+ * Created by rlemus on 12/09/2016.
+ */
+public class PreguntaTextoUI extends PreguntaUI {
 
     private EditText txtRespuesta;
 
-    public PreguntaNumeroUI(Context actividad, Pregunta pregunta, PreguntaRespondida preguntaRespondida) {
+    public PreguntaTextoUI(Context actividad, Pregunta pregunta, PreguntaRespondida preguntaRespondida) {
         super(actividad, pregunta, preguntaRespondida);
         crearView();
     }
@@ -27,14 +30,7 @@ public class PreguntaNumeroUI extends PreguntaUI {
         layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         txtRespuesta = new EditText(context);
         txtRespuesta.setLayoutParams(layoutParams);
-        switch (TipoCampoUI.getTipoCampoCorrespondiente(pregunta.getIdTipoDato())) {
-            case NumeroReal:
-                txtRespuesta.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-                break;
-            case NumeroEntero:
-                txtRespuesta.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
-                break;
-        }
+        txtRespuesta.setInputType(InputType.TYPE_CLASS_TEXT);
         this.addView(txtRespuesta);
     }
 
