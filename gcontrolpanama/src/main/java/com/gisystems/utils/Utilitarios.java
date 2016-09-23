@@ -60,10 +60,10 @@ public class Utilitarios {
 	}
 	
 	public static TelephoneID ObtenerIdTelefono(Context context) {
-		TelephoneID respuesta = new TelephoneID();
-		android.telephony.TelephonyManager manager = (android.telephony.TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-		respuesta.setImei(manager.getDeviceId());
-		respuesta.setImsi(manager.getSubscriberId());
+		TelephoneID respuesta = new TelephoneID(context);
+		if (!respuesta.seTienenLosDatos()) {
+			respuesta.obtenerDatosDelTelefono(context);
+		}
 		return respuesta;
 	}
 	
@@ -87,7 +87,7 @@ public class Utilitarios {
         			parametros, nombreArchivoAssembly, 
         			namespaceClase, nombreClase, metodoEjecutara, 
         			pathLog);
-            //2. Conexión al API REST de la capa WSL
+  			//2. Conexión al API REST de la capa WSL
 			BusinessCloud businessCloud = new BusinessCloud();
             respuesta = businessCloud.sendRequestWSL(context, peticionWSL);
             //3. Obtener resultado
