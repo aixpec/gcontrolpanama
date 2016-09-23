@@ -1,36 +1,35 @@
 package com.gisystems.gcontrolpanama.reglas.checklists;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatDialogFragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.gisystems.api.EnvioDatosAPI;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 
 import com.gisystems.exceptionhandling.ManejoErrores;
 import com.gisystems.gcontrolpanama.R;
 import com.gisystems.gcontrolpanama.adaptadores.AdaptadorChecklists;
 import com.gisystems.gcontrolpanama.models.Proyecto;
 import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion;
-import com.gisystems.gcontrolpanama.reglas.BitacoraActivity;
-import com.gisystems.gcontrolpanama.reglas.ConstruccionDetalleActivity;
-import com.gisystems.gcontrolpanama.reglas.ProyectosListadoActivity;
-import com.gisystems.utils.Utilitarios;
 
 import java.util.ArrayList;
 
-public class ListasVerificacionActivity extends ActionBarActivity implements  SearchView.OnQueryTextListener {
+public class ListasVerificacionActivity extends AppCompatActivity implements  SearchView.OnQueryTextListener,
+    ListasVerificacionNueva.NuevaListaVerificacionDialogListener
+{
 
     private Context ctx;
     private ProgressDialog pDialog;
@@ -42,10 +41,31 @@ public class ListasVerificacionActivity extends ActionBarActivity implements  Se
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+        Thread.setDefaultUncaughtExceptionHandler(new ManejoErrores(this));
+
         setContentView(R.layout.activity_listas_verificacion);
 
         ctx=this;
         mListView = (ListView) findViewById(R.id.activity_checklist_list);
+
+        // Create an icon
+        ImageView icon = new ImageView(this);
+        icon.setImageResource(R.drawable.ic_playlist_add_black);
+
+        FloatingActionButton.LayoutParams layoutParams = new FloatingActionButton.LayoutParams(180,180,60);
+
+        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+                .setContentView(icon)
+                .setTheme(FloatingActionButton.THEME_LIGHT)
+                .setLayoutParams(layoutParams)
+                .build();
+
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                abrirDialogoCrearNuevaLista();
+            }
+        });
+
         obtenerIntents();
 
         new TareaObtenerListado().execute();
@@ -58,8 +78,6 @@ public class ListasVerificacionActivity extends ActionBarActivity implements  Se
             }
         });
     }
-
-
 
     @Override
     public boolean onQueryTextChange(String query) {
@@ -79,6 +97,7 @@ public class ListasVerificacionActivity extends ActionBarActivity implements  Se
         mainIntent.putExtra(ListaVerificacion.COLUMN_ID_PROYECTO,idProyecto);
         mainIntent.putExtra(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION,lista.getIdListaVerificacion());
         mainIntent.putExtra(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION,lista.getIdTipoListaVerificacion());
+        mainIntent.putExtra(ListaVerificacion.COLUMN_TIPO_LISTA_VERIFICACION,lista.getTipoListaVerificacion());
         ListasVerificacionActivity.this.startActivity(mainIntent);
     }
 
@@ -110,8 +129,7 @@ public class ListasVerificacionActivity extends ActionBarActivity implements  Se
         protected void onPostExecute(ArrayList<ListaVerificacion> resultado){
             try {
                 pDialog.dismiss();
-                adaptadorChecklists=  new AdaptadorChecklists(ListasVerificacionActivity.this,resultado);
-                mListView.setAdapter(adaptadorChecklists);
+                llenarListView(resultado);
             } catch (Exception e) {
                 ManejoErrores.registrarError_MostrarDialogo(ctx, e,
                         ListasVerificacionActivity.class.getSimpleName(), "onPostExecute",
@@ -141,6 +159,30 @@ public class ListasVerificacionActivity extends ActionBarActivity implements  Se
         }
         return false;
     }
+
+    private void llenarListView(ArrayList<ListaVerificacion> listas) {
+        adaptadorChecklists=  new AdaptadorChecklists(ListasVerificacionActivity.this,listas);
+        mListView.setAdapter(adaptadorChecklists);
+    }
+
+    private void abrirDialogoCrearNuevaLista(){
+        try {
+            // Create an instance of the dialog fragment and show it
+            AppCompatDialogFragment dialog = ListasVerificacionNueva.newInstance(this.idCliente, this.idProyecto);
+            dialog.show(getSupportFragmentManager(), "DialogoNuevaChecklist");
+        }
+        catch (Exception e)
+        {
+            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                    ListasVerificacionActivity.class.getSimpleName(), "abrirDialogoCrearNuevaLista",
+                    null, null);
+        }
+    }
+
+    public void onNuevaListaDialogPositiveClick(ArrayList<ListaVerificacion> listas) {
+        llenarListView(listas);
+    }
+
 
 
 }

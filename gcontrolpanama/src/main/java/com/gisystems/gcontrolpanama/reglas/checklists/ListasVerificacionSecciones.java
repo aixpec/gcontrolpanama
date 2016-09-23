@@ -31,6 +31,7 @@ public class ListasVerificacionSecciones extends ActionBarActivity implements  S
     private ListView mListView;
     private AdaptadorSeccionesDeChecklist adaptadorSeccionesDeChecklist;
     private int idCliente, idProyecto, idListaVerificacion, idTipoListaVerificacion;
+    private String tipoListaVerificacion;
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -40,6 +41,8 @@ public class ListasVerificacionSecciones extends ActionBarActivity implements  S
         ctx=this;
         mListView = (ListView) findViewById(R.id.activity_checklist_list);
         obtenerIntents();
+
+        this.setTitle(tipoListaVerificacion);
 
         new TareaObtenerListado().execute();
 
@@ -68,7 +71,10 @@ public class ListasVerificacionSecciones extends ActionBarActivity implements  S
         Intent mainIntent = new Intent(ListasVerificacionSecciones.this,ListasVerificacionPreguntas.class);
         mainIntent.putExtra(ListaVerificacion.COLUMN_ID_CLIENTE,idCliente);
         mainIntent.putExtra(ListaVerificacion.COLUMN_ID_PROYECTO,idProyecto);
-        mainIntent.putExtra(TipoListaVerificacion_Seccion.COLUMN_ID_TIPO_LISTA_VERIFICACION,seccion.getIdTipoListaVerificacion());
+        mainIntent.putExtra(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION,idListaVerificacion);
+        mainIntent.putExtra(TipoListaVerificacion_Seccion.COLUMN_ID_TIPO_LISTA_VERIFICACION,idTipoListaVerificacion);
+        mainIntent.putExtra(TipoListaVerificacion_Seccion.COLUMN_ID_SECCION,seccion.getIdSeccion());
+        mainIntent.putExtra(TipoListaVerificacion_Seccion.COLUMN_NOMBRE,seccion.getNombre());
         ListasVerificacionSecciones.this.startActivity(mainIntent);
     }
 
@@ -114,7 +120,7 @@ public class ListasVerificacionSecciones extends ActionBarActivity implements  S
 
 
     /**
-     * Obtiene los Intents esperado por la clase: IdCliente y IdProyecto
+     * Obtiene los Intents esperado por la clase: IdCliente y IdProyecto, idListaVerificacion, idTipoListaVerificacion, tipoListaVerificacion
      * @return true si los intents son válidos
      */
     private boolean obtenerIntents(){
@@ -123,8 +129,7 @@ public class ListasVerificacionSecciones extends ActionBarActivity implements  S
             idProyecto=this.getIntent().getIntExtra(ListaVerificacion.COLUMN_ID_PROYECTO,-1);
             idListaVerificacion=this.getIntent().getIntExtra(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION,-1);
             idTipoListaVerificacion=this.getIntent().getIntExtra(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION,-1);
-
-            Log.i("INTENT PARAMS: ",String.valueOf(idCliente) + "|" + String.valueOf(idProyecto));
+            tipoListaVerificacion=this.getIntent().getStringExtra(ListaVerificacion.COLUMN_TIPO_LISTA_VERIFICACION);
 
             if (idCliente > 0 &  idProyecto >0 &  idListaVerificacion >0 &  idTipoListaVerificacion >0) return true;
         }
