@@ -3,87 +3,89 @@
 
     <string name="app_name">Gcontrol Panama</string>
     <string name="hello_world">Hello world</string>
-	<string name="componente">Componente</string>
-	<string name="actividad">Actividad</string>
-	<string name="subactividad">Sub-actividad</string>
-	<string name="avances">Avances</string>
-	<string name="fotografia">Fotografía</string>
-	<string name="bitacora">Bitácora</string>
-	<string name="checklist">Check List</string>
-	<string name="cantidad_pendiente">Cantidad pendiente:</string>
-	<string name="avance_a_ingresar">Avance a ingresar</string>
+    <string name="componente">Componente</string>
+    <string name="actividad">Actividad</string>
+    <string name="subactividad">Sub-actividad</string>
+    <string name="avances">Avances</string>
+    <string name="fotografia">Fotografía</string>
+    <string name="bitacora">Bitácora</string>
+    <string name="checklist">Check List</string>
+    <string name="cantidad_pendiente">Cantidad pendiente:</string>
+    <string name="avance_a_ingresar">Avance a ingresar</string>
     <string name="mnu_action_proyectos">Componentes</string>
-	<string name="mnu_action_construcciones">Actividades</string>
+    <string name="mnu_action_construcciones">Actividades</string>
     <string name="mnu_action_activs">Sub Actividades</string>
     <string name="mnu_action_actualizar">Actualizar</string>
     <string name="mnu_action_bitacora">Enviar Avances</string>
-	<string name="mnu_action_bitacora_fotos">Enviar Fotografias</string>
+    <string name="mnu_action_bitacora_fotos">Enviar Fotografias</string>
     <string name="mnu_action_acercaDe">Acerca de</string>
-	<string name="mnu_action_Buscar">Buscar</string>
-	<string name="mnu_action_salir">Salir</string>
-	<string name="mnuaction_avanceActiv_agregarFoto">Agregar foto</string>
-	<string name="mnuaction_avanceActiv_verFotosActiv">Fotos capturadas</string>
-	<string name="mnuaction_aceptar">Aceptar</string>
-	<string name="mnuaction_cancelar">Cancelar</string>
-	<string name="mnu_bitacora_enviar_pendientes">Cancelar</string>
-	<string name="cancel">Cancelar</string>
-	<string name="si">Si</string>
-	<string name="no">No</string>
-	<string name="campo">Campo</string>
-	<string name="cargando">Cargando&#8230;</string>
-	<string name="obteniendo_coordenadas">Obteniendo coordenadas&#8230;</string>
-	<string name="escriba_comentario">Escriba un comentario</string>
-	<string name="imagen">Imagen</string>
-	<string name="titulo_NuevaFoto">Nueva fotografía</string>
-	<string name="titulo_AgregarAvances">Ingresar avance</string>
-	<string name="aviso">Aviso</string>
-	<string name="error">Error</string>
-	<string name="almacenando_en_dispositivo">Almacenando los datos en el dispositivo&#8230;</string>
-	<string name="enviando_al_servidor">Enviando datos al servidor&#8230;</string>
-	<string name="gestion_por_cantidad">Por cantidad</string>
-	<string name="gestion_por_porcentajes">Por porcentajes</string>
-	<string name="actualizandoDb">Actualizando la base de datos&#8230; </string>
-	<string name="verificarConexionDeInternet">Verifique su conexión a internet por favor&#8230; </string>
-	<string name="abandonar">Abandonar</string>
-	<string name="filtrar">filtrar&#8230;</string>
-	<string name="buscar">búscar&#8230;</string>
-	<string name="enviando_fotografias">Enviando fotografias&#8230;</string>
-	<string name="mnuaction_eliminar">Eliminar</string>
-	<string name="mnuaction_seleccionar_todas">Seleccionar todas</string>
-	<string name="cargando_proyectos">Cargando componentes&#8230;</string>
-	<string name="cargando_construcciones">Cargando actividades&#8230;</string>
-	<string name="informacion_adicional">Información adicional</string>
+    <string name="mnu_action_Buscar">Buscar</string>
+    <string name="mnu_action_salir">Salir</string>
+    <string name="mnuaction_avanceActiv_agregarFoto">Agregar foto</string>
+    <string name="mnuaction_avanceActiv_verFotosActiv">Fotos capturadas</string>
+    <string name="mnuaction_aceptar">Aceptar</string>
+    <string name="mnuaction_cancelar">Cancelar</string>
+    <string name="mnu_bitacora_enviar_pendientes">Cancelar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="campo">Campo</string>
+    <string name="cargando">Cargando&#8230;</string>
+    <string name="obteniendo_coordenadas">Obteniendo coordenadas&#8230;</string>
+    <string name="escriba_comentario">Escriba un comentario</string>
+    <string name="imagen">Imagen</string>
+    <string name="titulo_NuevaFoto">Nueva fotografía</string>
+    <string name="titulo_AgregarAvances">Ingresar avance</string>
+    <string name="aviso">Aviso</string>
+    <string name="error">Error</string>
+    <string name="almacenando_en_dispositivo">Almacenando los datos en el dispositivo&#8230;</string>
+    <string name="enviando_al_servidor">Enviando datos al servidor&#8230;</string>
+    <string name="gestion_por_cantidad">Por cantidad</string>
+    <string name="gestion_por_porcentajes">Por porcentajes</string>
+    <string name="actualizandoDb">Actualizando la base de datos&#8230; </string>
+    <string name="verificarConexionDeInternet">Verifique su conexión a internet por favor&#8230; </string>
+    <string name="abandonar">Abandonar</string>
+    <string name="filtrar">filtrar&#8230;</string>
+    <string name="buscar">búscar&#8230;</string>
+    <string name="enviando_fotografias">Enviando fotografias&#8230;</string>
+    <string name="mnuaction_eliminar">Eliminar</string>
+    <string name="mnuaction_seleccionar_todas">Seleccionar todas</string>
+    <string name="cargando_proyectos">Cargando componentes&#8230;</string>
+    <string name="cargando_construcciones">Cargando actividades&#8230;</string>
+    <string name="cargando_listas">Cargando listas&#8230;</string>
+    <string name="cargando_secciones">Cargando tareas&#8230;</string>
+    <string name="informacion_adicional">Información adicional</string>
 
-	<string name="PROTOCOL">http://</string>
-	<string name="HOST">190.111.7.50</string>
-	<string name="PORT">:80</string>
-	<string name="VIRTUAL_DIRECTORY">/pruebasWslRestElephantPanama/</string>
-	<string name="URI">api/peticion/</string>
-	<string name="sharedPreferencesKey">UserConfig</string>
-	<string name="ProjectsActivity_menu_salir">Salir</string>
-	<string name="mnuItemSalir">mnuItemSalir</string>
+    <string name="PROTOCOL">http://</string>
+    <string name="HOST">190.111.7.50</string>
+    <string name="PORT">:80</string>
+    <string name="VIRTUAL_DIRECTORY">/pruebasWslRestElephantPanama/</string>
+    <string name="URI">api/peticion/</string>
+    <string name="sharedPreferencesKey">UserConfig</string>
+    <string name="ProjectsActivity_menu_salir">Salir</string>
+    <string name="mnuItemSalir">mnuItemSalir</string>
 
-	<!--Activity Login  --> 
-	<string name="login_title">Iniciar Sesión</string>
-	<string name="login_email_hint">Email</string>
-	<string name="login_password_hint">Password</string>
-	<string name="login_btnIngresar_text">Ingresar</string>
-	<string name="login_btnIngresarDesconectado_text">Ingresar en modo desconectado</string>
-	<string name="login_tvMsgRegistrarse">¿No tiene cuenta? </string>
-	<string name="login_tvRegistrarse">¿No tiene cuenta? <a href="http://www.gcontrolpanama.com/gestion/Paginas/Principal/frmSignUp.aspx">Registrarse</a></string>
-	
-	<!-- ProyectosListadoActivity -->
-	<!-- Class -->
-	<string name="ProyectosListadoActivity_0">Actualizar&#8230;</string>
-	<string name="ProyectosListadoActivity_10">¿Desea actualizar la base de datos?</string>
-	<string name="ProyectosListadoActivity_20">Salir</string>
-	<string name="ProyectosListadoActivity_30">¿Desea abandonar la aplicación?</string>
-	<string name="ProyectosListadoActivity_40">Fotografias pendientes</string>
-	<string name="ProyectosListadoActivity_50">¿Desea enviar las fotografias pendientes?</string>
-	<!-- Layout -->
-	
-	<!-- generic_login -->
-	 <!-- Class -->
+    <!--Activity Login  -->
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_btnIngresar_text">Ingresar</string>
+    <string name="login_btnIngresarDesconectado_text">Ingresar en modo desconectado</string>
+    <string name="login_tvMsgRegistrarse">¿No tiene cuenta? </string>
+    <string name="login_tvRegistrarse">¿No tiene cuenta? <a href="http://www.gcontrolpanama.com/gestion/Paginas/Principal/frmSignUp.aspx">Registrarse</a></string>
+
+    <!-- ProyectosListadoActivity -->
+    <!-- Class -->
+    <string name="ProyectosListadoActivity_0">Actualizar&#8230;</string>
+    <string name="ProyectosListadoActivity_10">¿Desea actualizar la base de datos?</string>
+    <string name="ProyectosListadoActivity_20">Salir</string>
+    <string name="ProyectosListadoActivity_30">¿Desea abandonar la aplicación?</string>
+    <string name="ProyectosListadoActivity_40">Fotografias pendientes</string>
+    <string name="ProyectosListadoActivity_50">¿Desea enviar las fotografias pendientes?</string>
+    <!-- Layout -->
+
+    <!-- generic_login -->
+    <!-- Class -->
     <string name="class_generic_login_0">Bienvenido</string>
     <string name="class_generic_login_10">El usuario no es válido o no hay una conexión a internet disponible, favor verificar</string>
     <string name="class_generic_login_20">Cerrar sesión&#8230;</string>
@@ -92,45 +94,45 @@
     <string name="class_generic_login_50">Debe ingresar un usuario y/o contraseña</string>
     <string name="class_generic_login_60">Modo desconectado</string>
     <string name="class_generic_login_70">Si continúa ingresará en modo desconectado, esto le permitirá acceder a los datos almacenados en el dispositivo desde su última sesión válida, para conectarse con el servidor deberá verficar su señal de internet e ingresar sus credenciales.</string>
-	<string name="class_generic_login_80">Inicializando la Base de Datos&#8230;</string>
+    <string name="class_generic_login_80">Inicializando la Base de Datos&#8230;</string>
 
-	<!-- list_item_generico -->
-	<string name="list_item_generico_noImage">Foto no disponible</string>
- 
-	<!-- fragment_detalle_proyecto -->
-	<!-- Class -->
-	
-	<!-- Layout -->
-	<string name="fragment_detalle_proyecto_0">Descripcion:</string>
-	<string name="fragment_detalle_proyecto_1">Estado:</string>
-	<string name="fragment_detalle_proyecto_2">Fecha de inicio:</string>
-	<string name="fragment_detalle_proyecto_3">Fecha de finalización:</string>
-	<string name="fragment_detalle_proyecto_4">Monto original:</string>
-	<string name="fragment_detalle_proyecto_5">Monto modificado:</string>
-	<string name="fragment_detalle_proyecto_6">Monto pagado:</string>
-	<string name="fragment_detalle_proyecto_7">Latitud:</string>
-	<string name="fragment_detalle_proyecto_8">Longitud:</string>
-	<string name="fragment_detalle_proyecto_9">Altitud:</string>
-	<string name="fragment_detalle_proyecto_10">Tipo:</string>
-	<string name="fragment_detalle_proyecto_11">Modo de Gestión:</string>
-	
-	<!-- fragment_agregar_avances_renglon -->
-	<!-- Class -->
-	<!-- Layout -->
-	<string name="fragment_agregar_avances_renglon_0">Cantidad contratada:</string>
-	<string name="fragment_agregar_avances_renglon_1">Cantidad ejecutada:</string>
-	<string name="fragment_agregar_avances_renglon_2">Actualizado el:</string>
-	<string name="fragment_agregar_avances_renglon_3">Cantidad pendiente de ejecutar:</string>
-	<string name="fragment_agregar_avances_renglon_4">Avance a registrar:    </string>
-	<string name="fragment_agregar_avances_renglon_5">No existe monto pendiente por ejecutar, por lo que no es posible ingresar avances a esta actividad.</string>
-	<string name="fragment_agregar_avances_renglon_6">Por favor ingrese un monto de avance válido.</string>
-	<string name="fragment_agregar_avances_renglon_7">El avance a registrar no puede exceder al monto pendiente por ejecutar.</string>
-	<string name="fragment_agregar_avances_renglon_8">El avance a registrar debe ser mayor a 0.</string>
-	<string name="fragment_agregar_avances_renglon_9">Avance a registrar  en (%):</string>
-	<string name="fragment_agregar_avances_renglon_10">Cantidad No regularizada:</string>
+    <!-- list_item_generico -->
+    <string name="list_item_generico_noImage">Foto no disponible</string>
 
-	<!-- Class -->
-	<string name="class_fotografia_0">La fotografía no existe!</string>
+    <!-- fragment_detalle_proyecto -->
+    <!-- Class -->
+
+    <!-- Layout -->
+    <string name="fragment_detalle_proyecto_0">Descripcion:</string>
+    <string name="fragment_detalle_proyecto_1">Estado:</string>
+    <string name="fragment_detalle_proyecto_2">Fecha de inicio:</string>
+    <string name="fragment_detalle_proyecto_3">Fecha de finalización:</string>
+    <string name="fragment_detalle_proyecto_4">Monto original:</string>
+    <string name="fragment_detalle_proyecto_5">Monto modificado:</string>
+    <string name="fragment_detalle_proyecto_6">Monto pagado:</string>
+    <string name="fragment_detalle_proyecto_7">Latitud:</string>
+    <string name="fragment_detalle_proyecto_8">Longitud:</string>
+    <string name="fragment_detalle_proyecto_9">Altitud:</string>
+    <string name="fragment_detalle_proyecto_10">Tipo:</string>
+    <string name="fragment_detalle_proyecto_11">Modo de Gestión:</string>
+
+    <!-- fragment_agregar_avances_renglon -->
+    <!-- Class -->
+    <!-- Layout -->
+    <string name="fragment_agregar_avances_renglon_0">Cantidad contratada:</string>
+    <string name="fragment_agregar_avances_renglon_1">Cantidad ejecutada:</string>
+    <string name="fragment_agregar_avances_renglon_2">Actualizado el:</string>
+    <string name="fragment_agregar_avances_renglon_3">Cantidad pendiente de ejecutar:</string>
+    <string name="fragment_agregar_avances_renglon_4">Avance a registrar:    </string>
+    <string name="fragment_agregar_avances_renglon_5">No existe monto pendiente por ejecutar, por lo que no es posible ingresar avances a esta actividad.</string>
+    <string name="fragment_agregar_avances_renglon_6">Por favor ingrese un monto de avance válido.</string>
+    <string name="fragment_agregar_avances_renglon_7">El avance a registrar no puede exceder al monto pendiente por ejecutar.</string>
+    <string name="fragment_agregar_avances_renglon_8">El avance a registrar debe ser mayor a 0.</string>
+    <string name="fragment_agregar_avances_renglon_9">Avance a registrar  en (%):</string>
+    <string name="fragment_agregar_avances_renglon_10">Cantidad No regularizada:</string>
+
+    <!-- Class -->
+    <string name="class_fotografia_0">La fotografía no existe!</string>
     <string name="class_fotografia_1">La captura de la fotografía ha sido cancelada.</string>
     <string name="class_fotografia_2">Ha sucedido un error al capturar la fotografía.</string>
     <string name="class_fotografia_3">¿Esta seguro de cancelar la captura de esta fotografía?</string>
@@ -139,23 +141,41 @@
     <string name="class_fotografia_6">"La fotografía ha sido almacenada."</string>
     <string name="class_fotografia_7">"grabarFotografia"</string>
     <string name="class_fotografia_8">¿Desea salir de la captura fotográfica?</string>
-	<!-- Layout -->
-	
-	<!-- ActividadAgregarAvance -->
-	<!-- Class -->
-	<string name="class_AgregarAvance_0">Agregar avances</string>
+    <!-- Layout -->
+
+    <!-- ActividadAgregarAvance -->
+    <!-- Class -->
+    <string name="class_AgregarAvance_0">Agregar avances</string>
     <string name="class_AgregarAvance_1">Fotografías capturadas</string>
     <string name="class_AgregarAvance_2">¿Desea almacenar el avance?</string>
     <string name="class_AgregarAvance_3">El avance ha sido almacenado</string>
     <string name="class_AgregarAvance_4">No ha sido posible almacenar el avance.</string>
     <string name="class_AgregarAvance_5">El avance ha sido enviado satisfactoriamente</string>
     <string name="class_AgregarAvance_6">No ha sido posible enviar el avance al servidor, puede intentarlo más tarde desde la opción de bitácoras</string>
-	<string name="class_AgregarAvance_7">Han sido enviadas %1$d de %2$d fotografías.</string>
-	<string name="class_AgregarAvance_8">¿Desea cancelar el registro del avance?</string>
-	<string name="class_AgregarAvance_9">¿Desea eliminar las fotografías seleccionadas?</string>
-	<string name="class_AgregarAvance_10">Enviando %1$d de %2$d fotografías.</string>
-	<!-- Layout -->
-	
+    <string name="class_AgregarAvance_7">Han sido enviadas %1$d de %2$d fotografías.</string>
+    <string name="class_AgregarAvance_8">¿Desea cancelar el registro del avance?</string>
+    <string name="class_AgregarAvance_9">¿Desea eliminar las fotografías seleccionadas?</string>
+    <string name="class_AgregarAvance_10">Enviando %1$d de %2$d fotografías.</string>
+    <!-- Layout -->
 
-	
+
+    <!-- ListasVerificacionActivity -->
+    <!-- Class -->
+    <string name="ListasVerificacionActivity_0">Icono</string>
+    <string name="ListasVerificacionActivity_1">Nueva Lista</string>
+    <string name="ListasVerificacionActivity_2">Crear Lista</string>
+    <string name="ListasVerificacionActivity_3">Tipo de lista de verificación:</string>
+    <string name="ListasVerificacionActivity_4">Almacenando la nueva lista de verificación:</string>
+    <string name="title_activity_lista_verificacion_preguntas_iniciales">
+        ListaVerificacionPreguntasIniciales
+    </string>
+    <string name="titulo_ListasVerificacion">Listas de Verificación</string>
+    <!-- Layout -->
+
+    <!-- PreguntasPorIndicadorActivity -->
+    <!-- Class -->
+    <string name="PreguntasPorIndicadorActivity_0">Guardar</string>
+    <string name="PreguntasPorIndicadorActivity_1">Almacenando las respuestas</string>
+    <!-- Layout -->
+
 </resources>
