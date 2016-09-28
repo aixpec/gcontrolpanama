@@ -331,7 +331,7 @@ public class ListaVerificacion {
         int cantidadPreguntasRequeridasSinResponder = 0;
         int cantidadRespuestasInconforme = 0;
         String query = "Select  L."  + ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION + ", "
-                + " (SELECT ifnull(R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + ",-1) "
+                + " (SELECT COUNT(*) "
                 + "  FROM " + Pregunta.NOMBRE_TABLA + " P"
                 + "  LEFT OUTER JOIN " + ListaVerificacion_Respuesta.NOMBRE_TABLA + " R"
                 + "    ON R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + " = P." + Pregunta.COLUMN_ID_CLIENTE

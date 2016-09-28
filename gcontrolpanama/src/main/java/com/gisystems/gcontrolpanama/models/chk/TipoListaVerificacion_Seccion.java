@@ -234,7 +234,7 @@ public class TipoListaVerificacion_Seccion {
                     + "   AND P." + Pregunta.COLUMN_ID_CONFIGURACION + " = S." + TipoListaVerificacion_Seccion.COLUMN_ID_CONFIGURACION
                     + "   AND P." + Pregunta.COLUMN_ID_INDICADOR + " = S." + TipoListaVerificacion_Seccion.COLUMN_ID_INDICADOR
                     + "   AND P." + Pregunta.COLUMN_REQUERIDO + " = 1) as " + TipoListaVerificacion_Seccion.COLUMN_CANTIDAD_PREGUNTAS_REQUERIDAS + ", "
-                    + " (SELECT ifnull(R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + ",-1) "
+                    + " (SELECT COUNT(*) "
                     + "  FROM " + Pregunta.NOMBRE_TABLA + " P"
                     + "  LEFT OUTER JOIN " + ListaVerificacion_Respuesta.NOMBRE_TABLA + " R"
                     + "    ON R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + " = P." + Pregunta.COLUMN_ID_CLIENTE
