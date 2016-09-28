@@ -11,12 +11,15 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.gisystems.api.EnvioDatosAPI;
+import com.gisystems.gcontrolpanama.reglas.BitacoraActivity;
+import com.gisystems.gcontrolpanama.reglas.LoginActivity;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 
 import com.gisystems.exceptionhandling.ManejoErrores;
@@ -28,7 +31,7 @@ import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion;
 import java.util.ArrayList;
 
 public class ListasVerificacionActivity extends AppCompatActivity implements  SearchView.OnQueryTextListener,
-    ListasVerificacionNueva.NuevaListaVerificacionDialogListener
+        ListasVerificacionNueva.NuevaListaVerificacionDialogListener
 {
 
     private Context ctx;
@@ -68,8 +71,6 @@ public class ListasVerificacionActivity extends AppCompatActivity implements  Se
 
         obtenerIntents();
 
-        new TareaObtenerListado().execute();
-
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -77,6 +78,13 @@ public class ListasVerificacionActivity extends AppCompatActivity implements  Se
                 MostrarPantallaSecciones(p);
             }
         });
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        new TareaObtenerListado().execute();
     }
 
     @Override
@@ -182,7 +190,6 @@ public class ListasVerificacionActivity extends AppCompatActivity implements  Se
     public void onNuevaListaDialogPositiveClick(ArrayList<ListaVerificacion> listas) {
         llenarListView(listas);
     }
-
 
 
 }

@@ -105,14 +105,13 @@ public class ListasVerificacionPreguntas extends PreguntasPorIndicadorActivity {
                 for (RespuestaIngresada r:preg.obtenerRespuestas()) {
                     lr = new ListaVerificacion_Respuesta(r,this.idListaVerificacion);
                     if (lr.GrabarRespuestaEnBD(this) > 0) {
-                        resultado += lr.EnviarRespuestaAlServidor(this);
+                        resultado += 1;
+                        lr.EnviarRespuestaAlServidor(this);
                     }
                 }
             }
             if (resultado > 0) {
                 ListaVerificacion.ActualizarEstadoListaVerificacion(ListasVerificacionPreguntas.this,this.idCliente,this.idListaVerificacion);
-                String msj = "Se grabaron " + resultado + " respuestas";
-                Toast.makeText(this, msj, Toast.LENGTH_LONG).show();
             }
         }
         return resultado;

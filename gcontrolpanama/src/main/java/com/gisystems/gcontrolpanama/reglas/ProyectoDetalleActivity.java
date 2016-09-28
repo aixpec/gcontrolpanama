@@ -75,7 +75,7 @@ public class ProyectoDetalleActivity extends ActionBarActivity  implements  Sear
 		  	            //Clear action bar menu items and display correct ones
 		  	            //This invalidates the menu options as soon as the swiping of pages begins
 		  	            //supportInvalidateOptionsMenu();
-		  	            Log.w("onPageScrollStateChanged",String.valueOf(arg0));
+		  	            Log.w("onPageScrollState..",String.valueOf(arg0));
 		  	        }
 		  	    });
 	  	      

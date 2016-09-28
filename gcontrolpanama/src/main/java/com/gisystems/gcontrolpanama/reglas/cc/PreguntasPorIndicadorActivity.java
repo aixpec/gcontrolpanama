@@ -81,6 +81,20 @@ public class PreguntasPorIndicadorActivity extends AppCompatActivity {
         protected void onPostExecute(Long resultado){
             try {
                 pDialog.dismiss();
+
+                String msj = "";
+                if (resultado > 0) {
+                    if (resultado == 1) {
+                        msj = "Se grabó 1 respuesta";
+                    } else {
+                        msj = "Se grabaron " + resultado + " respuestas";
+                    }
+                } else {
+                    msj = "No se grabaron respuestas";
+                }
+                Toast.makeText(PreguntasPorIndicadorActivity.this, msj, Toast.LENGTH_LONG).show();
+
+                finish();
             } catch (Exception e) {
                 ManejoErrores.registrarError_MostrarDialogo(PreguntasPorIndicadorActivity.this, e,
                         PreguntasPorIndicadorActivity.class.getSimpleName(), "TareaGrabarRespuestas_onPostExecute",

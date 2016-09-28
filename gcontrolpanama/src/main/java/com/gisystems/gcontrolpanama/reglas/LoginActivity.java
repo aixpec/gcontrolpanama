@@ -366,7 +366,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			try {
 				pDialog.dismiss();
 				
-				if (resultado==true) {
+				if (resultado) {
 					 //Establecer el app value sync como actualizado
 					AppValues.actualizarAppValueSync(ctx, true);
 					
