@@ -5,7 +5,7 @@
     <item
         android:id="@+id/mnuaction_cerrarChecklist"
         android:title="@string/ListasVerificacionActivity_5"
-        android:icon="@drawable/ic_action_accept"
+        android:icon="@drawable/ic_lock_white"
         elephant:showAsAction="ifRoom|collapseActionView" />
 
 </menu>
