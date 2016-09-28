@@ -124,6 +124,7 @@ public class ListaVerificacion {
     public static final String COLUMN_TIPO_LISTA_VERIFICACION       ="TipoListaVerificacion";
     public static final String COLUMN_ID_ESTADO_LISTA_VERIFICACION  ="IdEstadoListaVerificacion";
     public static final String COLUMN_ESTADO_LISTA_VERIFICACION     ="EstadoListaVerificacion";
+    public static final String COLUMN_LISTA_CERRADA		            ="ListaCerrada";
     public static final String COLUMN_ESTADO_ENVIO		            ="EstadoEnvio";
     public static final String COLUMN_CREO_USUARIO			        ="CreoUsuario";
     public static final String COLUMN_CREO_FECHA			        ="CreoFecha";
@@ -136,6 +137,7 @@ public class ListaVerificacion {
             + COLUMN_ID_PROYECTO 	                + " integer not null, "
             + COLUMN_ID_TIPO_LISTA_VERIFICACION		+ " integer not null, "
             + COLUMN_ID_ESTADO_LISTA_VERIFICACION	+ " integer not null, "
+            + COLUMN_LISTA_CERRADA	                + " integer not null, "
             + COLUMN_ESTADO_ENVIO				    + " text not null, "
             + COLUMN_CREO_USUARIO				    + " text not null, "
             + COLUMN_CREO_FECHA				        + " text not null, "
@@ -199,7 +201,7 @@ public class ListaVerificacion {
         ArrayList<ListaVerificacion> listas = new ArrayList<ListaVerificacion>();
         ListaVerificacion lista;
 
-        Cursor c = null;
+        Cursor c;
 
         try{
             String query = "Select "
@@ -219,6 +221,7 @@ public class ListaVerificacion {
                     + "   ON E." + EstadoListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION + " = L." + EstadoListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION
                     + " WHERE L." + ListaVerificacion.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
                     + "   and L." + ListaVerificacion.COLUMN_ID_PROYECTO + " = " + String.valueOf(idProyecto)
+                    + "   and L." + ListaVerificacion.COLUMN_LISTA_CERRADA + " = 0"
                     + " ORDER BY L." + ListaVerificacion.COLUMN_CREO_FECHA + ", T." + TipoListaVerificacion.COLUMN_DESCRIPCION;
 
             c =  w.getRow(query);
@@ -269,6 +272,7 @@ public class ListaVerificacion {
         values.put(ListaVerificacion.COLUMN_ID_PROYECTO, 		            idProyecto);
         values.put(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION, 	idTipoListaVerificacion);
         values.put(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION,   EstadoListaVerificacion.ID_SIN_FINALIZAR);
+        values.put(ListaVerificacion.COLUMN_LISTA_CERRADA,  0);
         values.put(ListaVerificacion.COLUMN_ESTADO_ENVIO, 	AppValues.EstadosEnvio.No_Enviado.name());
         values.put(ListaVerificacion.COLUMN_CREO_USUARIO, 	AppValues.SharedPref_obtenerUsuarioNombre(ctx));
         values.put(ListaVerificacion.COLUMN_CREO_FECHA, 	sdf.format(date));
@@ -327,7 +331,7 @@ public class ListaVerificacion {
         int cantidadPreguntasRequeridasSinResponder = 0;
         int cantidadRespuestasInconforme = 0;
         String query = "Select  L."  + ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION + ", "
-                + " (SELECT COUNT(*)"
+                + " (SELECT ifnull(R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + ",-1) "
                 + "  FROM " + Pregunta.NOMBRE_TABLA + " P"
                 + "  LEFT OUTER JOIN " + ListaVerificacion_Respuesta.NOMBRE_TABLA + " R"
                 + "    ON R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + " = P." + Pregunta.COLUMN_ID_CLIENTE
@@ -364,8 +368,8 @@ public class ListaVerificacion {
         if (currentCursor.moveToFirst()) {
             while (!currentCursor.isAfterLast()) {
                 idEstadoActual = currentCursor.getInt(currentCursor.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION));
-                cantidadPreguntasRequeridasSinResponder = currentCursor.getInt(currentCursor.getColumnIndexOrThrow(TipoListaVerificacion_Seccion.COLUMN_CANTIDAD_PREGUNTAS_REQUERIDAS_SIN_RESPONDER));
-                cantidadRespuestasInconforme = currentCursor.getInt(currentCursor.getColumnIndexOrThrow(TipoListaVerificacion_Seccion.COLUMN_CANTIDAD_RESPUESTAS_INCONFORME));
+                cantidadPreguntasRequeridasSinResponder += currentCursor.getInt(currentCursor.getColumnIndexOrThrow(TipoListaVerificacion_Seccion.COLUMN_CANTIDAD_PREGUNTAS_REQUERIDAS_SIN_RESPONDER));
+                cantidadRespuestasInconforme += currentCursor.getInt(currentCursor.getColumnIndexOrThrow(TipoListaVerificacion_Seccion.COLUMN_CANTIDAD_RESPUESTAS_INCONFORME));
                 currentCursor.moveToNext();
             }
         }
@@ -415,5 +419,32 @@ public class ListaVerificacion {
         return resultado;
     }
 
+    public static boolean CerrarListaVerificacion(Context ctx,
+                                                  int idCliente,
+                                                  int idListaVerificacion){
+        boolean resultado;
+        DAL w = new DAL(ctx);
+        try{
+            w.iniciarTransaccion();
+            //Actualizar el Id del estado de la lista de verificación
+            ContentValues values = new ContentValues();
+            values.put(ListaVerificacion.COLUMN_LISTA_CERRADA , 1);
+            values.put(ListaVerificacion.COLUMN_ESTADO_ENVIO, AppValues.EstadosEnvio.No_Enviado.name());
+            String where=ListaVerificacion.COLUMN_ID_CLIENTE + "=" + String.valueOf(idCliente)
+                    + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(idListaVerificacion)
+                    + " and " + ListaVerificacion.COLUMN_LISTA_CERRADA + "=0";
+            resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
+            w.finalizarTransaccion(true);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            resultado=false;
+            ManejoErrores.registrarError(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "CerrarListaVerificacion",
+                    null, null);
+        }
+        return resultado;
+    }
 
 }

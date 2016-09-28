@@ -33,7 +33,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ElephantDbHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "GControlPanamaDb.db";
-	private static final int DATABASE_VERSION = 7;
+	private static final int DATABASE_VERSION = 8;
 	private static ElephantDbHelper sInstance;
 	
 	public ElephantDbHelper(Context context) {

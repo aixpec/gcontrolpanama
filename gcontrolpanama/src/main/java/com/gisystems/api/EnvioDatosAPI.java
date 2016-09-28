@@ -430,7 +430,6 @@ public class EnvioDatosAPI {
                 parametros.add(resp.getIdRespuesta());
                 parametros.add(resp.getDescripcionRespuesta());
                 parametros.add(resp.getValorRespuesta());
-                parametros.add(id_usuario);
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                 parametros.add(sdf.format(resp.getFechaCaptura()));
                 parametros.add(id_usuario );
@@ -462,5 +461,6 @@ public class EnvioDatosAPI {
         }
         return valor;
     }
+
 
 }

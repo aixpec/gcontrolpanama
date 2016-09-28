@@ -650,6 +650,7 @@ public class RecepcionDatosAPI {
                         values.put(ListaVerificacion.COLUMN_ID_PROYECTO, 	registro.getInt(ListaVerificacion.COLUMN_ID_PROYECTO));
                         values.put(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION, 	registro.getInt(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION));
                         values.put(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION, 	registro.getInt(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION));
+                        values.put(ListaVerificacion.COLUMN_LISTA_CERRADA, 	0);
                         values.put(ListaVerificacion.COLUMN_ESTADO_ENVIO, 	AppValues.EstadosEnvio.Enviado.name());
                         values.put(ListaVerificacion.COLUMN_CREO_USUARIO, 	registro.getString(ListaVerificacion.COLUMN_CREO_USUARIO));
                         values.put(ListaVerificacion.COLUMN_CREO_FECHA, 	registro.getString(ListaVerificacion.COLUMN_CREO_FECHA));

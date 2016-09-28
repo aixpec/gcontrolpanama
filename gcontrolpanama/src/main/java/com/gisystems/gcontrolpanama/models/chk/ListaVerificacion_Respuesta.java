@@ -179,7 +179,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + "=" + String.valueOf(this.getIdConfiguracion())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + "=" + String.valueOf(this.getIdIndicador())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + "=" + String.valueOf(this.getIdPregunta());
-            resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
+            resultado= (w.updateRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, values, where)>0);
 
             if(resultado) {
                 this.setEstadoRegistro(AppValues.EstadosEnvio.Enviado.name());
@@ -190,7 +190,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         {
             w.finalizarTransaccion(false);
             resultado=false;
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+            ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion_Respuesta.class.getSimpleName(), "ActualizarIdListaVerificacionRespuesta",
                     null, null);
         }
