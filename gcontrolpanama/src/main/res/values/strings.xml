@@ -166,6 +166,11 @@
     <string name="ListasVerificacionActivity_2">Crear Lista</string>
     <string name="ListasVerificacionActivity_3">Tipo de lista de verificación:</string>
     <string name="ListasVerificacionActivity_4">Almacenando la nueva lista de verificación:</string>
+    <string name="ListasVerificacionActivity_5">Cerrar esta Lista</string>
+    <string name="ListasVerificacionActivity_6">Cerrando esta Lista</string>
+    <string name="ListasVerificacionActivity_7">¿Desea cerrar esta lista de verificación?</string>
+    <string name="ListasVerificacionActivity_8">Cerrar Lista</string>
+    <string name="ListasVerificacionActivity_9">Cierre</string>
     <string name="title_activity_lista_verificacion_preguntas_iniciales">
         ListaVerificacionPreguntasIniciales
     </string>
