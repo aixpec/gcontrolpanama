@@ -183,4 +183,14 @@
     <string name="PreguntasPorIndicadorActivity_1">Almacenando las respuestas</string>
     <!-- Layout -->
 
+
+    <!-- ActividadSincronizacion -->
+    <!-- Class -->
+    <string name="ActividadSincronizacion_0">Sincronización</string>
+    <string name="ActividadSincronizacion_1">Enviar los datos</string>
+    <string name="ActividadSincronizacion_2">Actualizar</string>
+    <string name="ActividadSincronizacion_3">Enviando los datos</string>
+    <string name="ActividadSincronizacion_4">Actualizando</string>
+    <!-- Layout -->
+
 </resources>
