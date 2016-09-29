@@ -411,6 +411,58 @@ public class EnvioDatosAPI {
 		return valor;
 	}
 
+	public boolean EnviarListaVerificacionParaActualizacion(ListaVerificacion lista) {
+		int IdListaVerificacion;
+		int filasAfectadas;
+		boolean valor=false;
+		String resultado;
+		String[] resultados;
+		try {
+			if(Utilitarios.isConnectionAvailable(context)){
+				String id_usuario = this.userName;
+				String id_disp_movil =  Utilitarios.ObtenerAndroid_ID(this.context);
+				//1. Obtener la petición para la capa WSL de la arquitectura
+				ArrayList<Object> parametros = new ArrayList<Object>();
+				parametros.add(lista.getIdCliente());
+				parametros.add(lista.getIdListaVerificacion() );
+				parametros.add(lista.getIdProyecto() );
+				parametros.add(lista.getIdTipoListaVerificacion() );
+				parametros.add(lista.getIdEstadoListaVerificacion() );
+				parametros.add(lista.getListaCerrada() );
+				parametros.add(id_usuario );
+				parametros.add(id_disp_movil );
+				metodoEjecutara = "fActualizarListaVerificacion";
+				//2. Enviar datos del avance y obtener el ID como respuesta
+				PeticionWSL peticion = Utilitarios.ObtenerPeticionWSL(context,
+						Utilitarios.TipoFuncion.ejecutarMetodo,
+						this.userName, this.password, parametros, this.nombreArchivoAssembly, this.namespaceClase,
+						this.nombreClase, this.metodoEjecutara, this.pathLog);
+				RespuestaWSL respuesta = null;
+				respuesta = businessCloud.sendRequestWSL(context, peticion);
+
+				if (respuesta.getEjecutadoSinError()) {
+					resultado = respuesta.getParametros();
+					if (resultado.length() > 0 && resultado.contains("|")) {
+						resultados=resultado.split("|");
+						IdListaVerificacion=Integer.valueOf(resultados[0]);
+						filasAfectadas=Integer.valueOf(resultados[1]);
+						if (filasAfectadas > 0 ) {
+							if (lista.getIdListaVerificacion()<0){
+								valor=lista.ActualizarIdListaVerificacion(context, IdListaVerificacion);
+							}
+							else{
+								valor=lista.RegistrarComoEnviadaAlServidor(context);
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			valor=false;
+			Log.w(ManejoErrores.LOG_TAG, "Error en EnviarListaVerificacionParaActualizacion. " + e.getMessage());
+		}
+		return valor;
+	}
 
     public boolean EnviarListaVerificacionRespuesta(ListaVerificacion_Respuesta resp) {
         boolean valor=false;
@@ -462,5 +514,29 @@ public class EnvioDatosAPI {
         return valor;
     }
 
+	public boolean EnviarTodosLosDatosNoEnviados (int idCliente) {
+		boolean resultado = false;
+		try {
+			//1. Enviar las listas de verificación
+			ArrayList<ListaVerificacion> listas;
+			listas = ListaVerificacion.obtenerListasNoEnviadasAlServidor(context,idCliente);
+			for ( ListaVerificacion lista : listas ) {
+				EnviarListaVerificacionParaActualizacion(lista);
+			}
+			//1. Enviar las listas de verificación
+			ArrayList<ListaVerificacion_Respuesta> respuestas;
+			respuestas = ListaVerificacion_Respuesta.obtenerRespuestasIngresadasNoEnviadasAlServidor(context,idCliente);
+			for ( ListaVerificacion_Respuesta resp : respuestas ) {
+				EnviarListaVerificacionRespuesta(resp);
+			}
+		} catch (Exception e) {
+			resultado=false;
+			ManejoErrores.registrarError(this.context, e,
+					EnvioDatosAPI.class.getSimpleName(),
+					"EnviarTodosLosDatosSinEnviar",
+					null, null);
+		}
+		return resultado;
+	}
 
 }
