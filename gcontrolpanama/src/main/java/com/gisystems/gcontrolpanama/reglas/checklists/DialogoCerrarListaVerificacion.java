@@ -134,10 +134,10 @@ public class DialogoCerrarListaVerificacion extends AppCompatDialogFragment {
                 resultado = ListaVerificacion.CerrarListaVerificacion(ctx,
                                                                 lista[0].getIdCliente(),
                                                                 lista[0].getIdListaVerificacion());
-                if (resultado) {
-                    EnvioDatosAPI envioDatosAPI = new EnvioDatosAPI(ctx);
-                    envioDatosAPI.EnviarListaVerificacion(lista[0]);
-                }
+                //if (resultado) {
+//                    EnvioDatosAPI envioDatosAPI = new EnvioDatosAPI(ctx);
+//                    envioDatosAPI.EnviarListaVerificacion(lista[0]);
+                //}
             } catch (Exception e) {
                 ManejoErrores.registrarError_MostrarDialogo(ctx, e,
                         DialogoCerrarListaVerificacion.class.getSimpleName(), "TareaCerrarLista_onPreExecute",

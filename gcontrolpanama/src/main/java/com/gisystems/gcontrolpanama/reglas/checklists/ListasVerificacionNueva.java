@@ -153,8 +153,8 @@ public class ListasVerificacionNueva extends AppCompatDialogFragment {
                         lista[0].getIdCliente(),
                         lista[0].getIdProyecto(),
                         lista[0].getIdTipoListaVerificacion());
-                EnvioDatosAPI envioDatosAPI = new EnvioDatosAPI(ctx);
-                envioDatosAPI.EnviarListaVerificacion(lista[0]);
+//                EnvioDatosAPI envioDatosAPI = new EnvioDatosAPI(ctx);
+//                envioDatosAPI.EnviarListaVerificacion(lista[0]);
                 resultado = ListaVerificacion.obtenerListasAbiertasPorClienteProyecto(ctx,idCliente,idProyecto);
             } catch (Exception e) {
                 ManejoErrores.registrarError_MostrarDialogo(ctx, e,

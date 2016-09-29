@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FilterQueryProvider;
@@ -219,6 +220,25 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.\
+        Intent mainIntent=null;
+        switch (item.getItemId()) {
+            case R.id.mnu_action_salir:
+                mainIntent= new Intent(ActividadMainMenu.this,LoginActivity.class);
+                ActividadMainMenu.this.startActivity(mainIntent);
+                ActividadMainMenu.this.finish();
+                return true;
+            case R.id.mnu_action_actualizar:
+                IrAActividad(R.id.mnu_action_actualizar);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     /***
      * Obtiene los proyectos almacenados en la base de datos, que coinciden con el texto enviado
@@ -311,6 +331,13 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
 
             case R.id.main_menu_ibChekList:
                 mainIntent = new Intent(ActividadMainMenu.this,ListasVerificacionActivity.class);
+                mainIntent.putExtra(Proyecto.COLUMN_ID_CLIENTE,idClienteSeleccionado);
+                mainIntent.putExtra(Proyecto.COLUMN_ID,idProyectoSeleccionado);
+                ActividadMainMenu.this.startActivity(mainIntent);
+                break;
+
+            case R.id.mnu_action_actualizar:
+                mainIntent= new Intent(ActividadMainMenu.this,ActividadSincronizacion.class);
                 mainIntent.putExtra(Proyecto.COLUMN_ID_CLIENTE,idClienteSeleccionado);
                 mainIntent.putExtra(Proyecto.COLUMN_ID,idProyectoSeleccionado);
                 ActividadMainMenu.this.startActivity(mainIntent);

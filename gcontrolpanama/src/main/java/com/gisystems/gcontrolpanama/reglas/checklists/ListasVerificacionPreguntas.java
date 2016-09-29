@@ -106,7 +106,7 @@ public class ListasVerificacionPreguntas extends PreguntasPorIndicadorActivity {
                     lr = new ListaVerificacion_Respuesta(r,this.idListaVerificacion);
                     if (lr.GrabarRespuestaEnBD(this) > 0) {
                         resultado += 1;
-                        lr.EnviarRespuestaAlServidor(this);
+                        //lr.EnviarRespuestaAlServidor(this);
                     }
                 }
             }

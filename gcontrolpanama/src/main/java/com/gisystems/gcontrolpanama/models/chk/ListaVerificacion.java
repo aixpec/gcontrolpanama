@@ -32,6 +32,7 @@ public class ListaVerificacion {
     private String tipoListaVerificacion;
     private int idEstadoListaVerificacion;
     private String estadoListaVerificacion;
+    private int listaCerrada;
     private String estadoRegistro;
     private String creoUsuario;
     private Date creoFecha;
@@ -90,6 +91,14 @@ public class ListaVerificacion {
 
     public void setEstadoListaVerificacion(String estadoListaVerificacion) {
         this.estadoListaVerificacion = estadoListaVerificacion;
+    }
+
+    public boolean getListaCerrada() {
+        return (this.listaCerrada == 1);
+    }
+
+    public void setListaCerrada(int listaCerrada) {
+        this.listaCerrada = listaCerrada;
     }
 
     public String getEstadoRegistro() {
@@ -201,6 +210,11 @@ public class ListaVerificacion {
         ArrayList<ListaVerificacion> listas = new ArrayList<ListaVerificacion>();
         ListaVerificacion lista;
 
+        Calendar cal = Calendar.getInstance();
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.ENGLISH );
+        Date dateRepresentation;
+
         Cursor c;
 
         try{
@@ -232,11 +246,8 @@ public class ListaVerificacion {
                     lista.setIdCliente(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_CLIENTE)));
                     lista.setIdListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION)));
                     lista.setIdTipoListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION)));
-                    Calendar cal = Calendar.getInstance();
-                    String pattern = "yyyy-MM-dd";
-                    SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.ENGLISH );
-                    cal.setTime(sdf.parse(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_FECHA))));// all done
-                    Date dateRepresentation = cal.getTime();
+                    cal.setTime(sdf.parse(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_FECHA))));
+                    dateRepresentation = cal.getTime();
                     lista.setCreoFecha(dateRepresentation);
                     lista.setCreoUsuario(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_USUARIO)));
                     lista.setTipoListaVerificacion(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_TIPO_LISTA_VERIFICACION)));
@@ -442,6 +453,86 @@ public class ListaVerificacion {
             resultado=false;
             ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion.class.getSimpleName(), "CerrarListaVerificacion",
+                    null, null);
+        }
+        return resultado;
+    }
+
+    //Devuelve las listas de verificación que no se han actualizado en el servidor
+    public static ArrayList<ListaVerificacion> obtenerListasNoEnviadasAlServidor(Context ctx, int idCliente){
+        DAL w = new DAL(ctx);
+        ArrayList<ListaVerificacion> listas = new ArrayList<ListaVerificacion>();
+        ListaVerificacion lista;
+
+        Calendar cal = Calendar.getInstance();
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.ENGLISH );
+        Date dateRepresentation;
+
+        Cursor c;
+
+        try{
+            String query = "Select "
+                    + " L." + ListaVerificacion.COLUMN_ID_CLIENTE + ", "
+                    + " L." + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + ", "
+                    + " L." + ListaVerificacion.COLUMN_ID_PROYECTO + ", "
+                    + " L." + ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + ", "
+                    + " L." + ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION + ", "
+                    + " L." + ListaVerificacion.COLUMN_LISTA_CERRADA + ", "
+                    + " L." + ListaVerificacion.COLUMN_CREO_FECHA + ", "
+                    + " L." + ListaVerificacion.COLUMN_CREO_USUARIO + ", "
+                    + " FROM " + ListaVerificacion.NOMBRE_TABLA + " L "
+                    + " WHERE L." + ListaVerificacion.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
+                    + "   and L." + ListaVerificacion.COLUMN_ESTADO_ENVIO + " <> '" + AppValues.EstadosEnvio.Enviado + "'";
+
+            c =  w.getRow(query);
+
+            if(c.moveToFirst()){
+                do {
+                    lista=new ListaVerificacion();
+                    lista.setIdCliente(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_CLIENTE)));
+                    lista.setIdListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION)));
+                    lista.setIdProyecto(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_PROYECTO)));
+                    lista.setIdTipoListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION)));
+                    lista.setIdEstadoListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION)));
+                    lista.setListaCerrada(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_LISTA_CERRADA)));
+                    cal.setTime(sdf.parse(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_FECHA))));
+                    dateRepresentation = cal.getTime();
+                    lista.setCreoFecha(dateRepresentation);
+                    lista.setCreoUsuario(c.getString(c.getColumnIndexOrThrow(ListaVerificacion.COLUMN_CREO_USUARIO)));
+                    listas.add(lista);
+                }
+                while(c.moveToNext());
+                c.close();
+            }
+        }
+        catch (Exception e){
+            ManejoErrores.registrarError(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "obtenerListasNoEnviadasAlServidor",
+                    null, null);
+        }
+
+        return listas;
+    }
+
+    public boolean RegistrarComoEnviadaAlServidor(Context ctx){
+        boolean resultado;
+        DAL w = new DAL(ctx);
+        try{
+            w.iniciarTransaccion();
+            ContentValues values = new ContentValues();
+            values.put(ListaVerificacion.COLUMN_ESTADO_ENVIO, AppValues.EstadosEnvio.Enviado.name());
+            String where=ListaVerificacion.COLUMN_ID_CLIENTE + "=" + String.valueOf(idCliente)
+                    + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(idListaVerificacion);
+            resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
+            w.finalizarTransaccion(true);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            resultado=false;
+            ManejoErrores.registrarError(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "RegistrarComoEnviadaAlServidor",
                     null, null);
         }
         return resultado;

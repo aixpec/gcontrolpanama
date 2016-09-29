@@ -111,7 +111,7 @@ public class ProyectosListadoActivity extends AppCompatActivity {
 
             return true;
         case R.id.mnu_action_actualizar:
-        	
+
         /*	new AlertDialog.Builder(this)
 	        .setIcon(android.R.drawable.ic_dialog_alert)
 	        .setTitle(getResources().getString(R.string.ProyectosListadoActivity_0))

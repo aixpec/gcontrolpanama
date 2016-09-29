@@ -75,7 +75,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
     public static final String COLUMN_ID_RESPUESTA	                ="IdRespuesta";
     public static final String COLUMN_DESCRIPCION_RESPUESTA		    ="DescripcionRespuesta";
     public static final String COLUMN_VALOR_RESPUESTA		        ="ValorRespuesta";
-    public static final String COLUMN_ESTADO_REGISTRO		        ="EstadoRegistro";
+    public static final String COLUMN_ESTADO_ENVIO		            ="EstadoEnvio";
     public static final String COLUMN_ELIMINADO		                ="Eliminado";
     public static final String COLUMN_CREO_USUARIO			        ="CreoUsuario";
     public static final String COLUMN_CREO_FECHA			        ="CreoFecha";
@@ -93,7 +93,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
             + COLUMN_ID_RESPUESTA		            + " integer null, "
             + COLUMN_DESCRIPCION_RESPUESTA			+ " text null, "
             + COLUMN_VALOR_RESPUESTA				+ " text not null, "
-            + COLUMN_ESTADO_REGISTRO				+ " text not null, "
+            + COLUMN_ESTADO_ENVIO  				    + " text not null, "
             + COLUMN_ELIMINADO				        + " integer not null DEFAULT 0, "
             + COLUMN_CREO_USUARIO				    + " text not null, "
             + COLUMN_CREO_FECHA				        + " text not null, "
@@ -173,7 +173,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
             w.iniciarTransaccion();
             //Actualizar el Id del avance
             ContentValues values = new ContentValues();
-            values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, AppValues.EstadosEnvio.Enviado.name());
+            values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO, AppValues.EstadosEnvio.Enviado.name());
             String where=ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(this.getIdListaVerificacion())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + "=" + String.valueOf(this.getIdConfiguracion())
@@ -202,9 +202,8 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         DAL w = new DAL(ctx);
         try{
             w.iniciarTransaccion();
-            //Actualizar el Id del avance
             ContentValues values = new ContentValues();
-            values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, nuevoEstado.name());
+            values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO, nuevoEstado.name());
             String where=ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + "=" + String.valueOf(this.getIdCliente())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(this.getIdListaVerificacion())
                     + " and " + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + "=" + String.valueOf(this.getIdConfiguracion())
@@ -219,7 +218,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
             w.finalizarTransaccion(false);
             resultado=false;
             ManejoErrores.registrarError_MostrarDialogo(ctx, e,
-                    ListaVerificacion.class.getSimpleName(), "ActualizarEstadoRegistro",
+                    ListaVerificacion_Respuesta.class.getSimpleName(), "ActualizarEstadoRegistro",
                     null, null);
         }
 
@@ -275,7 +274,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         }
         catch (Exception e){
             ManejoErrores.registrarError(ctx, e,
-                    TipoListaVerificacion_Seccion.class.getSimpleName(), "obtenerRespuestasIngresadas_X_Pregunta",
+                    ListaVerificacion_Respuesta.class.getSimpleName(), "obtenerRespuestasIngresadas_X_Pregunta",
                     null, null);
         }
         return respuestas;
@@ -304,7 +303,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         }
         values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA, 	this.getDescripcionRespuesta());
         values.put(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA, 		    this.getValorRespuesta());
-        values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, 	        AppValues.EstadosEnvio.No_Enviado.name());
+        values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO, 	        AppValues.EstadosEnvio.No_Enviado.name());
         values.put(ListaVerificacion_Respuesta.COLUMN_ELIMINADO, 	            0);
         values.put(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO, 	        this.creoUsuario);
         values.put(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA, 	            sdf.format(this.creoFecha));
@@ -363,7 +362,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
             }
             values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA, 	this.getDescripcionRespuesta());
             values.put(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA, 		    this.getValorRespuesta());
-            values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, 	        AppValues.EstadosEnvio.No_Enviado.name());
+            values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO, 	        AppValues.EstadosEnvio.No_Enviado.name());
             values.put(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO, 	        AppValues.SharedPref_obtenerUsuarioNombre(ctx));
             values.put(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA, 	            sdf.format(date));
             if (this.getValorRespuesta().length() > 0) {
@@ -391,5 +390,63 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         }
         return resultado;
     }
+
+    //Devuelve las respuestas ingresadas que no han sido actualizadas en el servidor
+    public static ArrayList<ListaVerificacion_Respuesta> obtenerRespuestasIngresadasNoEnviadasAlServidor(Context ctx,
+                                                                                                         int idCliente){
+        DAL w = new DAL(ctx);
+        ArrayList<ListaVerificacion_Respuesta> respuestas = new ArrayList<>();
+        ListaVerificacion_Respuesta respuesta;
+
+        Cursor c;
+
+        try {
+            String query = "Select  "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA + ", "
+                    + " R." + ListaVerificacion_Respuesta.COLUMN_CREO_FECHA
+                    + " FROM " + ListaVerificacion_Respuesta.NOMBRE_TABLA + " R "
+                    + " WHERE R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
+                    + "   and R." + ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO + " <> '" + AppValues.EstadosEnvio.Enviado + "'";
+            c =  w.getRow(query);
+
+            if(c.moveToFirst()){
+                do {
+                    respuesta=new ListaVerificacion_Respuesta();
+                    respuesta.setIdCliente(idCliente);
+                    respuesta.setIdListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION)));
+                    respuesta.setIdConfiguracion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION)));
+                    respuesta.setIdIndicador(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR)));
+                    respuesta.setIdPregunta(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA)));
+                    respuesta.setIdRespuesta(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA)));
+                    respuesta.setDescripcionRespuesta(c.getString(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA)));
+                    respuesta.setValorRespuesta(c.getString(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA)));
+
+                    respuesta.setIndicador(c.getString(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR)));
+                    respuesta.setPregunta(c.getString(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA)));
+
+                    respuestas.add(respuesta);
+                }
+                while(c.moveToNext());
+                c.close();
+            }
+        }
+        catch (Exception e){
+            ManejoErrores.registrarError(ctx, e,
+                    ListaVerificacion_Respuesta.class.getSimpleName(), "obtenerRespuestasIngresadasNoEnviadasAlServidor",
+                    null, null);
+        }
+        return respuestas;
+    }
+
+
 
 }
