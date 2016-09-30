@@ -93,8 +93,8 @@ public class ListaVerificacion {
         this.estadoListaVerificacion = estadoListaVerificacion;
     }
 
-    public boolean getListaCerrada() {
-        return (this.listaCerrada == 1);
+    public int getListaCerrada() {
+        return this.listaCerrada;
     }
 
     public void setListaCerrada(int listaCerrada) {
@@ -459,7 +459,7 @@ public class ListaVerificacion {
     }
 
     //Devuelve las listas de verificación que no se han actualizado en el servidor
-    public static ArrayList<ListaVerificacion> obtenerListasNoEnviadasAlServidor(Context ctx, int idCliente){
+    public static ArrayList<ListaVerificacion> obtenerListasNoEnviadasAlServidor(Context ctx){
         DAL w = new DAL(ctx);
         ArrayList<ListaVerificacion> listas = new ArrayList<ListaVerificacion>();
         ListaVerificacion lista;
@@ -480,10 +480,9 @@ public class ListaVerificacion {
                     + " L." + ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION + ", "
                     + " L." + ListaVerificacion.COLUMN_LISTA_CERRADA + ", "
                     + " L." + ListaVerificacion.COLUMN_CREO_FECHA + ", "
-                    + " L." + ListaVerificacion.COLUMN_CREO_USUARIO + ", "
+                    + " L." + ListaVerificacion.COLUMN_CREO_USUARIO
                     + " FROM " + ListaVerificacion.NOMBRE_TABLA + " L "
-                    + " WHERE L." + ListaVerificacion.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
-                    + "   and L." + ListaVerificacion.COLUMN_ESTADO_ENVIO + " <> '" + AppValues.EstadosEnvio.Enviado + "'";
+                    + " WHERE L." + ListaVerificacion.COLUMN_ESTADO_ENVIO + " <> '" + AppValues.EstadosEnvio.Enviado + "'";
 
             c =  w.getRow(query);
 

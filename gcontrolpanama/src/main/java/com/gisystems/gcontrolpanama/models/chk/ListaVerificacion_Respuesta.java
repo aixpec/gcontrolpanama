@@ -392,8 +392,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
     }
 
     //Devuelve las respuestas ingresadas que no han sido actualizadas en el servidor
-    public static ArrayList<ListaVerificacion_Respuesta> obtenerRespuestasIngresadasNoEnviadasAlServidor(Context ctx,
-                                                                                                         int idCliente){
+    public static ArrayList<ListaVerificacion_Respuesta> obtenerRespuestasIngresadasNoEnviadasAlServidor(Context ctx){
         DAL w = new DAL(ctx);
         ArrayList<ListaVerificacion_Respuesta> respuestas = new ArrayList<>();
         ListaVerificacion_Respuesta respuesta;
@@ -414,14 +413,13 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
                     + " R." + ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA + ", "
                     + " R." + ListaVerificacion_Respuesta.COLUMN_CREO_FECHA
                     + " FROM " + ListaVerificacion_Respuesta.NOMBRE_TABLA + " R "
-                    + " WHERE R." + ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
-                    + "   and R." + ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO + " <> '" + AppValues.EstadosEnvio.Enviado + "'";
+                    + " WHERE R." + ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO + " <> '" + AppValues.EstadosEnvio.Enviado + "'";
             c =  w.getRow(query);
 
             if(c.moveToFirst()){
                 do {
                     respuesta=new ListaVerificacion_Respuesta();
-                    respuesta.setIdCliente(idCliente);
+                    respuesta.setIdCliente(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE)));
                     respuesta.setIdListaVerificacion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION)));
                     respuesta.setIdConfiguracion(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION)));
                     respuesta.setIdIndicador(c.getInt(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR)));

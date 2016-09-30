@@ -49,9 +49,7 @@ public class ProyectosListadoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         ctx=this;
-        
 
-        
         new TareaObtenerListadoProyectos().execute();
 
 
@@ -254,13 +252,11 @@ public class ProyectosListadoActivity extends AppCompatActivity {
 		@Override
 		protected void onPreExecute(){
 			super.onPreExecute();
-			
 			pDialog = new ProgressDialog(ctx);
             pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             pDialog.setMessage(ctx.getApplicationContext().getString(R.string.cargando_proyectos));
             pDialog.setCancelable(false);
 			pDialog.show();
-			
 		}
 
 		@Override
@@ -270,7 +266,7 @@ public class ProyectosListadoActivity extends AppCompatActivity {
 				resultado = Proyecto.obtenerTodosProyectos(ctx);
 			} catch (Exception e) {
 				ManejoErrores.registrarError_MostrarDialogo(ctx, e, 
-						ProyectosListadoActivity.class.getSimpleName(), "onPreExecute", 
+						ProyectosListadoActivity.class.getSimpleName(), "doInBackground",
 	                    null, null);        
 			}
 			return resultado;

@@ -338,8 +338,6 @@ public class ActividadMainMenu extends AppCompatActivity implements View.OnClick
 
             case R.id.mnu_action_actualizar:
                 mainIntent= new Intent(ActividadMainMenu.this,ActividadSincronizacion.class);
-                mainIntent.putExtra(Proyecto.COLUMN_ID_CLIENTE,idClienteSeleccionado);
-                mainIntent.putExtra(Proyecto.COLUMN_ID,idProyectoSeleccionado);
                 ActividadMainMenu.this.startActivity(mainIntent);
                 break;
         }

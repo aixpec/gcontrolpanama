@@ -5,21 +5,18 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.gisystems.api.EnvioDatosAPI;
 import com.gisystems.exceptionhandling.ManejoErrores;
 import com.gisystems.gcontrolpanama.R;
-import com.gisystems.gcontrolpanama.models.AppValues;
-import com.gisystems.gcontrolpanama.models.Proyecto;
-import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion;
 
 public class ActividadSincronizacion extends AppCompatActivity {
 
     private Context ctx;
-    private int idCliente, idProyecto;
+
     private ProgressDialog pDialog;
 
     private ImageButton btnEnviarDatos;
@@ -28,13 +25,13 @@ public class ActividadSincronizacion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Thread.setDefaultUncaughtExceptionHandler(new ManejoErrores(this));
+
         setContentView(R.layout.activity_sincronizacion);
 
         this.setTitle(R.string.ActividadSincronizacion_0);
 
         this.ctx = this;
-
-        obtenerIntents();
 
         configurarBotones();
     }
@@ -45,33 +42,13 @@ public class ActividadSincronizacion extends AppCompatActivity {
 
         btnEnviarDatos.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new TareaEnviarDatos().execute(idCliente);
+                new TareaEnviarDatos().execute();
             }
         });
     }
 
-    /**
-     * Obtiene los Intents esperado por la clase: IdCliente y IdProyecto
-     * @return true si los intents son válidos
-     */
-    private boolean obtenerIntents(){
-        try{
-            idCliente=this.getIntent().getIntExtra(Proyecto.COLUMN_ID_CLIENTE,-1);
-            idProyecto=this.getIntent().getIntExtra(Proyecto.COLUMN_ID,-1);
 
-            Log.i("INTENT PARAMS: ",String.valueOf(idCliente) + "|" + String.valueOf(idProyecto));
-
-            if (idCliente > 0 &  idProyecto >0) return true;
-        }
-        catch (Exception e) {
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
-                    ActividadSincronizacion.class.getSimpleName(), "obtenerIntents",
-                    null, null);
-        }
-        return false;
-    }
-
-    private class TareaEnviarDatos extends AsyncTask<Integer, Void, Boolean> {
+    private class TareaEnviarDatos extends AsyncTask<Integer, Void, Integer> {
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
@@ -83,11 +60,16 @@ public class ActividadSincronizacion extends AppCompatActivity {
         }
 
         @Override
-        protected Boolean doInBackground(Integer... idCliente) {
-            Boolean resultado = false;
+        protected Integer doInBackground(Integer... idCliente) {
+            Integer resultado = 0;
             try {
                     EnvioDatosAPI envioDatosAPI = new EnvioDatosAPI(ctx);
-                    resultado = envioDatosAPI.EnviarTodosLosDatosNoEnviados(idCliente[0]);
+                    if (envioDatosAPI.EnviarTodosLosDatosNoEnviados()) {
+                        resultado = 1;
+                    } else {
+                        resultado = 0;
+                    };
+
             } catch (Exception e) {
                 ManejoErrores.registrarError_MostrarDialogo(ctx, e,
                         ActividadSincronizacion.class.getSimpleName(), "TareaEnviarDatos_doInBackground",
@@ -97,9 +79,14 @@ public class ActividadSincronizacion extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Boolean resultado){
+        protected void onPostExecute(Integer resultado){
             try {
                 pDialog.dismiss();
+                if (resultado > 0) {
+                    Toast.makeText(ctx, R.string.ActividadSincronizacion_5, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ctx, R.string.ActividadSincronizacion_6, Toast.LENGTH_SHORT).show();
+                }
             } catch (Exception e) {
                 ManejoErrores.registrarError_MostrarDialogo(ctx, e,
                         ActividadSincronizacion.class.getSimpleName(), "TareaEnviarDatos_onPostExecute",

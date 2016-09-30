@@ -88,7 +88,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	            @Override
 	            public void onClick(DialogInterface dialog, int which) {
 
-					Intent retornar = new Intent(getBaseContext(), ProyectosListadoActivity.class);
+					Intent retornar = new Intent(getBaseContext(), ActividadMainMenu.class);
 	    			startActivity(retornar);
 					finish();
 
@@ -187,7 +187,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		    			AppValues.SharedPref_guardarUsuarioPassword(ctx,null);
 
 		    			//Ingresar en modo desconectado
-						Intent retornar = new Intent(getBaseContext(), ProyectosListadoActivity.class);
+						Intent retornar = new Intent(getBaseContext(), ActividadMainMenu.class);
 		    			startActivity(retornar);
 		    			finish();
 
@@ -373,7 +373,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 					Toast.makeText(ctx, "Bienvenido ",
 							Toast.LENGTH_SHORT).show();		
 					
-					Intent mainIntent = new Intent(LoginActivity.this,ProyectosListadoActivity.class);
+					Intent mainIntent = new Intent(LoginActivity.this,ActividadMainMenu.class);
 					LoginActivity.this.startActivity(mainIntent);
 					LoginActivity.this.finish();
 
