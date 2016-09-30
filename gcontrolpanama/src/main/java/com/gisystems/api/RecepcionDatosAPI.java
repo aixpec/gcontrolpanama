@@ -681,7 +681,7 @@ public class RecepcionDatosAPI {
                         }
                         values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA));
                         values.put(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA));
-                        values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_REGISTRO, 	AppValues.EstadosEnvio.Enviado.name());
+                        values.put(ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO, 	AppValues.EstadosEnvio.Enviado.name());
                         values.put(ListaVerificacion_Respuesta.COLUMN_ELIMINADO, 0);
                         values.put(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO));
                         values.put(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA, 	registro.getString(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA));

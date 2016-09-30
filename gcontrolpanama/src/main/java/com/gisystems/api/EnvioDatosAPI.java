@@ -442,8 +442,8 @@ public class EnvioDatosAPI {
 
 				if (respuesta.getEjecutadoSinError()) {
 					resultado = respuesta.getParametros();
-					if (resultado.length() > 0 && resultado.contains("|")) {
-						resultados=resultado.split("|");
+					if (resultado.length() > 0 && resultado.contains(",")) {
+						resultados=resultado.split(",");
 						IdListaVerificacion=Integer.valueOf(resultados[0]);
 						filasAfectadas=Integer.valueOf(resultados[1]);
 						if (filasAfectadas > 0 ) {
@@ -514,21 +514,22 @@ public class EnvioDatosAPI {
         return valor;
     }
 
-	public boolean EnviarTodosLosDatosNoEnviados (int idCliente) {
+	public boolean EnviarTodosLosDatosNoEnviados () {
 		boolean resultado = false;
 		try {
 			//1. Enviar las listas de verificación
 			ArrayList<ListaVerificacion> listas;
-			listas = ListaVerificacion.obtenerListasNoEnviadasAlServidor(context,idCliente);
+			listas = ListaVerificacion.obtenerListasNoEnviadasAlServidor(context);
 			for ( ListaVerificacion lista : listas ) {
 				EnviarListaVerificacionParaActualizacion(lista);
 			}
 			//1. Enviar las listas de verificación
 			ArrayList<ListaVerificacion_Respuesta> respuestas;
-			respuestas = ListaVerificacion_Respuesta.obtenerRespuestasIngresadasNoEnviadasAlServidor(context,idCliente);
+			respuestas = ListaVerificacion_Respuesta.obtenerRespuestasIngresadasNoEnviadasAlServidor(context);
 			for ( ListaVerificacion_Respuesta resp : respuestas ) {
 				EnviarListaVerificacionRespuesta(resp);
 			}
+			resultado=true;
 		} catch (Exception e) {
 			resultado=false;
 			ManejoErrores.registrarError(this.context, e,

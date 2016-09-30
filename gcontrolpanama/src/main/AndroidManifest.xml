@@ -122,9 +122,9 @@
         <activity
             android:name=".reglas.checklists.ListasVerificacionActivity"
             android:label="@string/titulo_ListasVerificacion" />
-
         <activity android:name=".reglas.checklists.ListasVerificacionSecciones" />
         <activity android:name=".reglas.checklists.ListasVerificacionPreguntas" />
+        <activity android:name=".reglas.ActividadSincronizacion"></activity>
     </application>
 
 </manifest>
