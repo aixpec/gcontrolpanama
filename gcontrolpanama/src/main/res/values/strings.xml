@@ -191,6 +191,8 @@
     <string name="ActividadSincronizacion_2">Actualizar</string>
     <string name="ActividadSincronizacion_3">Enviando los datos</string>
     <string name="ActividadSincronizacion_4">Actualizando</string>
+    <string name="ActividadSincronizacion_5">Se han enviado los datos</string>
+    <string name="ActividadSincronizacion_6">No se han enviado datos</string>
     <!-- Layout -->
 
 </resources>
