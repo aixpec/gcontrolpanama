@@ -190,9 +190,11 @@
     <string name="ActividadSincronizacion_1">Enviar los datos</string>
     <string name="ActividadSincronizacion_2">Actualizar</string>
     <string name="ActividadSincronizacion_3">Enviando los datos</string>
-    <string name="ActividadSincronizacion_4">Actualizando</string>
+    <string name="ActividadSincronizacion_4">Actualizando los datos en el dispositivo</string>
     <string name="ActividadSincronizacion_5">Se han enviado los datos</string>
     <string name="ActividadSincronizacion_6">No se han enviado datos</string>
+    <string name="ActividadSincronizacion_7">Se han actualizado los datos en el dispositivo</string>
+    <string name="ActividadSincronizacion_8">No se han actualizado los datos en el dispositivo</string>
     <!-- Layout -->
 
 </resources>
