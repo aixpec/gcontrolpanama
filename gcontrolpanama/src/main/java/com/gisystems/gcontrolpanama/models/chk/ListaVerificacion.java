@@ -137,6 +137,7 @@ public class ListaVerificacion {
     public static final String COLUMN_ESTADO_ENVIO		            ="EstadoEnvio";
     public static final String COLUMN_CREO_USUARIO			        ="CreoUsuario";
     public static final String COLUMN_CREO_FECHA			        ="CreoFecha";
+    public static final String COLUMN_CONFIRMADO_AL_ACTUALIZAR      ="ConfirmadaAlActualizar";
 
     private static final String DATABASE_CREATE="create table "
             + NOMBRE_TABLA
@@ -150,6 +151,7 @@ public class ListaVerificacion {
             + COLUMN_ESTADO_ENVIO				    + " text not null, "
             + COLUMN_CREO_USUARIO				    + " text not null, "
             + COLUMN_CREO_FECHA				        + " text not null, "
+            + COLUMN_CONFIRMADO_AL_ACTUALIZAR       + " integer DEFAULT 0, "
             + "PRIMARY KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_LISTA_VERIFICACION + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_TIPO_LISTA_VERIFICACION + " ) REFERENCES " + TipoListaVerificacion.NOMBRE_TABLA + "("   + TipoListaVerificacion.COLUMN_ID_CLIENTE + "," + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + "), "
             + "FOREIGN KEY ( " + COLUMN_ID_CLIENTE +  ", "  + COLUMN_ID_PROYECTO + " ) REFERENCES " + Proyecto.NOMBRE_TABLA + "("   + Proyecto.COLUMN_ID_CLIENTE + "," + Proyecto.COLUMN_ID + ") "
@@ -532,6 +534,138 @@ public class ListaVerificacion {
             resultado=false;
             ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion.class.getSimpleName(), "RegistrarComoEnviadaAlServidor",
+                    null, null);
+        }
+        return resultado;
+    }
+
+    public static boolean MarcarTodoComoNoConfirmado(Context ctx) {
+        boolean resultado = false;
+
+        //1. Preparar el campo que se actualizará
+        ContentValues values = new ContentValues();
+        values.put(ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	    0);
+
+        //3. Ejecutar el UPDATE
+        DAL w = new DAL(ctx);
+        try {
+            w.iniciarTransaccion();
+            String where=ListaVerificacion.COLUMN_ESTADO_ENVIO + "=" + AppValues.EstadosEnvio.Enviado.name();
+            resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
+            w.finalizarTransaccion(resultado);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "MarcarTodoComoNoConfirmado",
+                    null, null);
+        }
+        return resultado;
+    }
+
+    public boolean RegistrarListaRecibidaDelServidor(Context ctx) {
+        boolean resultado = false;
+        boolean existe;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
+
+        //1. Consultar si la lista ya existe en la BD local
+        existe = EstaListaExisteEnBdLocal(ctx);
+
+        //2. Preparar los datos a actualizar/insertar
+        ContentValues values = new ContentValues();
+        if (!existe) {
+            values.put(ListaVerificacion.COLUMN_ID_CLIENTE, idCliente);
+            values.put(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION, idListaVerificacion);
+        }
+        values.put(ListaVerificacion.COLUMN_ID_PROYECTO, 		            idProyecto);
+        values.put(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION, 	idTipoListaVerificacion);
+        values.put(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION,   EstadoListaVerificacion.ID_SIN_FINALIZAR);
+        values.put(ListaVerificacion.COLUMN_LISTA_CERRADA,                  0);
+        values.put(ListaVerificacion.COLUMN_ESTADO_ENVIO, 	                AppValues.EstadosEnvio.Enviado.name());
+        values.put(ListaVerificacion.COLUMN_CREO_USUARIO, 	                this.creoUsuario);
+        values.put(ListaVerificacion.COLUMN_CREO_FECHA, 	                sdf.format(this.creoFecha));
+        values.put(ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	    1);
+
+        //3. Ejecutar el INSERT o el UPDATE
+        DAL w = new DAL(ctx);
+        try{
+            w.iniciarTransaccion();
+
+            if (!existe) {
+                resultado = (w.insertRow(NOMBRE_TABLA, values) > 0);
+            } else {
+                String where=ListaVerificacion.COLUMN_ID_CLIENTE + "=" + String.valueOf(idCliente)
+                        + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(idListaVerificacion);
+                resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
+            }
+
+            w.finalizarTransaccion(resultado);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "RegistrarListaRecibidaDelServidor",
+                    null, null);
+        }
+        return resultado;
+    }
+
+    private boolean EstaListaExisteEnBdLocal(Context ctx) {
+        boolean existe = false;
+        int cantidad = 0;
+        DAL w = new DAL(ctx);
+
+        Cursor c;
+
+        try{
+            String query = "SELECT count(*) as cantidad "
+                         + " FROM " + ListaVerificacion.NOMBRE_TABLA
+                         + " WHERE " + ListaVerificacion.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
+                         + "   and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + " = " + String.valueOf(idListaVerificacion);
+
+            c =  w.getRow(query);
+
+            if(c.moveToFirst()){
+                do {
+                    cantidad = c.getInt(c.getColumnIndexOrThrow("cantidad"));
+                }
+                while(c.moveToNext());
+                c.close();
+            }
+
+            existe = (cantidad > 0);
+        }
+        catch (Exception e){
+            ManejoErrores.registrarError(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "EstaListaExisteEnBdLocal",
+                    null, null);
+        }
+        return existe;
+    }
+
+    public static boolean EliminarTodoLoNoConfirmado(Context ctx) {
+        boolean resultado = false;
+
+        //1. Preparar el campo que se actualizará
+        ContentValues values = new ContentValues();
+        values.put(ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	    0);
+
+        //3. Ejecutar el UPDATE
+        DAL w = new DAL(ctx);
+        try {
+            w.iniciarTransaccion();
+            String where=ListaVerificacion.COLUMN_ESTADO_ENVIO + "=" + AppValues.EstadosEnvio.Enviado.name() +
+                    " and " + ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR + "= 0";
+            resultado= w.deleteRow(ListaVerificacion.NOMBRE_TABLA, where);
+            w.finalizarTransaccion(resultado);
+        }
+        catch (Exception e)
+        {
+            w.finalizarTransaccion(false);
+            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                    ListaVerificacion.class.getSimpleName(), "EliminarTodoLoNoConfirmado",
                     null, null);
         }
         return resultado;
