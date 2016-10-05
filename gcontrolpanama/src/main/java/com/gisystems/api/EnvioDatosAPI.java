@@ -483,7 +483,7 @@ public class EnvioDatosAPI {
                 parametros.add(resp.getDescripcionRespuesta());
                 parametros.add(resp.getValorRespuesta());
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-                parametros.add(sdf.format(resp.getFechaCaptura()));
+                parametros.add(sdf.format(resp.getCreoFecha()));
                 parametros.add(id_usuario );
                 parametros.add(id_disp_movil );
                 metodoEjecutara = "fCrearListaVerificacionRespuesta";
@@ -523,7 +523,7 @@ public class EnvioDatosAPI {
 			for ( ListaVerificacion lista : listas ) {
 				EnviarListaVerificacionParaActualizacion(lista);
 			}
-			//1. Enviar las listas de verificación
+			//1. Enviar las respuestas de listas de verificación
 			ArrayList<ListaVerificacion_Respuesta> respuestas;
 			respuestas = ListaVerificacion_Respuesta.obtenerRespuestasIngresadasNoEnviadasAlServidor(context);
 			for ( ListaVerificacion_Respuesta resp : respuestas ) {

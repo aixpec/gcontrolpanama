@@ -19,6 +19,7 @@ import com.gisystems.gcontrolpanama.models.cc.RespuestaIngresada;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -285,7 +286,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
     public long insertarRespuestaBD(Context ctx){
 
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss",Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault());
         long resultado;
 
         this.creoUsuario = AppValues.SharedPref_obtenerUsuarioNombre(ctx);
@@ -354,7 +355,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         try{
             w.iniciarTransaccion();
             Date date = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss",Locale.getDefault());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault());
             //Actualizar el Id del avance
             ContentValues values = new ContentValues();
             values.put(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR, 	this.getIndicador());
@@ -399,6 +400,11 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         ArrayList<ListaVerificacion_Respuesta> respuestas = new ArrayList<>();
         ListaVerificacion_Respuesta respuesta;
 
+        Calendar cal = Calendar.getInstance();
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.ENGLISH );
+        Date dateRepresentation;
+
         Cursor c;
 
         try {
@@ -432,6 +438,10 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
 
                     respuesta.setIndicador(c.getString(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR)));
                     respuesta.setPregunta(c.getString(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA)));
+
+                    cal.setTime(sdf.parse(c.getString(c.getColumnIndexOrThrow(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA))));
+                    dateRepresentation = cal.getTime();
+                    respuesta.setCreoFecha(dateRepresentation);
 
                     respuestas.add(respuesta);
                 }
