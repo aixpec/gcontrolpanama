@@ -94,6 +94,7 @@ public class ActividadSincronizacion extends AppCompatActivity {
                 } else {
                     Toast.makeText(ctx, R.string.ActividadSincronizacion_6, Toast.LENGTH_SHORT).show();
                 }
+                new TareaActualizarDatos().execute();
             } catch (Exception e) {
                 ManejoErrores.registrarError_MostrarDialogo(ctx, e,
                         ActividadSincronizacion.class.getSimpleName(), "TareaEnviarDatos_onPostExecute",

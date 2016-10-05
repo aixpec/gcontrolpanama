@@ -539,7 +539,7 @@ public class ListaVerificacion {
         return resultado;
     }
 
-    public static boolean MarcarTodoComoNoConfirmado(Context ctx) {
+    public static boolean MarcarTodoComoNoConfirmado(Context ctx, DAL w) {
         boolean resultado = false;
 
         //1. Preparar el campo que se actualizará
@@ -547,30 +547,26 @@ public class ListaVerificacion {
         values.put(ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	    0);
 
         //3. Ejecutar el UPDATE
-        DAL w = new DAL(ctx);
         try {
-            w.iniciarTransaccion();
-            String where=ListaVerificacion.COLUMN_ESTADO_ENVIO + "=" + AppValues.EstadosEnvio.Enviado.name();
+            String where=ListaVerificacion.COLUMN_ESTADO_ENVIO + "= '" + AppValues.EstadosEnvio.Enviado.name() + "'";
             resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
-            w.finalizarTransaccion(resultado);
         }
         catch (Exception e)
         {
-            w.finalizarTransaccion(false);
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+            ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion.class.getSimpleName(), "MarcarTodoComoNoConfirmado",
                     null, null);
         }
         return resultado;
     }
 
-    public boolean RegistrarListaRecibidaDelServidor(Context ctx) {
+    public boolean RegistrarListaRecibidaDelServidor(Context ctx, DAL w) {
         boolean resultado = false;
         boolean existe;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
 
         //1. Consultar si la lista ya existe en la BD local
-        existe = EstaListaExisteEnBdLocal(ctx);
+        existe = EstaListaExisteEnBdLocal(ctx, w);
 
         //2. Preparar los datos a actualizar/insertar
         ContentValues values = new ContentValues();
@@ -588,10 +584,7 @@ public class ListaVerificacion {
         values.put(ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	    1);
 
         //3. Ejecutar el INSERT o el UPDATE
-        DAL w = new DAL(ctx);
         try{
-            w.iniciarTransaccion();
-
             if (!existe) {
                 resultado = (w.insertRow(NOMBRE_TABLA, values) > 0);
             } else {
@@ -599,23 +592,19 @@ public class ListaVerificacion {
                         + " and " + ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION + "=" + String.valueOf(idListaVerificacion);
                 resultado= (w.updateRow(ListaVerificacion.NOMBRE_TABLA, values, where)>0);
             }
-
-            w.finalizarTransaccion(resultado);
         }
         catch (Exception e)
         {
-            w.finalizarTransaccion(false);
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+            ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion.class.getSimpleName(), "RegistrarListaRecibidaDelServidor",
                     null, null);
         }
         return resultado;
     }
 
-    private boolean EstaListaExisteEnBdLocal(Context ctx) {
+    private boolean EstaListaExisteEnBdLocal(Context ctx, DAL w) {
         boolean existe = false;
         int cantidad = 0;
-        DAL w = new DAL(ctx);
 
         Cursor c;
 
@@ -645,7 +634,7 @@ public class ListaVerificacion {
         return existe;
     }
 
-    public static boolean EliminarTodoLoNoConfirmado(Context ctx) {
+    public static boolean EliminarTodoLoNoConfirmado(Context ctx, DAL w) {
         boolean resultado = false;
 
         //1. Preparar el campo que se actualizará
@@ -653,18 +642,14 @@ public class ListaVerificacion {
         values.put(ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	    0);
 
         //3. Ejecutar el UPDATE
-        DAL w = new DAL(ctx);
         try {
-            w.iniciarTransaccion();
             String where=ListaVerificacion.COLUMN_ESTADO_ENVIO + "=" + AppValues.EstadosEnvio.Enviado.name() +
                     " and " + ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR + "= 0";
             resultado= w.deleteRow(ListaVerificacion.NOMBRE_TABLA, where);
-            w.finalizarTransaccion(resultado);
         }
         catch (Exception e)
         {
-            w.finalizarTransaccion(false);
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+            ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion.class.getSimpleName(), "EliminarTodoLoNoConfirmado",
                     null, null);
         }

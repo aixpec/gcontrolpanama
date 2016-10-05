@@ -458,14 +458,14 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         DAL w = new DAL(ctx);
         try {
             w.iniciarTransaccion();
-            String where=ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO + "=" + AppValues.EstadosEnvio.Enviado.name();
+            String where=ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO + "= '" + AppValues.EstadosEnvio.Enviado.name() + "'";
             resultado= (w.updateRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, values, where)>0);
             w.finalizarTransaccion(resultado);
         }
         catch (Exception e)
         {
             w.finalizarTransaccion(false);
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+            ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion_Respuesta.class.getSimpleName(), "MarcarTodoComoNoConfirmado",
                     null, null);
         }
@@ -521,7 +521,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         catch (Exception e)
         {
             w.finalizarTransaccion(false);
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+            ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion_Respuesta.class.getSimpleName(), "RegistrarRespuestaRecibidaDelServidor",
                     null, null);
         }
@@ -583,7 +583,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         catch (Exception e)
         {
             w.finalizarTransaccion(false);
-            ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+            ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion_Respuesta.class.getSimpleName(), "EliminarTodoLoNoConfirmado",
                     null, null);
         }
