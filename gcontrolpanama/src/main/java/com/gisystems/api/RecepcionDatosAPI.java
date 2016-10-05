@@ -790,12 +790,10 @@ public class RecepcionDatosAPI {
                         lista.RegistrarListaRecibidaDelServidor(ctx, w);
                     }
 
-                    ListaVerificacion.EliminarTodoLoNoConfirmado(ctx, w);
-
                     Log.w("RecepcionDatosApi", "Fin actualización LISTAS DE VERIFICACION");
 
                     //6. Obtener datos para la tabla de Respuestas de las Listas de Verificación
-                    ListaVerificacion_Respuesta.MarcarTodoComoNoConfirmado(ctx);
+                    ListaVerificacion_Respuesta.MarcarTodoComoNoConfirmado(ctx, w);
 
                     ListaVerificacion_Respuesta resp;
 
@@ -819,10 +817,11 @@ public class RecepcionDatosAPI {
                         dateRepresentation = cal.getTime();
                         resp.setCreoFecha(dateRepresentation);
 
-                        resp.RegistrarRespuestaRecibidaDelServidor(ctx);
+                        resp.RegistrarRespuestaRecibidaDelServidor(ctx, w);
                     }
 
-                    ListaVerificacion_Respuesta.EliminarTodoLoNoConfirmado(ctx);
+                    ListaVerificacion_Respuesta.EliminarTodoLoNoConfirmado(ctx, w);
+                    ListaVerificacion.EliminarTodoLoNoConfirmado(ctx, w);
 
                     Log.w("RecepcionDatosApi", "Fin actualización RESPUESTAS DE LAS LISTAS DE VERIFICACION");
 
