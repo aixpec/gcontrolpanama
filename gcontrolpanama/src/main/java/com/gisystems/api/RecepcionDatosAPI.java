@@ -752,8 +752,6 @@ public class RecepcionDatosAPI {
                 w.iniciarTransaccion();
 
                 if (respuesta.getEjecutadoSinError()) {
-                    EliminarDatosDeLaBD(w);
-
                     String datosObtenidos = "";
                     datosObtenidos = respuesta.getParametros();
 
@@ -766,7 +764,7 @@ public class RecepcionDatosAPI {
                         return false;}
 
                     //5. Obtener datos para la tabla de Listas de Verificación
-                    ListaVerificacion.MarcarTodoComoNoConfirmado(ctx);
+                    ListaVerificacion.MarcarTodoComoNoConfirmado(ctx, w);
 
                     ListaVerificacion lista;
                     Calendar cal = Calendar.getInstance();
@@ -789,10 +787,10 @@ public class RecepcionDatosAPI {
                         dateRepresentation = cal.getTime();
                         lista.setCreoFecha(dateRepresentation);
 
-                        lista.RegistrarListaRecibidaDelServidor(ctx);
+                        lista.RegistrarListaRecibidaDelServidor(ctx, w);
                     }
 
-                    ListaVerificacion.EliminarTodoLoNoConfirmado(ctx);
+                    ListaVerificacion.EliminarTodoLoNoConfirmado(ctx, w);
 
                     Log.w("RecepcionDatosApi", "Fin actualización LISTAS DE VERIFICACION");
 

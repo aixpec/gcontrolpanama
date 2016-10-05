@@ -4,10 +4,6 @@
     android:versionCode="7"
     android:versionName="colon septima">
 
-    <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="22" />
-
     <uses-permission
         android:name="android.permission.INTERNET"
         android:required="false" />
@@ -66,7 +62,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -124,7 +120,7 @@
             android:label="@string/titulo_ListasVerificacion" />
         <activity android:name=".reglas.checklists.ListasVerificacionSecciones" />
         <activity android:name=".reglas.checklists.ListasVerificacionPreguntas" />
-        <activity android:name=".reglas.ActividadSincronizacion"></activity>
+        <activity android:name=".reglas.ActividadSincronizacion" />
     </application>
 
 </manifest>
