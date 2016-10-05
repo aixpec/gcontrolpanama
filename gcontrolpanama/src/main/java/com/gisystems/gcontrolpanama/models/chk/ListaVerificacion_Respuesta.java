@@ -447,7 +447,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         return respuestas;
     }
 
-    public static boolean MarcarTodoComoNoConfirmado(Context ctx) {
+    public static boolean MarcarTodoComoNoConfirmado(Context ctx, DAL w) {
         boolean resultado = false;
 
         //1. Preparar el campo que se actualizará
@@ -455,16 +455,12 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         values.put(ListaVerificacion_Respuesta.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	    0);
 
         //2. Ejecutar el UPDATE
-        DAL w = new DAL(ctx);
         try {
-            w.iniciarTransaccion();
             String where=ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO + "= '" + AppValues.EstadosEnvio.Enviado.name() + "'";
             resultado= (w.updateRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, values, where)>0);
-            w.finalizarTransaccion(resultado);
         }
         catch (Exception e)
         {
-            w.finalizarTransaccion(false);
             ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion_Respuesta.class.getSimpleName(), "MarcarTodoComoNoConfirmado",
                     null, null);
@@ -472,13 +468,13 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         return resultado;
     }
 
-    public boolean RegistrarRespuestaRecibidaDelServidor(Context ctx) {
+    public boolean RegistrarRespuestaRecibidaDelServidor(Context ctx, DAL w) {
         boolean resultado = false;
         boolean existe;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
 
         //1. Consultar si la respuesta ya existe en la BD local
-        existe = EstaRespuestaExisteEnBdLocal(ctx);
+        existe = EstaRespuestaExisteEnBdLocal(ctx, w);
 
         //2. Preparar los datos a actualizar/insertar
         ContentValues values = new ContentValues();
@@ -501,10 +497,7 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         values.put(ListaVerificacion_Respuesta.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	1);
 
         //3. Ejecutar el INSERT o el UPDATE
-        DAL w = new DAL(ctx);
         try{
-            w.iniciarTransaccion();
-
             if (!existe) {
                 resultado = (w.insertRow(NOMBRE_TABLA, values) > 0);
             } else {
@@ -515,12 +508,9 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
                         + " and " + ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA + "=" +  String.valueOf(getIdPregunta());
                 resultado= (w.updateRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, values, where)>0);
             }
-
-            w.finalizarTransaccion(resultado);
         }
         catch (Exception e)
         {
-            w.finalizarTransaccion(false);
             ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion_Respuesta.class.getSimpleName(), "RegistrarRespuestaRecibidaDelServidor",
                     null, null);
@@ -528,11 +518,9 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         return resultado;
     }
 
-    private boolean EstaRespuestaExisteEnBdLocal(Context ctx) {
+    private boolean EstaRespuestaExisteEnBdLocal(Context ctx, DAL w) {
         boolean existe = false;
         int cantidad = 0;
-        DAL w = new DAL(ctx);
-
         Cursor c;
 
         try{
@@ -564,25 +552,17 @@ public class ListaVerificacion_Respuesta extends RespuestaIngresada {
         return existe;
     }
 
-    public static boolean EliminarTodoLoNoConfirmado(Context ctx) {
+    public static boolean EliminarTodoLoNoConfirmado(Context ctx, DAL w) {
         boolean resultado = false;
 
-        //1. Preparar el campo que se actualizará
-        ContentValues values = new ContentValues();
-        values.put(ListaVerificacion_Respuesta.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	    0);
-
-        //3. Ejecutar el UPDATE
-        DAL w = new DAL(ctx);
+        //1. Ejecutar el DELETE
         try {
-            w.iniciarTransaccion();
-            String where=ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO + "=" + AppValues.EstadosEnvio.Enviado.name() +
+            String where=ListaVerificacion_Respuesta.COLUMN_ESTADO_ENVIO + "= '" + AppValues.EstadosEnvio.Enviado.name() + "'" +
                     " and " + ListaVerificacion_Respuesta.COLUMN_CONFIRMADO_AL_ACTUALIZAR + "= 0";
             resultado= w.deleteRow(ListaVerificacion_Respuesta.NOMBRE_TABLA, where);
-            w.finalizarTransaccion(resultado);
         }
         catch (Exception e)
         {
-            w.finalizarTransaccion(false);
             ManejoErrores.registrarError(ctx, e,
                     ListaVerificacion_Respuesta.class.getSimpleName(), "EliminarTodoLoNoConfirmado",
                     null, null);

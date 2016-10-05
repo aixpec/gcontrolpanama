@@ -637,13 +637,9 @@ public class ListaVerificacion {
     public static boolean EliminarTodoLoNoConfirmado(Context ctx, DAL w) {
         boolean resultado = false;
 
-        //1. Preparar el campo que se actualizará
-        ContentValues values = new ContentValues();
-        values.put(ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR, 	    0);
-
-        //3. Ejecutar el UPDATE
+        //1. Ejecutar el DELETE
         try {
-            String where=ListaVerificacion.COLUMN_ESTADO_ENVIO + "=" + AppValues.EstadosEnvio.Enviado.name() +
+            String where=ListaVerificacion.COLUMN_ESTADO_ENVIO + "= '" + AppValues.EstadosEnvio.Enviado.name() + "'" +
                     " and " + ListaVerificacion.COLUMN_CONFIRMADO_AL_ACTUALIZAR + "= 0";
             resultado= w.deleteRow(ListaVerificacion.NOMBRE_TABLA, where);
         }
