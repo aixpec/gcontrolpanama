@@ -33,13 +33,12 @@ android {
         checkReleaseBuilds false
     }
 
-    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
     compile project(':mPChartLib')
 //    compile project(':cardview')
-    compile 'com.google.android.gms:play-services:9.6.1'
+    compile 'com.google.android.gms:play-services-location:9.6.1'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:cardview-v7:24.2.1'
     compile 'com.android.support:multidex:1.0.1'
