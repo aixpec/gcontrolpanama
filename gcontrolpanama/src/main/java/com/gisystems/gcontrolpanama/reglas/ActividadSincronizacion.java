@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.gisystems.api.EnvioDatosAPI;
+import com.gisystems.api.RecepcionDatosAPI;
 import com.gisystems.exceptionhandling.ManejoErrores;
 import com.gisystems.gcontrolpanama.R;
 
@@ -43,6 +44,12 @@ public class ActividadSincronizacion extends AppCompatActivity {
         btnEnviarDatos.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new TareaEnviarDatos().execute();
+            }
+        });
+
+        btnActualizar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new TareaActualizarDatos().execute();
             }
         });
     }
@@ -90,6 +97,54 @@ public class ActividadSincronizacion extends AppCompatActivity {
             } catch (Exception e) {
                 ManejoErrores.registrarError_MostrarDialogo(ctx, e,
                         ActividadSincronizacion.class.getSimpleName(), "TareaEnviarDatos_onPostExecute",
+                        null, null);
+            }
+        }
+    }
+
+
+    private class TareaActualizarDatos extends AsyncTask<Integer, Void, Integer> {
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+            pDialog = new ProgressDialog(ctx);
+            pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            pDialog.setMessage(ctx.getApplicationContext().getString(R.string.ActividadSincronizacion_4));
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... idCliente) {
+            Integer resultado = 0;
+            try {
+                RecepcionDatosAPI recepcionDatosAPI = new RecepcionDatosAPI(ctx);
+                if (recepcionDatosAPI.ActualizarDatosEnBdLocal()) {
+                    resultado = 1;
+                } else {
+                    resultado = 0;
+                };
+
+            } catch (Exception e) {
+                ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                        ActividadSincronizacion.class.getSimpleName(), "TareaActualizarDatos_doInBackground",
+                        null, null);
+            }
+            return resultado;
+        }
+
+        @Override
+        protected void onPostExecute(Integer resultado){
+            try {
+                pDialog.dismiss();
+                if (resultado > 0) {
+                    Toast.makeText(ctx, R.string.ActividadSincronizacion_7, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ctx, R.string.ActividadSincronizacion_8, Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                ManejoErrores.registrarError_MostrarDialogo(ctx, e,
+                        ActividadSincronizacion.class.getSimpleName(), "TareaActualizarDatos_onPostExecute",
                         null, null);
             }
         }
