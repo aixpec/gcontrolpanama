@@ -1,7 +1,11 @@
 package com.gisystems.api;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.EmptyStackException;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -56,7 +60,7 @@ public class RecepcionDatosAPI {
 	}
 	
 	public boolean InicializarBD()  {
-		boolean resultado = false;
+		boolean resultado;
 		PeticionWSL peticion = null;
 		RespuestaWSL respuesta = null;
 		miExcepcion=new MiExcepcion();
@@ -95,7 +99,7 @@ public class RecepcionDatosAPI {
 
                     datosJSON =  new JSONObject(datosObtenidos);
 
-					//Vaidar que existan en el JSON las entidades a almacenar
+					//Validar que existan en el JSON las entidades a almacenar
 					if( !(datosJSON.has(Cliente.NOMBRE_TABLA)
 							&& datosJSON.has(TipoProyecto.NOMBRE_TABLA)
 							&& datosJSON.has(EstadoProyecto.NOMBRE_TABLA)
@@ -386,7 +390,7 @@ public class RecepcionDatosAPI {
                     datosObtenidos = respuesta.getParametros();
                     datosJSON = new JSONObject(datosObtenidos);
 
-                    //Vaidar que existan en el JSON las entidades a almacenar
+                    //Validar que existan en el JSON las entidades a almacenar
                     if( !(// Tablas de configuraciones de preguntas / respuestas
                           datosJSON.has(ClaseIndicador.NOMBRE_TABLA)
                             && datosJSON.has(TipoIndicador.NOMBRE_TABLA)
@@ -715,7 +719,142 @@ public class RecepcionDatosAPI {
         }
         return resultado;
     }
-	
 
-	
+    public boolean ActualizarDatosEnBdLocal()  {
+        boolean resultado;
+        PeticionWSL peticion = null;
+        RespuestaWSL respuesta = null;
+        miExcepcion=new MiExcepcion();
+        BusinessCloud businessCloud = new BusinessCloud();
+        try {
+
+            //1. Obtener la petición para la capa WSL de la arquitectura
+            ArrayList<Object> parametros = new ArrayList<>();
+            parametros.add(this.userName);
+            String nombreArchivoAssembly = "Gisystems.Elephant.BLL.dll";
+            String namespaceClase = "Gisystems.Elephant.BLL";
+            String nombreClase = "ApiAppMovil";
+            String metodoEjecutara = "prSincronizarAppPorUsuario_Actualizacion";
+            String pathLog = "";
+            peticion = Utilitarios.ObtenerPeticionWSL(ctx,
+                    Utilitarios.TipoFuncion.ejecutarMetodo,
+                    this.userName, this.password, parametros, nombreArchivoAssembly, namespaceClase,
+                    nombreClase, metodoEjecutara, pathLog);
+
+            //2. Enviar petición. Conexión al API REST de la capa WSL
+            JSONObject datosJSON;
+            JSONArray array;
+            JSONObject registro;
+            respuesta = businessCloud.sendRequestWSL(ctx, peticion);
+            try{
+                //3. Iniciar la transacción
+                w=new DAL(ctx);
+                w.iniciarTransaccion();
+
+                if (respuesta.getEjecutadoSinError()) {
+                    EliminarDatosDeLaBD(w);
+
+                    String datosObtenidos = "";
+                    datosObtenidos = respuesta.getParametros();
+
+                    datosJSON =  new JSONObject(datosObtenidos);
+
+                    //4. Validar que existan en el JSON las entidades a almacenar
+                    if( !(datosJSON.has(ListaVerificacion.NOMBRE_TABLA)
+                       && datosJSON.has(ListaVerificacion_Respuesta.NOMBRE_TABLA))) {
+                        w.finalizarTransaccion(false);
+                        return false;}
+
+                    //5. Obtener datos para la tabla de Listas de Verificación
+                    ListaVerificacion.MarcarTodoComoNoConfirmado(ctx);
+
+                    ListaVerificacion lista;
+                    Calendar cal = Calendar.getInstance();
+                    String pattern = "yyyy-MM-dd";
+                    SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.ENGLISH );
+                    Date dateRepresentation;
+
+                    array = datosJSON.getJSONArray(ListaVerificacion.NOMBRE_TABLA);
+                    for(int i = 0 ; i < array.length(); i++){
+                        registro = array.getJSONObject(i);
+                        lista = new ListaVerificacion();
+                        lista.setIdCliente(registro.getInt(ListaVerificacion.COLUMN_ID_CLIENTE));
+                        lista.setIdListaVerificacion(registro.getInt(ListaVerificacion.COLUMN_ID_LISTA_VERIFICACION));
+                        lista.setIdProyecto(registro.getInt(ListaVerificacion.COLUMN_ID_PROYECTO));
+                        lista.setIdTipoListaVerificacion(registro.getInt(ListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION));
+                        lista.setIdEstadoListaVerificacion(registro.getInt(ListaVerificacion.COLUMN_ID_ESTADO_LISTA_VERIFICACION));
+                        lista.setListaCerrada(0);
+                        lista.setCreoUsuario(registro.getString(ListaVerificacion.COLUMN_CREO_USUARIO));
+                        cal.setTime(sdf.parse(registro.getString(ListaVerificacion.COLUMN_CREO_FECHA)));
+                        dateRepresentation = cal.getTime();
+                        lista.setCreoFecha(dateRepresentation);
+
+                        lista.RegistrarListaRecibidaDelServidor(ctx);
+                    }
+
+                    ListaVerificacion.EliminarTodoLoNoConfirmado(ctx);
+
+                    Log.w("RecepcionDatosApi", "Fin actualización LISTAS DE VERIFICACION");
+
+                    //6. Obtener datos para la tabla de Respuestas de las Listas de Verificación
+                    ListaVerificacion_Respuesta.MarcarTodoComoNoConfirmado(ctx);
+
+                    ListaVerificacion_Respuesta resp;
+
+                    array = datosJSON.getJSONArray(ListaVerificacion_Respuesta.NOMBRE_TABLA);
+                    for(int i = 0 ; i < array.length(); i++){
+                        registro = array.getJSONObject(i);
+                        resp = new ListaVerificacion_Respuesta();
+
+                        resp.setIdCliente(registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_CLIENTE));
+                        resp.setIdListaVerificacion(registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_LISTA_VERIFICACION));
+                        resp.setIdConfiguracion(registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_CONFIGURACION));
+                        resp.setIdIndicador(registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_INDICADOR));
+                        resp.setIdPregunta(registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_PREGUNTA));
+                        resp.setIndicador(registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_INDICADOR));
+                        resp.setPregunta(registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_PREGUNTA));
+                        resp.setIdRespuesta(registro.getInt(ListaVerificacion_Respuesta.COLUMN_ID_RESPUESTA));
+                        resp.setDescripcionRespuesta(registro.getString(ListaVerificacion_Respuesta.COLUMN_DESCRIPCION_RESPUESTA));
+                        resp.setValorRespuesta(registro.getString(ListaVerificacion_Respuesta.COLUMN_VALOR_RESPUESTA));
+                        resp.setCreoUsuario(registro.getString(ListaVerificacion_Respuesta.COLUMN_CREO_USUARIO));
+                        cal.setTime(sdf.parse(registro.getString(ListaVerificacion_Respuesta.COLUMN_CREO_FECHA)));
+                        dateRepresentation = cal.getTime();
+                        resp.setCreoFecha(dateRepresentation);
+
+                        resp.RegistrarRespuestaRecibidaDelServidor(ctx);
+                    }
+
+                    ListaVerificacion_Respuesta.EliminarTodoLoNoConfirmado(ctx);
+
+                    Log.w("RecepcionDatosApi", "Fin actualización RESPUESTAS DE LAS LISTAS DE VERIFICACION");
+
+                    resultado=true;
+
+                    w.finalizarTransaccion(resultado);
+                }
+                else
+                {
+                    w.finalizarTransaccion(false);
+                    resultado = false;
+                }
+
+            } catch (Exception e) {
+                resultado=false;
+                w.finalizarTransaccion(false);
+                ManejoErrores.registrarError(this.ctx, e,
+                        RecepcionDatosAPI.class.getSimpleName(), "ActualizarDatosEnBdLocal",
+                        peticion, respuesta);
+            }
+        } catch (Exception e) {
+            resultado=false;
+            ManejoErrores.registrarError(this.ctx, e,
+                    RecepcionDatosAPI.class.getSimpleName(), "ActualizarDatosEnBdLocal",
+                    peticion, respuesta);
+        }
+
+        return resultado;
+    }
+
+
+
 }
