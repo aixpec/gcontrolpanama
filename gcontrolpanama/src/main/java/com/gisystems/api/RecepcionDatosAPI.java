@@ -21,6 +21,7 @@ import com.gisystems.gcontrolpanama.models.cc.Respuesta;
 import com.gisystems.gcontrolpanama.models.cc.RespuestaAccionDetalle;
 import com.gisystems.gcontrolpanama.models.cc.TipoDato;
 import com.gisystems.gcontrolpanama.models.cc.TipoIndicador;
+import com.gisystems.gcontrolpanama.models.chk.Asign_Proyecto_TipoListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.EstadoListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion_Respuesta;
@@ -403,6 +404,7 @@ public class RecepcionDatosAPI {
                             && datosJSON.has(RespuestaAccionDetalle.NOMBRE_TABLA)
                             // Tablas para checklists
                             && datosJSON.has(TipoListaVerificacion.NOMBRE_TABLA)
+                            && datosJSON.has(Asign_Proyecto_TipoListaVerificacion.NOMBRE_TABLA)
                             && datosJSON.has(TipoListaVerificacion_Seccion.NOMBRE_TABLA)
                             && datosJSON.has(ListaVerificacion.NOMBRE_TABLA)
                             && datosJSON.has(ListaVerificacion_Respuesta.NOMBRE_TABLA))) {
@@ -622,7 +624,24 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción TIPOS DE LISTA DE VERIFICACION");
 
-                    //14. Obtener datos para la tabla de Secciones por Tipo de PreguntaListaUI de Verificación
+                    //14. Obtener datos para la tabla de Tipos de Lista de Verificación por proyecto
+                    array = datosJSON.getJSONArray(Asign_Proyecto_TipoListaVerificacion.NOMBRE_TABLA);
+                    for(int i = 0 ; i < array.length(); i++){
+                        registro = array.getJSONObject(i);
+                        values = new ContentValues();
+                        values.put(Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_CLIENTE, 	registro.getInt(Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_CLIENTE));
+                        values.put(Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION, 	registro.getInt(Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION));
+                        values.put(Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_PROYECTO, 	registro.getInt(Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_PROYECTO));
+
+                        if (w.insertRow(Asign_Proyecto_TipoListaVerificacion.NOMBRE_TABLA, values)<0)
+                            throw new EmptyStackException();
+
+                        values.clear();
+                    }
+
+                    Log.w("RecepcionDatosApi", "Fin inserción TIPOS DE LISTA DE VERIFICACION POR PROYECTO");
+
+                    //15. Obtener datos para la tabla de Secciones por Tipo de PreguntaListaUI de Verificación
                     array = datosJSON.getJSONArray(TipoListaVerificacion_Seccion.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -644,7 +663,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción SECCIONES POR TIPO DE LISTA DE VERIFICACION");
 
-                    //15. Obtener datos para la tabla de Listas de Verificación
+                    //16. Obtener datos para la tabla de Listas de Verificación
                     array = datosJSON.getJSONArray(ListaVerificacion.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);
@@ -667,7 +686,7 @@ public class RecepcionDatosAPI {
 
                     Log.w("RecepcionDatosApi", "Fin inserción LISTAS DE VERIFICACION");
 
-                    //16. Obtener datos para la tabla de Respuestas de las Listas de Verificación
+                    //17. Obtener datos para la tabla de Respuestas de las Listas de Verificación
                     array = datosJSON.getJSONArray(ListaVerificacion_Respuesta.NOMBRE_TABLA);
                     for(int i = 0 ; i < array.length(); i++){
                         registro = array.getJSONObject(i);

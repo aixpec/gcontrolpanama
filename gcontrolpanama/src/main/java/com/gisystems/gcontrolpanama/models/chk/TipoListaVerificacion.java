@@ -77,7 +77,10 @@ public class TipoListaVerificacion {
         onCreate(database);
     }
 
-    public ArrayList<TipoListaVerificacion> obtenerListadoTipos(Context ctx,  int idCliente) {
+
+    public ArrayList<TipoListaVerificacion> obtenerListadoTipos_X_Proyecto(Context ctx,
+                                                                           int idCliente,
+                                                                           int idProyecto) {
         DAL w = new DAL(ctx);
         ArrayList<TipoListaVerificacion> tipos = new ArrayList<>();
         TipoListaVerificacion tipo;
@@ -90,8 +93,12 @@ public class TipoListaVerificacion {
                     + " T." + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + ", "
                     + " T." + TipoListaVerificacion.COLUMN_DESCRIPCION + ", "
                     + " T." + TipoListaVerificacion.COLUMN_ID_CONFIGURACION
-                    + " FROM " + TipoListaVerificacion.NOMBRE_TABLA + " T "
-                    + " WHERE T." + TipoListaVerificacion.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
+                    + " FROM " + Asign_Proyecto_TipoListaVerificacion.NOMBRE_TABLA + " A "
+                    + " JOIN " + TipoListaVerificacion.NOMBRE_TABLA + " T "
+                    + "   ON A." + Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_CLIENTE + " = T." + TipoListaVerificacion.COLUMN_ID_CLIENTE
+                    + "  AND A." + Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION + " = T." + TipoListaVerificacion.COLUMN_ID_TIPO_LISTA_VERIFICACION
+                    + " WHERE A." + Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_CLIENTE + " = " + String.valueOf(idCliente)
+                    + "   AND A." + Asign_Proyecto_TipoListaVerificacion.COLUMN_ID_PROYECTO + " = " + String.valueOf(idProyecto)
                     + " ORDER BY T." + TipoListaVerificacion.COLUMN_DESCRIPCION ;
 
             c =  w.getRow(query);

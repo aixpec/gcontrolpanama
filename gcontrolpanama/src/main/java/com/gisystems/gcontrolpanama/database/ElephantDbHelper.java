@@ -20,6 +20,7 @@ import com.gisystems.gcontrolpanama.models.cc.Respuesta;
 import com.gisystems.gcontrolpanama.models.cc.RespuestaAccionDetalle;
 import com.gisystems.gcontrolpanama.models.cc.TipoDato;
 import com.gisystems.gcontrolpanama.models.cc.TipoIndicador;
+import com.gisystems.gcontrolpanama.models.chk.Asign_Proyecto_TipoListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.EstadoListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion;
 import com.gisystems.gcontrolpanama.models.chk.ListaVerificacion_Respuesta;
@@ -33,7 +34,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ElephantDbHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "GControlPanamaDb.db";
-	private static final int DATABASE_VERSION = 10;
+	private static final int DATABASE_VERSION = 11;
 	private static ElephantDbHelper sInstance;
 	
 	public ElephantDbHelper(Context context) {
@@ -69,10 +70,29 @@ public class ElephantDbHelper extends SQLiteOpenHelper {
 		TipoListaVerificacion_Seccion.onCreate(database);
 		ListaVerificacion.onCreate(database);
 		ListaVerificacion_Respuesta.onCreate(database);
+		Asign_Proyecto_TipoListaVerificacion.onCreate(database);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
+		// Tablas para checklists
+		Asign_Proyecto_TipoListaVerificacion.onUpgrade(database,oldVersion,newVersion);
+		ListaVerificacion_Respuesta.onUpgrade(database,oldVersion,newVersion);
+		ListaVerificacion.onUpgrade(database,oldVersion,newVersion);
+		TipoListaVerificacion_Seccion.onUpgrade(database,oldVersion,newVersion);
+		TipoListaVerificacion.onUpgrade(database,oldVersion,newVersion);
+		EstadoListaVerificacion.onUpgrade(database,oldVersion,newVersion);
+		// Tablas de configuraciones de preguntas / respuestas
+		RespuestaAccionDetalle.onUpgrade(database,oldVersion,newVersion);
+		Respuesta.onUpgrade(database,oldVersion,newVersion);
+		Pregunta.onUpgrade(database,oldVersion,newVersion);
+		Indicador.onUpgrade(database,oldVersion,newVersion);
+		Configuracion.onUpgrade(database,oldVersion,newVersion);
+		AccionRespuesta.onUpgrade(database,oldVersion,newVersion);
+		TipoDato.onUpgrade(database,oldVersion,newVersion);
+		TipoIndicador.onUpgrade(database,oldVersion,newVersion);
+		ClaseIndicador.onUpgrade(database,oldVersion,newVersion);
+
 		AppValues.onUpgrade(database, oldVersion, newVersion);
 		Cliente.onUpgrade(database,oldVersion,newVersion);
 		TipoProyecto.onUpgrade(database,oldVersion,newVersion);
@@ -84,22 +104,6 @@ public class ElephantDbHelper extends SQLiteOpenHelper {
 		FotoActividad.onUpgrade(database,oldVersion,newVersion);
 		Construccion.onUpgrade(database,oldVersion,newVersion);
 		ActividadDescripcion.onUpgrade(database,oldVersion,newVersion);
-        // Tablas para checklists
-        ListaVerificacion_Respuesta.onUpgrade(database,oldVersion,newVersion);
-        ListaVerificacion.onUpgrade(database,oldVersion,newVersion);
-        TipoListaVerificacion_Seccion.onUpgrade(database,oldVersion,newVersion);
-        TipoListaVerificacion.onUpgrade(database,oldVersion,newVersion);
-        EstadoListaVerificacion.onUpgrade(database,oldVersion,newVersion);
-		// Tablas de configuraciones de preguntas / respuestas
-		RespuestaAccionDetalle.onUpgrade(database,oldVersion,newVersion);
-		Respuesta.onUpgrade(database,oldVersion,newVersion);
-		Pregunta.onUpgrade(database,oldVersion,newVersion);
-		Indicador.onUpgrade(database,oldVersion,newVersion);
-		Configuracion.onUpgrade(database,oldVersion,newVersion);
-		AccionRespuesta.onUpgrade(database,oldVersion,newVersion);
-		TipoDato.onUpgrade(database,oldVersion,newVersion);
-		TipoIndicador.onUpgrade(database,oldVersion,newVersion);
-		ClaseIndicador.onUpgrade(database,oldVersion,newVersion);
 	}
 	
 	public static ElephantDbHelper getInstance(Context context) {

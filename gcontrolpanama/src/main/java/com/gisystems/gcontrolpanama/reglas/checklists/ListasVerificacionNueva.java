@@ -72,7 +72,7 @@ public class ListasVerificacionNueva extends AppCompatDialogFragment {
             spinnerTipos = (Spinner)view.findViewById(R.id.spinnerTipoListaVerificacion);
 
             TipoListaVerificacion tipoListaVerificacion = new TipoListaVerificacion();
-            ArrayList<TipoListaVerificacion> tipos = tipoListaVerificacion.obtenerListadoTipos(getActivity(),this.idCliente);
+            ArrayList<TipoListaVerificacion> tipos = tipoListaVerificacion.obtenerListadoTipos_X_Proyecto(getActivity(),this.idCliente, this.idProyecto);
 
             ArrayAdapter<TipoListaVerificacion> dataAdapter = new ArrayAdapter<TipoListaVerificacion>(getActivity(),
                     android.R.layout.simple_spinner_item, tipos);
